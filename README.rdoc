@@ -25,8 +25,7 @@ Things you may want to cover:
 
 * ...
 
-contributors: Sergei
-* Testing my commit
+
 
 
 Please feel free to use a different markup language if you do not plan to run
