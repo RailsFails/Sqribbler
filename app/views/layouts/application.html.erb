@@ -8,15 +8,21 @@
 </head>
 <body>
 
-<%= render partial: 'layouts/navbar' %>
+<div class="navWrapper">
+    <%= render partial: 'layouts/navbar' %>
+</div>
 
 <div id="notice_messages">
     <span class="notice"><%= notice %></span> <br/>
     <span class="alert"><%= alert %></span>
 </div>
 
+<div class="contentWrapper">
+    <%= yield %>
+</div>
 
-<%= yield %>
-
+<div class="footerWrapper">
+  <%= render partial: 'layouts/footer' %>
+</div>
 </body>
 </html>
