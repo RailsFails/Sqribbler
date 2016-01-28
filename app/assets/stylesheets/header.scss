@@ -1,0 +1,24 @@
+$toolbar_color: #E0E0E0;
+
+nav.nav-bar {
+  background-color: $toolbar_color;
+  width: 100%;
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    li {
+      display: inline-block;
+
+    }
+  }
+  a:link {
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.5em 1em;
+  }
+  a:hover {
+    background-color: darken($toolbar_color, 15%);
+  }
+}
