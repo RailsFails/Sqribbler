@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Sqribbler</title>
+  <title>Scribbler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,24 +11,25 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
-
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <meta name="description" content="">
   <meta name="author" content="">
 </head>
 <body>
-<div class="container <%= 'current_user' unless current_user.nil? %>">
+<div class="container <%= 'signed_in_user' unless current_user.nil? %>">
 
-    <%= render partial: 'layouts/header' %>
+  <%= render partial: 'layouts/header' %>
+
 
   <div class="contentWrapper">
+    <div class="col-md-4">
       <%= yield %>
+    </div>
   </div>
+</div>
 
-  <div class="footerWrapper">
-    <%= render partial: 'layouts/footer' %>
-  </div>
-
+<div class="footerWrapper">
+  <%= render partial: 'layouts/footer' %>
 </div>
 <!-- /container -->
 
