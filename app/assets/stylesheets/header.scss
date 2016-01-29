@@ -1,8 +1,16 @@
+/*COLOR VARIABLES*/
 $toolbar_color: #E0E0E0;
+$accent_color_gray: #999;
+$link_color: #3456f1;
+
+
+
+
 
 nav.nav-bar {
-  background-color: $toolbar_color;
+  background-color: #fff;
   width: 100%;
+  border-bottom: 1px solid $accent_color_gray;
   ul {
     list-style-type: none;
     margin: 0;
@@ -10,8 +18,10 @@ nav.nav-bar {
     text-align: right;
     li {
       display: inline-block;
-
     }
+  }
+  a {
+    color: $link_color;
   }
   a:link {
     text-decoration: none;
@@ -19,6 +29,8 @@ nav.nav-bar {
     padding: 0.5em 1em;
   }
   a:hover {
-    background-color: darken($toolbar_color, 15%);
+    background-color: darken(#EEE, 1%);
+    color: transparent;
+    text-shadow: 0 0 1px $link_color;
   }
 }
