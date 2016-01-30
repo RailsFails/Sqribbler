@@ -1,10 +1,19 @@
 <header>
   <%= render partial: 'layouts/navbar' %>
+
+  <% if current_user.nil? %>
   <div class="col-md-8">
     <div class="jumbotron">
       <span>this will be removed on login</span>
     </div>
   </div>
+      <% else %>
+      <div class="col-md-8" style="display:none">
+        <div class="jumbotron">
+          <span>this will be removed on login</span>
+        </div>
+      </div>
+      <% end %>
   <div id="notice_messages">
     <span class="notice"><%= notice %></span> <br/>
     <span class="alert"><%= alert %></span>
