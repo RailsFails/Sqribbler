@@ -1,6 +1,7 @@
 /*--FONTS--*/
 * {
-  font-family: sans-serif;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
 }
 
 body {
@@ -10,10 +11,42 @@ body {
   background-color: #fff;
 }
 
-img {
-  width: 100%;
-  height: auto;
+.footerWrapper {
+  width: 80%;
+  margin: 0 auto;
 }
-.contentWrapper {
-  border: 1px solid #f00;
+
+footer {
+  padding: 6px;
+  border-radius: 4px;
+  opacity: .5;
+  background-color: #555;
+  color: #aaa;
+  text-align: center;
+}
+
+#scribbler_logo h1 a {
+  text-decoration: none;
+}
+
+.hero {
+  background-image: url('phone_scribbler_logo.png');
+  width: 150px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+@media(min-width: 640px) and (max-width: 1200px) {
+  .hero {
+    background-image: url('tablet_scribbler_logo.png');
+    width: 250px;
+    height: 83px;
+  }
+}
+@media(min-width: 1201px) {
+  .hero {
+    background-image: url('desktop_scribbler_logo.png');
+    width: 350px;
+    height: 117px;
+  }
 }
