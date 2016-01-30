@@ -17,25 +17,21 @@
 </head>
 <body>
 <div class="container <%= 'signed_in_user' unless current_user.nil? %>">
-
   <%= render partial: 'layouts/header' %>
-
-<% if current_user.nil? %>
-  <div class="contentWrapper col-lg-4">
-      <%= yield %>
-  </div>
-      <% else %>
+  <% if current_user.nil? %>
+      <div class="contentWrapper col-lg-4">
+        <%= yield %>
+      </div>
+  <% else %>
       <div class="contentWrapper col-lg-12">
         <%= yield %>
       </div>
-      <% end %>
-</div><!-- /container -->
-
+  <% end %>
+</div>
+<!-- /container -->
 <div class="footerWrapper">
   <%= render partial: 'layouts/footer' %>
 </div>
-
-
 </body>
 </html>
 
