@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   get 'landing_page/index'
   get 'page/user_profile_page'
+  get 'landing_page/hello'
   root 'landing_page#index'
 
 
