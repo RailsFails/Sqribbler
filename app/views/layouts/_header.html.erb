@@ -1,7 +1,9 @@
 <header>
   <%= render partial: 'layouts/navbar' %>
 
-  <div class="jumbotron">
+  <% if current_user.nil? %>
+  <div class="col-md-8">
+      <div class="jumbotron">
     <!--Scripts needed for gallery carousel -->
     <script src="blueimp-gallery.js"></script>
     <!--script moved for loading improvement-->
