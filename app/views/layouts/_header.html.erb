@@ -2,8 +2,6 @@
   <%= render partial: 'layouts/navbar' %>
 
   <div class="jumbotron">
-    <!--Scripts needed for gallery carousel -->
-    <script src="blueimp-gallery.js"></script>
     <!--script moved for loading improvement-->
     <div class="main-landing-content">
       <h1 class="h1_page">Latest and Greatest User Images</h1>
@@ -16,7 +14,7 @@
         <ol class="indicator">&#8920;</ol>
       </div>
       <br>
-      <div id="links" class="links" style="visibility: hidden">
+      <div id="links" class="links" style="display: none">
         <a href="https://farm2.static.flickr.com/1569/24012612003_681d9dddc4_b.jpg" title="For Me" data-gallery=""><img src="https://farm2.static.flickr.com/1569/24012612003_681d9dddc4_s.jpg"></a>
         <a href="https://farm2.static.flickr.com/1565/24267643669_9a20d39ed3_b.jpg" title="Jurassic Park - Evening Viewing" data-gallery=""><img src="https://farm2.static.flickr.com/1565/24267643669_9a20d39ed3_s.jpg"></a>
         <a href="https://farm2.static.flickr.com/1605/24278351039_aa0665aacb_b.jpg" title="Boys, they wanna have Fun" data-gallery=""><img src="https://farm2.static.flickr.com/1605/24278351039_aa0665aacb_s.jpg"></a>
@@ -56,7 +54,6 @@
       </div>
     </div>
     <!--Scripts needed for gallery carousel -->
-    <script src="jquery.blueimp-gallery.js"></script>
     <script>
       blueimp.Gallery(
           document.getElementById('links').getElementsByTagName('a'),
