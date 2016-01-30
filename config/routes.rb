@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+  get 'user/show'
+
   devise_for :users
   get 'landing_page/index'
-
+  get 'page/user_profile_page'
   root 'landing_page#index'
+
+
+  get 'users/:username' => 'user#show'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
