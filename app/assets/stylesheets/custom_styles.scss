@@ -1,19 +1,53 @@
-/*--FONTS--*/
-* {
-  font-family: sans-serif;
+@media(max-width: 639px) {
+  /*--FONTS--*/
+  * {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+  }
+
+  body {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+  }
+
+  .footerWrapper {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  footer {
+    padding: 6px;
+    border-radius: 4px;
+    opacity: .5;
+    background-color: #555;
+    color: #aaa;
+    text-align: center;
+  }
+
+  #scribbler_logo h1 a {
+    text-decoration: none;
+  }
+
+  .hero {
+    background-image: url('phone_scribbler_initial.png');
+    width: 150px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+@media(min-width: 640px) {
+  /*--FONTS--*/
+  * {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+  }
+  .hero {
+    background-image: url('desktop_scribbler_logo2.png');
+    width: 320px;
+    height: 80px;
+  }
 }
 
-body {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  background-color: #fff;
-}
-
-img {
-  width: 100%;
-  height: auto;
-}
-.contentWrapper {
-  border: 1px solid #f00;
-}
