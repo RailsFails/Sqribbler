@@ -21,7 +21,6 @@
     padding: 6px;
     border-radius: 4px;
     opacity: .5;
-    background-color: #555;
     color: #aaa;
     text-align: center;
   }
@@ -52,12 +51,29 @@
   .profile_page h3 {
     text-align: center;
     padding: 4px;
-    background-color: #555;
-    color: #fff;
+    background-color: #fff;
+    color: #333;
     opacity: .8;
   }
   .profile_page div+div {
 
+  }
+  h1 {
+    font-family: 'Righteous', cursive;
+  }
+  .branding_image {
+    border-top: 1px solid #f50;
+    background-image: url('news_logo.png');
+    width: 432px;
+    height: 288px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .profile_image {
+    background: #000;
+    width: 200px;
+    height: 200px;
+    background-size: contain;
   }
 }
 
