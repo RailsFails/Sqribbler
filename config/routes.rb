@@ -6,10 +6,7 @@ Rails.application.routes.draw do
   get 'landing_page/hello'
   get 'page/user_profile_page'
   root 'landing_page#index'
-
-
-  get 'users/:username' => 'user#show'
-
+  get 'user/:username' => 'user#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
