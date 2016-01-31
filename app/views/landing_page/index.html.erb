@@ -1,4 +1,20 @@
-<div class="main-landing-content">
-
-</div>
-
+<% if current_user.nil? %>
+    <div class="main-landing-content">
+      <h1><span class="newsBanner">Image-editing playground inside.</span></h1>
+    </div>
+<% else %>
+    <div class="profile_page">
+      <div class="col-lg-12">
+        <h3>This could be a gallery or something.</h3>
+      </div>
+      <div class="col-lg-4">
+        <p>This is one of the columns for gallery content</p>
+      </div>
+      <div class="col-lg-4">
+        <p>This will be a form for uploads, or a gallery of your own images.</p>
+      </div>
+      <div class="col-lg-4">
+        <p>This will be for some other content.</p>
+      </div>
+    </div>
+<% end %>
