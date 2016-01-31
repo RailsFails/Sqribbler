@@ -20,17 +20,21 @@ nav.nav-bar {
       display: inline-block;
     }
   }
+
   a {
     color: $link_color;
   }
+
   a:link {
     text-decoration: none;
     display: inline-block;
     padding: 0.5em 1em;
   }
+
   a:hover {
     background-color: darken(#EEE, 1%);
     color: transparent;
     text-shadow: 0 0 1px $link_color;
   }
+
 }
