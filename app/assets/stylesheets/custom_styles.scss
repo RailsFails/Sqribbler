@@ -17,3 +17,25 @@ img {
 .contentWrapper {
   border: 1px solid #f00;
 }
+
+#notice_messages {
+  $alert_color: #F44336;
+  $notice_color: #2196F3;
+  font-size: 125%;
+
+  color: #ffffff;
+  & > div {
+    border-radius: 0.5em;
+    border-width: 3px;
+    padding: 1em;
+    margin: 0.5em 0;
+  }
+  .alert {
+    background-color: $alert_color;
+    border-color: darken($alert_color, 20%);
+  }
+  .notice {
+    background-color: lighten($notice_color, 10%);
+    border-color: darken($notice_color, 20%);
+  }
+}
