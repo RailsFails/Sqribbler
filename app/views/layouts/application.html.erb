@@ -9,10 +9,13 @@
   <!--FONTS-->
 
   <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
-
+  <%= stylesheet_link_tag 'application', media: 'all', '../javascripts/jquery-ui-1.11.4.custom/jquery-ui.min.css' => true %><!--New ADDED LINK FOR TABS ON MAIN PAGE----!>
   <link href='https://fonts.googleapis.com/css?family=Quicksand:400,300' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'javascripts/jquery-ui1.11.4.custom/jquery/jquery.js' => true %> <!--New ADDED LINK FOR TABS ON MAIN PAGE----!>
+  <%= javascript_include_tag '../javascripts/jquery-ui-1.11.4.custom/jquery-ui.min.js' => true %> <!--New ADDED LINK FOR TABS ON MAIN PAGE----!>
+
   <%= csrf_meta_tags %>
   <!--The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags-->
   <!--Leave the script *beneath* this line intact for the water effect on the Scribbler logo-->
