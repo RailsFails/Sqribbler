@@ -129,12 +129,7 @@
               was still with me, I could feel that there was a weapon somewhere beside me, and I needed it. -creative quotes-</p>
           </section>
         </div>
-
-
-
-
-
-        <div class="friendsList_box col-lg-3">
+        <div class="friendsList_box col-lg-4">
           <div class="user_albums">
             <h3>Albums</h3>
             <!--THESE DIVS ARE FOR THE ACCORDIAN-->
@@ -209,24 +204,50 @@
             </ul>
           </div>
         </div>
-        <!--THIS IS THE CODE FOR OUR PLUGIN TOOLBAR-->
-        <div class="col-lg-1">
-          <h5>TOOLS/ will be placed in different view.</h5>
-          <div class="btn-group-vertical">
-            <button type="button" class="btn btn-default">A1</button>
-            <button type="button" class="btn btn-default">A2</button>
-            <button type="button" class="btn btn-default">A3</button>
-            <br /><br />
-            <button type="button" class="btn btn-default">B1</button>
-            <button type="button" class="btn btn-default">B2</button>
-            <button type="button" class="btn btn-default">B3</button>
-            <br /><br />
-            <button type="button" class="btn btn-default">C1</button>
-            <button type="button" class="btn btn-default">C2</button>
-            <button type="button" class="btn btn-default">C3</button>
-          </div>
+
+        <!----AREA FOR THE USER EDIT FORM ---->
+        <button>CLICK TO EDIT PROFILE</button>
+        <div class="profile_edit_form">
+          <form method="post" >
+            <div class="form-group">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="InputName">Enter Name</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="InputEmail">Enter Email</label>
+                  <div class="input-group">
+                    <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Enter Email" required>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="InputEmail">Confirm Email</label>
+                  <div class="input-group">
+                    <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Confirm Email" required>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="InputMessage">Enter Message</label>
+                  <div class="input-group">
+                    <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                  </div>
+                </div>
+                <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+              </div>
+            </div>
+          </form>
 
         </div>
+
+        <!---------END EDIT USER FORM-------------------->
+
       </div><!--END LOGIN LANDING PAGE-->
 
       <div class="user_upload_section col-lg-12">

@@ -88,7 +88,7 @@
   height: 30px;
 }
 /***************************profile settings nav*****************************************************/
-.login_site{
+/*.login_site{
   width: 30%;
   float:right;
 
@@ -96,12 +96,12 @@
 form #search_site{
   float: right;
 
-}
+}*/
 
 .profile_settings_menu:hover ~ .menu-close {
   margin-right:-100px;
 }
-.profile_settings_menu:hover .bar { background:rgba(100,200,240,.9); }
+.profile_settings_menu:hover .bar {  background:rgba(100,200,240,.9); }
 .profile_settings_menu > nav ul { top:15%; }
 .profile_settings_menu {
   overflow: hidden;
@@ -273,12 +273,20 @@ nav li a:hover {
 /******************************************************************************************/
 
 
-/**************************************side quick nav**************************************/
+/**************************************side Tooolbar nav**************************************/
 
 
 
 
 
+
+/******************************************************************************************/
+
+/**************************************USER EDIT FORM**************************************/
+
+.profile_edit_form{
+  margin: 5em 0;
+}
 
 /******************************************************************************************/
 
