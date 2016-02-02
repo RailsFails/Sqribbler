@@ -587,7 +587,7 @@
 			if (!data) $this.data('ripples', (data = new Ripples(this, options)));
 			else if (typeof option == 'string') Ripples.prototype[option].apply(data, args);
 		});
-	};
+	}
 
 	$.fn.ripples.Constructor = Ripples;
 
