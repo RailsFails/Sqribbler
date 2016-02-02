@@ -10,7 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require blueimp-gallery.min.js
+//= require blueimp-gallery.js
 //= require jquery
 //= require jquery_ujs
 
