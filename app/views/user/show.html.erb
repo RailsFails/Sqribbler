@@ -208,41 +208,47 @@
         <!----AREA FOR THE USER EDIT FORM ---->
         <button>CLICK TO EDIT PROFILE</button>
         <div class="profile_edit_form">
-          <form method="post" >
-            <div class="form-group">
-              <div class="col-lg-6">
-                <div class="form-group">
-                  <label for="InputName">Enter Name</label>
-                  <div class="input-group">
-                    <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="InputEmail">Enter Email</label>
-                  <div class="input-group">
-                    <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Enter Email" required>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="InputEmail">Confirm Email</label>
-                  <div class="input-group">
-                    <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Confirm Email" required>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="InputMessage">Enter Message</label>
-                  <div class="input-group">
-                    <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                  </div>
-                </div>
-                <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+          <%= form_tag class: 'profile_edit_form' do %>
+              <div class="input-group">
+                <%= label_tag 'first_name', 'FIRST NAME' %>
+                <%= text_field 'first_name', :class => 'first_name' %>
               </div>
-            </div>
-          </form>
+
+              <div class="input-group">
+                <%= label_tag 'last_name', 'LAST NAME' %>
+                <%= text_field 'last_name', :class => 'last_name' %>
+              </div>
+
+              <div class="input-group">
+                <%= label_tag 'user_name', 'USER NAME' %>
+                <%= text_field 'user_name',  :class => 'user_name' %>
+              </div>
+
+              <div class="input-group">
+                <%= label_tag 'user_email', 'EMAIL' %>
+                <%= text_field 'User_email',  :class => 'user_email' %>
+              </div>
+
+              <div class="input-group">
+                <%= label_tag 'affiliation', 'AFFILIATION NAME' %>
+                <%= text_field 'affiliation',  :class => 'affiliation' %>
+              </div>
+
+              <div class="input-group">
+                <%= label_tag 'location', 'LOCATION' %>
+                <%= text_field 'location', :class => 'location' %>
+                <!-- <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Location" required>-->
+              </div>
+
+              <div class="input-group">
+                <%= label_tag 'about_me', 'ABOUT ME' %><br/>
+                <%= text_area 'ABOUT ME', :class => "tinymce" %><br/><br/>
+              </div>
+              <!--  <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>-->
+              <%= submit_tag 'Send', :class => 'submit_class' %>
+              <%= submit_tag 'Reset', :class => 'reset_class' %>
+              <!-- <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">-->
+          <% end  %>
 
         </div>
 
@@ -332,12 +338,12 @@
           </div>
           <nav>
             <ul>
-              <li><%= link_to 'USER PROFILE', user_show_path %><a href="#">USER PROFILE</a></li>
-              <li><a href="#">USER SETTINGS</a></li>
-              <li><a href="#">FIND A FRIEND</a></li>
-              <li><a href="#">FIND AN IMAGE</a></li>
-              <li><a href="#">CONTACT A FRIEND</a></li>
-              <li><a href="#">CONTACT SQRIBBLER</a></li>
+              <li><%= link_to 'USER PROFILE', user_show_path %><a href="#"></a></li>
+              <li><%= link_to 'USER SETTINGS', user_show_path %><a href="#"></a></li>
+              <li><%= link_to 'FIND A FRIEND', user_show_path %><a href="#"></a></li>
+              <li><%= link_to 'FIND AN IMAGE', user_show_path %><a href="#"></a></li>
+              <li><%= link_to 'CONTACT A FRIEND', user_show_path %><a href="#"></a></li>
+              <li><%= link_to 'CONTACT SQRIBBLER', user_show_path %><a href="#"></a></li>
             </ul>
           </nav>
         </div>
