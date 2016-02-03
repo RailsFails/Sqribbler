@@ -1,15 +1,20 @@
 class UserController < ApplicationController
 
   def user_profile_edit
-    @user_id = params[:user_id]
-    @first_name = params[:first_name]
-    @last_name = params[:last_name]
-    @username = params[:username]
-    @email = params[:email]
-    @phone_number = params[:phone_number]
-    @location = params[:location]
-    @about_me = params[:about_me]
-    @profile_avatar = params[:profile_avatar]
+    user = User.new(user_params)
+    if (user.save)
+
+    end
+
+    # @user_id = params[:user_id]
+    # @first_name = params[:first_name]
+    # @last_name = params[:last_name]
+    # @username = params[:username]
+    # @email = params[:email]
+    # @phone_number = params[:phone_number]
+    # @location = params[:location]
+    # @about_me = params[:about_me]
+    # @profile_avatar = params[:profile_avatar]
   end
 
   def show
