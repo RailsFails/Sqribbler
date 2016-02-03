@@ -241,16 +241,16 @@
               </div>
 
               <div class="input-group">
-                <%= label_tag 'profile_avatar', 'PROFILE IMAGE' %>
-                <%= file_field_tag 'profile_avatar_insert', @profile_avatar %>
+                <label for="profile_avatar">Profile Image:</label>
+                <input type="file" name="profile_avatar">
+
               </div>
 
               <div class="input-group">
                 <%= label_tag 'about_me', 'ABOUT ME' %><br/>
-                <%= text_area 'about_me', @about_me %><br/><br/>  <!--:class => "tinymce"-->
+                <%= text_area 'about_me_insert', @about_me %><br/><br/>           <!-- :class => "tinymce"-->
               </div>
 
-              <%= check_box_tag 'newsletter', 'Wanna JOIN our SQRIBBLER Group?(Weekly Updated News)' %>
               <!--  <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>-->
               <%= submit_tag 'Send', :class => 'submit_class' %>
               <%= submit_tag 'Reset', :class => 'reset_class' %>
