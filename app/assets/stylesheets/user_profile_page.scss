@@ -1,4 +1,3 @@
-
 /***************************social link nav*****************************************************/
 
 
@@ -6,8 +5,90 @@
 
 /****************************************************************************************************/
 
+
+
+/*******************TRENTS GRAPHICAL DISPLAY QUICK PIC MENU***************************************/
+.white {
+  color: white;
+}
+
+.btn-lg {
+  font-size: 38px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+
+.box > .icon {
+  text-align: center;
+  position: relative;
+}
+
+.box > .icon > .image {
+  position: relative;
+  z-index: 2;
+  margin: auto;
+  width: 88px;
+  height: 88px;
+  border: 7px solid white;
+  line-height: 88px;
+  border-radius: 50%;
+  background: #63B76C;
+  vertical-align: middle;
+}
+
+.box > .icon:hover > .image {
+  border: 4px solid black;
+}
+
+.box > .icon > .image > i {
+  font-size: 40px !important;
+  color: #fff !important;
+}
+
+.box > .icon:hover > .image > i {
+  color: white !important;
+}
+
+.box > .icon > .info {
+  margin-top: -24px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid #e0e0e0;
+  padding: 15px 0 10px 0;
+}
+
+.box > .icon > .info > h3.title {
+  color: #222;
+  font-weight: 500;
+}
+
+.box > .icon > .info > p {
+  color: #666;
+  line-height: 1.5em;
+  margin: 20px;
+}
+
+.box > .icon:hover > .info > h3.title, .box > .icon:hover > .info > p, .box > .icon:hover > .info > .more > a {
+  color: #222;
+}
+
+.box > .icon > .info > .more a {
+  color: #222;
+  line-height: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.box > .icon:hover > .info > .more > a {
+  color: #000;
+  padding: 6px 8px;
+  border-bottom: 4px solid black;
+}
+
+.box .space {
+  height: 30px;
+}
 /***************************profile settings nav*****************************************************/
-.login_site{
+/*.login_site{
   width: 30%;
   float:right;
 
@@ -15,12 +96,12 @@
 form #search_site{
   float: right;
 
-}
+}*/
 
 .profile_settings_menu:hover ~ .menu-close {
   margin-right:-100px;
 }
-.profile_settings_menu:hover .bar { background:rgba(100,200,240,.9); }
+.profile_settings_menu:hover .bar {  background:rgba(100,200,240,.9); }
 .profile_settings_menu > nav ul { top:15%; }
 .profile_settings_menu {
   overflow: hidden;
@@ -115,7 +196,6 @@ nav li a {
   color: rgba(255,255,255,.8);
   text-decoration: none;
   margin: 0 auto;
-  padding: 20px;
   display:block;
   -webkit-transition: all ease .5s;
   -moz-transition: all ease .5s;
@@ -191,96 +271,64 @@ nav li a:hover {
 
 /******************************************************************************************/
 
-/**************************************side quick nav**************************************/
-.quick_nav{
-  /* width: 15%;*/
-  float: left;
-  background-color: #234;
-  border-radius: 2px ;
-}
 
-#menu-v li, #menu-v a {zoom:1;} /* Hacks for IE6, IE7 */
-#menu-v, #menu-v ul
-{
-  width: 180px; /* Main Menu Item widths */
-  border: 1px solid #ccc;
-  border-top:none;
-  position: relative; font-size:0;
-  list-style: none; margin: 0; padding: 0; display:block;
-  z-index:9;
-}
-
-/* Top level menu links style
----------------------------------------*/
-
-#menu-v li
-{
-  background: #FFF url(bg.gif) repeat-x 0 2px;
-  list-style: none; margin: 0; padding: 0;
-}
-#menu-v li a
-{
-  font: normal 12px Arial;
-  border-top: 1px solid #ccc;
-  display: block;
-  /*overflow: auto; force hasLayout in IE7 */
-  color: black;
-  text-decoration: none;
-  line-height:26px;
-  padding-left:26px;
-}
-#menu-v ul li a
-{
-  line-height:30px;
-}
-
-#menu-v li a.arrow:hover
-{
-  background-image:url(arrowon.gif);
-  background-repeat: no-repeat;
-  background-position: 97% 50%;
-}
+/**************************************side Tooolbar nav**************************************/
 
 
+
+
+
+
+/******************************************************************************************/
+
+/**************************************USER EDIT FORM**************************************/
+
+.profile_edit_form{
+  margin: 5em 0;
+}
 
 /******************************************************************************************/
 
 /**************************************Main Column Content**************************************/
 
 .profile_main_col{
-  width: 50%;
-  margin: 0 3%;
-  float: left;
-  background-color: #102001;
-  border-radius: 2px ;
+
 }
 
 #main_feed{
-  background-color: #234;
-  border-radius: 2px ;
+  margin-top: 5em;
 }
 #friend_feed{
-  background-color: #234;
-  border-radius: 2px ;
+  margin-top: 5em;
 }
 
 #result_feed{
-  margin-top: 3em;
-  background-color: #234;
-  border-radius: 2px ;
+  margin: 5em 0;
+}
+#result_feed img {
+  filter: gray; /* IE6-9 */
+  -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+  -webkit-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+  box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+  margin-bottom: 20px;
+}
+#result_feed img:hover {
+  filter: none; /* IE6-9 */
+  -webkit-filter: grayscale(0); /* Google Chrome, Safari 6+ & Opera 15+ */
 }
 
 /******************************************************************************************/
 
 /**************************************Friend List**************************************/
-.friend_list{
-  width: 15%;
-  background-color: #234;
-  border-radius: 2px ;
-  float: left;
-}
 
-.friend_list h2{
-  text-align: center;
-}
+
+
+
+
+
+
+
+
+
 /******************************************************************************************/
