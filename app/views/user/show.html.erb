@@ -216,34 +216,41 @@
 
               <div class="input-group">
                 <%= label_tag 'last_name', 'LAST NAME' %>
-                <%= text_field 'last_name', :class => 'last_name' %>
+                <%= text_field 'last_name', @first_name %>
               </div>
 
               <div class="input-group">
                 <%= label_tag 'user_name', 'USER NAME' %>
-                <%= text_field 'user_name',  :class => 'user_name' %>
+                <%= text_field 'user_name', @username %>
               </div>
 
               <div class="input-group">
                 <%= label_tag 'user_email', 'EMAIL' %>
-                <%= text_field 'User_email',  :class => 'user_email' %>
+                <%= text_field 'User_email', @email %>
               </div>
 
               <div class="input-group">
                 <%= label_tag 'affiliation', 'AFFILIATION NAME' %>
-                <%= text_field 'affiliation',  :class => 'affiliation' %>
+                <%= text_field 'affiliation',  @affiliation %>
               </div>
 
               <div class="input-group">
                 <%= label_tag 'location', 'LOCATION' %>
-                <%= text_field 'location', :class => 'location' %>
+                <%= text_field 'location', @location %>
                 <!-- <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Location" required>-->
               </div>
 
               <div class="input-group">
-                <%= label_tag 'about_me', 'ABOUT ME' %><br/>
-                <%= text_area 'ABOUT ME', :class => "tinymce" %><br/><br/>
+                <%= label_tag 'profile_avatar', 'PROFILE IMAGE' %>
+                <%= file_field_tag 'profile_avatar_insert', @profile_avatar %>
               </div>
+
+              <div class="input-group">
+                <%= label_tag 'about_me', 'ABOUT ME' %><br/>
+                <%= text_area 'ABOUT ME', @about_me, :class => "tinymce" %><br/><br/>
+              </div>
+
+              <%= check_box_tag 'newsletter', 'Wanna JOIN our SQRIBBLER Group?(Weekly Updated News)' %>
               <!--  <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>-->
               <%= submit_tag 'Send', :class => 'submit_class' %>
               <%= submit_tag 'Reset', :class => 'reset_class' %>
@@ -301,8 +308,6 @@
 
         <div class="col-lg-6">
           <form class="user_upload_form">
-            <label for="profile_avatar">Profile Image:</label>
-            <input type="file" name="profile_avatar">
             <div class="col-lg-12">
               <label for="profile_about_me">A little about yourself:</label>
 
