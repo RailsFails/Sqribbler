@@ -104,6 +104,7 @@
                       <div class="jumbotron">
                         <!--script moved for loading improvement-->
                         <div class="main-landing-content">
+
                           <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel ">
                             <div class="slides"></div>
                             <h3 class="title"></h3>
@@ -153,6 +154,63 @@
                             <a href="https://farm2.static.flickr.com/1691/24348414780_51791f35b9_b.jpg" title="Morning illuminations" data-gallery=""><img src="https://farm2.static.flickr.com/1691/24348414780_51791f35b9_s.jpg"></a>
                           </div>
                           <h5>Trending Content</h5>
+
+                          <!--Displaying search results-->
+                          <% unless params[:search].blank? %>
+                              <div>
+                                <h3>User's Sqribble</h3>
+                                <ul class="list-group">
+                                  <% @search.each do |user| %>
+                                      <li class="list-group-item">User: <%= user.username %></li>
+                                  <% end %>
+                                </ul>
+                              </div>
+                          <% end %>
+                          <!--Displaying search results-->
+
+                          <br>
+
+                          <!--A Bootstrap Carousel to fill the space for now--> <!-- DELETE IF NOT WANTED-->
+                          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                              <li data-target="#myCarousel" data-slide-to="1"></li>
+                              <li data-target="#myCarousel" data-slide-to="2"></li>
+                              <li data-target="#myCarousel" data-slide-to="3"></li>
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                              <div class="item active">
+                                <img src="http://placehold.it/500x250">
+                              </div>
+
+                              <div class="item">
+                                <img src="http://placehold.it/500x250">
+                              </div>
+
+                              <div class="item">
+                                <img src="http://placehold.it/500x250">
+                              </div>
+
+                              <div class="item">
+                                <img src="http://placehold.it/500x250">
+                              </div>
+                            </div>
+
+                            <!-- Left and right controls -->
+                            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                              <span class="sr-only">Next</span>
+                            </a>
+                          </div>
+                          <!--A Bootstrap Carousel to fill the space for now-->
+
                         </div>
 
                         <!--Scripts needed for gallery carousel-->
