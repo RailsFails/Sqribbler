@@ -102,10 +102,10 @@
               <a href="#"><div class="profile_image"></div></a>
             </div>
             <div class="col-lg-8">
-              <h1>User Name Here!</h1>
+              <h1><%= @user.inspect %></h1>
               <h3>Spokane WA.</h3>
               <h5><a href="#">YourCompany.com</a></h5>
-              <h5><a href="#">Your email goes here.</a></h5>
+              <h5><a href="#"><%= @email %></a></h5>
             </div>
             <section class="col-lg-12">
               <div class="col-lg-4">
@@ -117,9 +117,32 @@
               </div>
               <div class="col-lg-4">
                 <p>Friends:&nbsp;<span>344</span></p>
+                <% unless current_user.nil? %>
+                    <% if current_user.is_following?(@user) %>
+                        <p><%= link_to 'Unfollow', friendship_path(@user), method: :delete, class: 'btn btn-primary' %></p>
+                    <% else %>
+                        <p><%= link_to 'Follow', friendships_path(:friend_id => @user), method: :post, class: 'btn btn-primary' %></p>
+                    <% end %>
+                <% end %>
+                <section class="col-lg-12">
+                  <div class="col-lg-3">
+                    <span>Joined <%= @user.created_at.strftime('%m/%d/%Y') %></span>
+                  </div>
+                  <div class="col-lg-3">
+                    <p>Scribbles:&nbsp;<span>185</span></p>
+                  </div>
+                  <div class="col-lg-3">
+                    <%= link_to 'followers: '+@user.inverse_friends.count.to_s, user_followers_path(@user.username) %>
+                  </div>
+                  <div class="col-lg-3">
+                    <%= link_to 'following: '+@user.friends.count.to_s, user_following_path(@user.username) %>
+                  </div>
+                </section>
               </div>
             </section>
           </section>
+
+
 
           <section class="col-lg-12">
             <h3>About Me</h3>
