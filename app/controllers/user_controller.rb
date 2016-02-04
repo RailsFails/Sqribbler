@@ -24,6 +24,7 @@ class UserController < ApplicationController
     # @profile_avatar = params[:profile_avatar]
 
   def show
+    #@user = User.find(params[:id])
   end
 
   def following

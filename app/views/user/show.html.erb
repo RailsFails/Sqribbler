@@ -5,7 +5,9 @@
     <div class="main-landing-content">
       <h1><span class="newsBanner">Image-editing playground inside.</span></h1>
       <h4><span>If you have a moment, sign up.</span></h4>
-      <h4><a href="#"><div class="branding_image"></div></a></h4>
+      <h4><a href="#">
+        <div class="branding_image"></div>
+      </a></h4>
     </div>
 
 <% else %>
@@ -22,7 +24,7 @@
               </a>
             </h4>
           </div>
-          <div id="collapseFour" class="panel-collapse collapse"  role="tabpanel" aria-labelledby="headingOne">
+          <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
               <div class="col-lg-12">
 
@@ -39,10 +41,13 @@
         <div class="col-lg-8">
           <section class="profile_box col-lg-12">
             <div class="col-lg-4">
-              <a href="#"><div class="profile_image"></div></a>
+              <a href="#">
+                <div class="profile_image"></div>
+              </a>
             </div>
             <div class="col-lg-8">
               <h1><%= @user.username %></h1>
+              <span>Joined <%= @user.created_at.strftime('%m/%d/%Y') %></span>
               <h3>Spokane WA.</h3>
               <h5><a href="#">YourCompany.com</a></h5>
               <h5><a href="#"><%= @email %></a></h5>
@@ -64,13 +69,10 @@
                     <% end %>
                 <% end %>
                 <section class="col-lg-12">
-                  <div class="col-lg-3">
-                    <span>Joined <%= @user.created_at.strftime('%m/%d/%Y') %></span>
-                  </div>
-                  <div class="col-lg-3">
+                  <div class="col-lg-5">
                     <%= link_to 'followers: '+@user.inverse_friends.count.to_s, user_followers_path(@user.username) %>
                   </div>
-                  <div class="col-lg-3">
+                  <div class="col-lg-5">
                     <%= link_to 'following: '+@user.friends.count.to_s, user_following_path(@user.username) %>
                   </div>
                 </section>
@@ -79,242 +81,175 @@
           </section>
 
 
-
           <section class="col-lg-12">
             <h3>About Me</h3>
-            <p>I can't recall where I grew up, but I do know when. Much of my first memories I don't expect to come back to me.
-              What can I remember? Cold. I was ice. A barely conscious thought slipped from the nothing-black of my mind and by some<br>
-              miracle, stayed lit. I couldn't open my eyes, they were frozen shut. I became worried if I moved, I would break my skin.<br>
-              In those moments <i>just above black</i> as I like to call it, your mind isn't working or thinking logically. As though a shred of my old life<br>
-              was still with me, I could feel that there was a weapon somewhere beside me, and I needed it. -creative quotes-</p>
+
+            <p>I can't recall where I grew up, but I do know when. Much of my first memories I don't expect to come back
+              to me.
+              What can I remember? Cold. I was ice. A barely conscious thought slipped from the nothing-black of my mind
+              and by some<br>
+              miracle, stayed lit. I couldn't open my eyes, they were frozen shut. I became worried if I moved, I would
+              break my skin.<br>
+              In those moments <i>just above black</i> as I like to call it, your mind isn't working or thinking
+              logically. As though a shred of my old life<br>
+              was still with me, I could feel that there was a weapon somewhere beside me, and I needed it. -creative
+              quotes-</p>
           </section>
         </div>
-        <div class="friendsList_box col-lg-4">
-          <div class="user_albums">
-            <h3>Albums</h3>
-            <!--THESE DIVS ARE FOR THE ACCORDIAN-->
-            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
-                  <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Album #1
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                  <div class="panel-body">
-                    <a href="#"><img src="" alt="img1"></a>
-                    <a href="#"><img src="" alt="img2"></a>
-                    <a href="#"><img src="" alt="img3"></a>
-                    <a href="#"><img src="" alt="img4"></a>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingTwo">
-                  <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      Album #2
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                  <div class="panel-body">
-                    <a href="#"><img src="" alt="img1"></a>
-                    <a href="#"><img src="" alt="img2"></a>
-                    <a href="#"><img src="" alt="img3"></a>
-                    <a href="#"><img src="" alt="img4"></a>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingThree">
-                  <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Album #3
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                  <div class="panel-body">
-                    <a href="#"><img src="" alt="img1"></a>
-                    <a href="#"><img src="" alt="img2"></a>
-                    <a href="#"><img src="" alt="img3"></a>
-                    <a href="#"><img src="" alt="img4"></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><!--END ALBUMS-->
-
-          <div class="Friends">
-            <h3>Friends</h3>
-            <ul>
-              <li><a href="#">Friend1</a> <img src="#" alt="friend1 profile picture"></li>
-              <li><a href="#">Friend2</a> <img src="#" alt="friend2 profile picture"></li>
-              <li><a href="#">Friend3</a> <img src="#" alt="friend3 profile picture"></li>
-              <li><a href="#">Friend4</a> <img src="#" alt="friend4 profile picture"></li>
-              <li><a href="#">Friend5</a> <img src="#" alt="friend5 profile picture"></li>
-              <li><a href="#">Friend6</a> <img src="#" alt="friend6 profile picture"></li>
-              <li><a href="#">Friend7</a> <img src="#" alt="friend7 profile picture"></li>
-              <li><a href="#">Friend8</a> <img src="#" alt="friend8 profile picture"></li>
-              <li><a href="#">Friend9</a> <img src="#" alt="friend9 profile picture"></li>
-              <li><a href="#">Friend10</a> <img src="#" alt="friend10 profile picture"></li>
-            </ul>
-          </div>
-        </div>
+        <%= render partial: 'layouts/friends_box' %>
 
         <!----AREA FOR THE USER EDIT FORM ---->
 
 
-                            <div class="profile_edit_form">
-                              <%= form_tag class: 'profile_edit_form' do %>
-                                  <div class="input-group">
-                                    <%= label_tag 'first_name', 'FIRST NAME' %>
-                                    <%= text_field 'first_name', :class => 'first_name' %>
-                                  </div>
-
-                                  <div class="input-group">
-                                    <%= label_tag 'last_name', 'LAST NAME' %>
-                                    <%= text_field 'last_name', @first_name %>
-                                  </div>
-
-                                  <div class="input-group">
-                                    <%= label_tag 'user_name', 'USER NAME' %>
-                                    <%= text_field 'username', @username %>
-                                  </div>
-
-                                  <div class="input-group">
-                                    <%= label_tag 'user_email', 'EMAIL' %>
-                                    <%= text_field 'email', @email %>
-                                  </div>
-
-                                  <div class="input-group">
-                                    <%= label_tag 'affiliation', 'AFFILIATION NAME' %>
-                                    <%= text_field 'affiliation',  @affiliation %>
-                                  </div>
-
-                                  <div class="input-group">
-                                    <%= label_tag 'location', 'LOCATION' %>
-                                    <%= text_field 'location', @location %>
-                                    <!-- <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Location" required>-->
-                                  </div>
-
-                                  <div class="input-group">
-                                    <label for="profile_avatar">Profile Image:</label>
-                                    <input type="file" name="profile_avatar">
-
-                                  </div>
-
-                                  <div class="input-group">
-                                    <%= label_tag 'about_me', 'ABOUT ME' %><br/>
-                                    <%= text_area 'about_me_insert', @about_me %><br/><br/>           <!-- :class => "tinymce"-->
-                                  </div>
-
-                                  <!--  <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>-->
-                                  <%= submit_tag 'UPDATE', :class => 'submit_class' %>
-                                  <!-- <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">-->
-                              <% end  %>
-
-                            </div>
-
-                          </div>
-                        </div>
-
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <button>CLICK TO EDIT PROFILE</button>
-
-
-        <!---------END EDIT USER FORM-------------------->
-
-      </div><!--END LOGIN LANDING PAGE-->
-
-      <div class="user_upload_section col-lg-12">
-
-
-        <div class="col-lg-3">
-          <div class="quick_nav">
-            <ul id="menu-v">
-              <li><a href="#">Item 1</a></li>
-              <li><a href="#">Item 2</a></li>
-              <li><a href="#">Item 3</a></li>
-              <li><a href="#">Item 4</a></li>
-              <li><a href="#">Item 5</a></li>
-              <li><a href="#">Item 6</a></li>
-              <li><a href="#">Item 7</a></li>
-              <li><a href="#">Item 8</a></li>
-              <li><a href="#">Item 9</a></li>
-              <li><a href="#">Item 10</a></li>
-              <li><a href="#">Item 11</a></li>
-              <li><a href="#">Item 12</a></li>
-            </ul>
-          </div>
-        </div><!--end column one-->
-
-        <div class="col-lg-6">
-          <form class="user_upload_form">
-            <label for="profile_avatar">Profile Image:</label>
-            <input type="file" name="profile_avatar">
-            <div class="col-lg-12">
-              <label for="profile_about_me">A little about yourself:</label>
-
-              <div class="col-lg-12">
-                <textarea name="profile_about_me"></textarea>
+        <div class="profile_edit_form">
+          <%= form_tag class: 'profile_edit_form' do %>
+              <div class="input-group">
+                <%= label_tag 'first_name', 'FIRST NAME' %>
+                <%= text_field 'first_name', :class => 'first_name' %>
               </div>
-            </div>
-          </form>
+
+              <div class="input-group">
+                <%= label_tag 'last_name', 'LAST NAME' %>
+                <%= text_field 'last_name', @first_name %>
+              </div>
+
+              <div class="input-group">
+                <%= label_tag 'user_name', 'USER NAME' %>
+                <%= text_field 'username', @username %>
+              </div>
+
+              <div class="input-group">
+                <%= label_tag 'user_email', 'EMAIL' %>
+                <%= text_field 'email', @email %>
+              </div>
+
+              <div class="input-group">
+                <%= label_tag 'affiliation', 'AFFILIATION NAME' %>
+                <%= text_field 'affiliation', @affiliation %>
+              </div>
+
+              <div class="input-group">
+                <%= label_tag 'location', 'LOCATION' %>
+                <%= text_field 'location', @location %>
+                <!-- <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Location" required>-->
+              </div>
+
+              <div class="input-group">
+                <label for="profile_avatar">Profile Image:</label>
+                <input type="file" name="profile_avatar">
+
+              </div>
+
+              <div class="input-group">
+                <%= label_tag 'about_me', 'ABOUT ME' %><br/>
+                <%= text_area 'about_me_insert', @about_me %><br/><br/> <!-- :class => "tinymce"-->
+              </div>
+
+              <!--  <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>-->
+              <%= submit_tag 'UPDATE', :class => 'btn btn-info pull-right' %>
+              <!-- <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">-->
+          <% end %>
+
         </div>
 
-        <div class="col-lg-3">
-          <nav>
-            <ul>
-              <li><a href="#">USER PROFILE</a></li>
-              <li><a href="#">USER SETTINGS</a></li>
-              <li><a href="#">FIND A FRIEND</a></li>
-              <li><a href="#">FIND AN IMAGE</a></li>
-              <li><a href="#">CONTACT A FRIEND</a></li>
-              <li><a href="#">CONTACT SCRIBBLER</a></li>
-            </ul>
-          </nav>
+      </div>
+    </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <button>CLICK TO EDIT PROFILE</button>
+
+
+    <!---------END EDIT USER FORM-------------------->
+
+    </div><!--END LOGIN LANDING PAGE-->
+
+    <div class="user_upload_section col-lg-12">
+
+
+      <div class="col-lg-3">
+        <div class="quick_nav">
+          <ul id="menu-v">
+            <li><a href="#">Item 1</a></li>
+            <li><a href="#">Item 2</a></li>
+            <li><a href="#">Item 3</a></li>
+            <li><a href="#">Item 4</a></li>
+            <li><a href="#">Item 5</a></li>
+            <li><a href="#">Item 6</a></li>
+            <li><a href="#">Item 7</a></li>
+            <li><a href="#">Item 8</a></li>
+            <li><a href="#">Item 9</a></li>
+            <li><a href="#">Item 10</a></li>
+            <li><a href="#">Item 11</a></li>
+            <li><a href="#">Item 12</a></li>
+          </ul>
         </div>
       </div>
+      <!--end column one-->
+
+      <div class="col-lg-6">
+        <form class="user_upload_form">
+          <label for="profile_avatar">Profile Image:</label>
+          <input type="file" name="profile_avatar">
+
+          <div class="col-lg-12">
+            <label for="profile_about_me">A little about yourself:</label>
+
+            <div class="col-lg-12">
+              <textarea name="profile_about_me"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-lg-3">
+        <nav>
+          <ul>
+            <li><a href="#">USER PROFILE</a></li>
+            <li><a href="#">USER SETTINGS</a></li>
+            <li><a href="#">FIND A FRIEND</a></li>
+            <li><a href="#">FIND AN IMAGE</a></li>
+            <li><a href="#">CONTACT A FRIEND</a></li>
+            <li><a href="#">CONTACT SCRIBBLER</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
 
 
-      <!--side swipe nav-->
-      <%= render partial: 'layouts/swipe_menu' %>
-      <!--end profile--><!--end mystery block of code-->
+    <!--side swipe nav-->
+    <%= render partial: 'layouts/swipe_menu' %>
+    <!--end profile--><!--end mystery block of code-->
     </div><!--end profile page
 <% end %>
