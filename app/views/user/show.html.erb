@@ -324,31 +324,7 @@
 
 
       <!--side swipe nav-->
-      <div class="profile">
-        <div class="profile_settings_menu">
-          <div class="menu-icon">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-          </div>
-          <nav>
-            <ul>
-              <li><%= link_to 'USER PROFILE', user_show_path %><a href="#">USER PROFILE</a></li>
-              <li><a href="#">USER SETTINGS</a></li>
-              <li><a href="#">FIND A FRIEND</a></li>
-              <li><a href="#">FIND AN IMAGE</a></li>
-              <li><a href="#">CONTACT A FRIEND</a></li>
-              <li><a href="#">CONTACT SQRIBBLER</a></li>
-            </ul>
-          </nav>
-        </div>
-        <a class="menu-close" onClick="return true">
-          <div class="menu-icon">
-            <div class="bar"></div>
-            <div class="bar"></div>
-          </div>
-        </a>
-        <!--end mystery block of code-->
-      </div><!--end profile-->
+      <%= render partial "_swipe_menu" %>
+      <!--end profile--><!--end mystery block of code-->
     </div><!--end profile page
 <% end %>
