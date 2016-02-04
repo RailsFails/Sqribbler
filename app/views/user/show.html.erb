@@ -102,7 +102,7 @@
               <a href="#"><div class="profile_image"></div></a>
             </div>
             <div class="col-lg-8">
-              <h1><%= @user.inspect %></h1>
+              <h1><%= @user.username %></h1>
               <h3>Spokane WA.</h3>
               <h5><a href="#">YourCompany.com</a></h5>
               <h5><a href="#"><%= @email %></a></h5>
@@ -116,10 +116,9 @@
                 <p>Scribbles:&nbsp;<span>185</span></p>
               </div>
               <div class="col-lg-4">
-                <p>Friends:&nbsp;<span>344</span></p>
                 <% unless current_user.nil? %>
                     <% if current_user.is_following?(@user) %>
-                        <p><%= link_to 'Unfollow', friendship_path(@user), method: :delete, class: 'btn btn-primary' %></p>
+                        <p><%= link_to 'Unfollow', user_show_path, method: :delete, class: 'btn btn-primary' %></p>
                     <% else %>
                         <p><%= link_to 'Follow', friendships_path(:friend_id => @user), method: :post, class: 'btn btn-primary' %></p>
                     <% end %>
@@ -347,7 +346,7 @@
 
 
       <!--side swipe nav-->
-      <%= render partial "_swipe_menu" %>
+      <%= render partial: 'layouts/swipe_menu' %>
       <!--end profile--><!--end mystery block of code-->
     </div><!--end profile page
 <% end %>

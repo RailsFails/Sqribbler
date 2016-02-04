@@ -32,7 +32,6 @@ class UserController < ApplicationController
   def followers
   end
 
-
   def new
     @user = User.new
   end
