@@ -1,11 +1,10 @@
 class UserController < ApplicationController
   before_action :set_user, only: [:show, :following, :followers]
 
-   def user_profile_create
+   def user_profile_edit
     @user = User.new(user_params)
-    @user.create()
     @user.save
-    redirect_to user_show_path
+    redirect_to user_profile_path(@user.username)
        # if( current_user.save())
          # return
         # else
@@ -44,7 +43,7 @@ class UserController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to landing_page_index_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to landing_page_index_path, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -100,57 +100,45 @@
 
         <!----AREA FOR THE USER EDIT FORM ---->
 
+        <% if current_user.id == @user.id %>
+            <div class="profile_edit_form">
+              <%= form_tag user_edit_path(current_user.username), class: 'profile_edit_form', method: :post do %>
+                  <div class="input-group">
+                    <%= label_tag 'first_name', 'FIRST NAME' %>
+                    <%= text_field 'first_name', :class => 'first_name' %>
+                  </div>
+                  <div class="input-group">
+                    <%= label_tag 'last_name', 'LAST NAME' %>
+                    <%= text_field 'last_name', @first_name %>
+                  </div>
+                  <div class="input-group">
+                    <%= label_tag 'username', 'USER NAME' %>
+                    <%= text_field 'username', @username %>
+                  </div>
+                  <div class="input-group">
+                    <%= label_tag 'email', 'EMAIL' %>
+                    <%= text_field 'email', @email %>
+                  </div>
+                  <div class="input-group">
+                    <%= label_tag 'affiliation', 'AFFILIATION NAME' %>
+                    <%= text_field 'affiliation', @affiliation %>
+                  </div>
+                  <div class="input-group">
+                    <%= label_tag 'location', 'LOCATION' %>
+                    <%= text_field 'location', @location %>
+                    <!-- <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Location" required>-->
+                  </div>
+                  <div class="input-group">
+                    <%= label_tag 'about_me', 'ABOUT ME' %><br/>
+                    <%= text_area 'about_me', @about_me %><br/><br/> <!-- :class => "tinymce"-->
+                  </div>
+                  <!--  <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>-->
+                  <%= submit_tag 'UPDATE', :class => 'btn btn-info pull-right' %>
+                  <!-- <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">-->
+              <% end %>
+            </div>
+        <% end %>
 
-        <div class="profile_edit_form">
-          <%= form_tag class: 'profile_edit_form' do %>
-              <div class="input-group">
-                <%= label_tag 'first_name', 'FIRST NAME' %>
-                <%= text_field 'first_name', :class => 'first_name' %>
-              </div>
-
-              <div class="input-group">
-                <%= label_tag 'last_name', 'LAST NAME' %>
-                <%= text_field 'last_name', @first_name %>
-              </div>
-
-              <div class="input-group">
-                <%= label_tag 'user_name', 'USER NAME' %>
-                <%= text_field 'username', @username %>
-              </div>
-
-              <div class="input-group">
-                <%= label_tag 'user_email', 'EMAIL' %>
-                <%= text_field 'email', @email %>
-              </div>
-
-              <div class="input-group">
-                <%= label_tag 'affiliation', 'AFFILIATION NAME' %>
-                <%= text_field 'affiliation', @affiliation %>
-              </div>
-
-              <div class="input-group">
-                <%= label_tag 'location', 'LOCATION' %>
-                <%= text_field 'location', @location %>
-                <!-- <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Location" required>-->
-              </div>
-
-              <div class="input-group">
-                <label for="profile_avatar">Profile Image:</label>
-                <input type="file" name="profile_avatar">
-
-              </div>
-
-              <div class="input-group">
-                <%= label_tag 'about_me', 'ABOUT ME' %><br/>
-                <%= text_area 'about_me_insert', @about_me %><br/><br/> <!-- :class => "tinymce"-->
-              </div>
-
-              <!--  <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>-->
-              <%= submit_tag 'UPDATE', :class => 'btn btn-info pull-right' %>
-              <!-- <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">-->
-          <% end %>
-
-        </div>
 
       </div>
     </div>
