@@ -154,83 +154,29 @@
                 <div id="tabs-1" class="tab-pane fade in active">
                   <div id="main_feed">
                     <h2>Top Sqribbles</h2>
+
+                    <!--A Bootstrap Carousel to fill the space for now--> <!-- DELETE IF NOT WANTED-->
+                    <%= render partial: 'layouts/bootstrap_carousel' %>
+                    <!--A Bootstrap Carousel to fill the space for now-->
+                    <br>
+
                     <%= render partial: 'layouts/carousel' %>
                   </div>
                 </div>
                 <div id="tabs-2" class="tab-pane fade">
                   <div id="friend_feed">
                     <h2>Friend Feed</h2>
+
+                    <!--A Bootstrap Carousel to fill the space for now--> <!-- DELETE IF NOT WANTED-->
+                    <%= render partial: 'layouts/bootstrap_carousel' %>
+                    <!--A Bootstrap Carousel to fill the space for now-->
+                    <br>
+
                     <%= render partial: 'layouts/carousel' %>
                   </div>
                 </div>
               </div>
               <!--THIS IS THE END OF THE TABS MAIN PAGE AREA--->
-              <!--THIS IS THE SEARCH RESULTS FEED-->
-              <div id="result_feed">
-
-                <div class="container">
-                  <div class="row">
-                    <div class="text-center">
-                      <h1>Results Feed</h1>
-                    </div>
-                    <!--Displaying search results-->
-                    <% unless params[:search].blank? %>
-                      <div>
-                        <h3>User's Sqribble</h3>
-                        <ul class="list-group">
-                          <% @search.each do |user| %>
-                            <li class="list-group-item">User: <%= user.username %></li>
-                          <% end %>
-                        </ul>
-                      </div>
-                    <% end %>
-                    <!--Displaying search results-->
-
-                    <br>
-
-                    <!--A Bootstrap Carousel to fill the space for now--> <!-- DELETE IF NOT WANTED-->
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                      <!-- Indicators -->
-                      <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                        <li data-target="#myCarousel" data-slide-to="3"></li>
-                      </ol>
-
-                      <!-- Wrapper for slides -->
-                      <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                          <img src="http://placehold.it/500x250">
-                        </div>
-
-                        <div class="item">
-                          <img src="http://placehold.it/500x250">
-                        </div>
-
-                        <div class="item">
-                          <img src="http://placehold.it/500x250">
-                        </div>
-
-                        <div class="item">
-                          <img src="http://placehold.it/500x250">
-                        </div>
-                      </div>
-
-                      <!-- Left and right controls -->
-                      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                      </a>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>
