@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   get 'page/user_profile_page'
   root 'landing_page#index'
   get 'user/:username' => 'user#show', as: :user_profile
+  get 'user/:username/following' => 'user#following', as: :user_following
+  get 'user/:username/followers' => 'user#followers', as: :user_followers
+  post 'user/:username/edit' => 'user#user_profile_edit', as: :user_edit
+
+  resources :friendships
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

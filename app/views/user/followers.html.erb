@@ -1,0 +1,6 @@
+<h2>Users following you</h2>
+<ul>
+  <% @user.inverse_friends.each do |user| %>
+      <li><%= link_to user.username, user_profile_path(user.username) %></li>
+  <% end %>
+</ul>
