@@ -88,15 +88,6 @@
   height: 30px;
 }
 /***************************profile settings nav*****************************************************/
-/*.login_site{
-  width: 30%;
-  float:right;
-
-}
-form #search_site{
-  float: right;
-
-}*/
 
 .profile_settings_menu:hover ~ .menu-close {
   margin-right:-100px;
@@ -113,7 +104,7 @@ form #search_site{
   left: 100%;
   margin-left: -100px;
   height: 200%;
-  background: rgba(100,200,240,.9);
+  background: rgba(250,130,70,1);
   -webkit-transition: all ease .5s;
   -moz-transition: all ease .5s;
   -ms-transition: all ease .5s;
