@@ -1,19 +1,22 @@
 <% if current_user.nil? %>
-    <div class="main-landing-content">
-      <h1><span class="newsBanner">Image-editing playground inside.</span></h1>
-      <h4><span>If you have a moment, sign up.</span></h4>
-      <h4><a href="#"><div class="branding_image"></div></a></h4>
-    </div>
+  <div class="main-landing-content">
+    <h1><span class="newsBanner">Image-editing playground inside.</span></h1>
+    <h4><span>If you have a moment, sign up.</span></h4>
+    <h4><a href="#">
+      <div class="branding_image"></div>
+    </a></h4>
+  </div>
 
 <% else %>
-    <!--WHOLE PROFILE PAGE -TO CHANGE THE LAYOUT, COLLAPSE AND DELETE THIS DIV AND RECODE-->
-    <div class="profile_page">
-      <!--JUMBOTRON TRENDING CONTENT ACCORDIAN-->
+  <!--WHOLE PROFILE PAGE -TO CHANGE THE LAYOUT, COLLAPSE AND DELETE THIS DIV AND RECODE-->
+  <!--shilo-->
+  <!--<div class="profile_page">
+      &lt;!&ndash;JUMBOTRON TRENDING CONTENT ACCORDIAN&ndash;&gt;
       <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="headingFour">
             <h4 class="panel-title">
-              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne" id="TrendingScriblesButton">
                 Trending Scribbles
               </a>
             </h4>
@@ -21,79 +24,14 @@
           <div id="collapseFour" class="panel-collapse collapse"  role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
               <div class="col-lg-12">
-
-                <div class="jumbotron">
-                  <!--script moved for loading improvement-->
-                  <div class="main-landing-content">
-                    <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel ">
-                      <div class="slides"></div>
-                      <h3 class="title"></h3>
-                      <a class="prev">&#9001;</a>
-                      <a class="next">&#9002;</a>
-                      <a class="play-pause"></a>
-                      <ol class="indicator"></ol>
-                    </div>
-                    <br>
-
-                    <div id="links" class="links" style="display: none">
-                      <a href="https://farm2.static.flickr.com/1569/24012612003_681d9dddc4_b.jpg" title="For Me" data-gallery=""><img src="https://farm2.static.flickr.com/1569/24012612003_681d9dddc4_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1565/24267643669_9a20d39ed3_b.jpg" title="Jurassic Park - Evening Viewing" data-gallery=""><img src="https://farm2.static.flickr.com/1565/24267643669_9a20d39ed3_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1605/24278351039_aa0665aacb_b.jpg" title="Boys, they wanna have Fun" data-gallery=""><img src="https://farm2.static.flickr.com/1605/24278351039_aa0665aacb_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1539/24007121034_490848df3d_b.jpg" title="A Rundle Morning" data-gallery=""><img src="https://farm2.static.flickr.com/1539/24007121034_490848df3d_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1686/24611566706_304688836e_b.jpg" title="Timing was everything . . ." data-gallery=""><img src="https://farm2.static.flickr.com/1686/24611566706_304688836e_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1698/24542914312_d03d205929_b.jpg" title="Delta Dreams VI." data-gallery=""><img src="https://farm2.static.flickr.com/1698/24542914312_d03d205929_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1445/24562647431_af9ba50990_b.jpg" title="Black-Capped Chickadee" data-gallery=""><img src="https://farm2.static.flickr.com/1445/24562647431_af9ba50990_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1479/24282187769_39149841de_b.jpg" title="Aurora dream at the lighthouse" data-gallery=""><img src="https://farm2.static.flickr.com/1479/24282187769_39149841de_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1611/24350373230_ce4bd38a7d_b.jpg" title="Grumble" data-gallery=""><img src="https://farm2.static.flickr.com/1611/24350373230_ce4bd38a7d_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1565/24568870911_a071b481cf_b.jpg" title="John McLenaghan Photography" data-gallery=""><img src="https://farm2.static.flickr.com/1565/24568870911_a071b481cf_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1706/24645920335_a246e393f4_b.jpg" title="full moon tranquility" data-gallery=""><img src="https://farm2.static.flickr.com/1706/24645920335_a246e393f4_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1556/24018406763_47db5b6280_b.jpg" title="SUBWAY" data-gallery=""><img src="https://farm2.static.flickr.com/1556/24018406763_47db5b6280_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1516/24569660601_6e2319b7aa_b.jpg" title="Sleep Nectaring..." data-gallery=""><img src="https://farm2.static.flickr.com/1516/24569660601_6e2319b7aa_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1640/24557085281_5cd41251b8_b.jpg" title="Catchy Colors - Blue and Yellow" data-gallery=""><img src="https://farm2.static.flickr.com/1640/24557085281_5cd41251b8_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1595/24642602865_2245ba81ec_b.jpg" title="A tree lined home to sheep" data-gallery=""><img src="https://farm2.static.flickr.com/1595/24642602865_2245ba81ec_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1521/24008674193_3512a647b3_b.jpg" title="White Out (5/52)" data-gallery=""><img src="https://farm2.static.flickr.com/1521/24008674193_3512a647b3_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1481/24025192283_223a468948_b.jpg" title="Castle at sunrise" data-gallery=""><img src="https://farm2.static.flickr.com/1481/24025192283_223a468948_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1709/24646880465_4081753d83_b.jpg" title="Comme a la montagne ..." data-gallery=""><img src="https://farm2.static.flickr.com/1709/24646880465_4081753d83_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1569/24271439929_533d18a6a0_b.jpg" title="Valley of the oaks." data-gallery=""><img src="https://farm2.static.flickr.com/1569/24271439929_533d18a6a0_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1603/24023854753_97f46dfb62_b.jpg" title="Boardman, Oregon Tree Farm has been sold and will soon be no more" data-gallery=""><img src="https://farm2.static.flickr.com/1603/24023854753_97f46dfb62_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1639/24274654139_23b11d6fd5_b.jpg" title="After you" data-gallery=""><img src="https://farm2.static.flickr.com/1639/24274654139_23b11d6fd5_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1503/24646312805_efe7044f98_b.jpg" title="Valentino Castle  1633 UNESCO - Turin ( Explore )" data-gallery=""><img src="https://farm2.static.flickr.com/1503/24646312805_efe7044f98_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1707/24621339156_db0426003b_b.jpg" title="Stronghold" data-gallery=""><img src="https://farm2.static.flickr.com/1707/24621339156_db0426003b_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1601/24560797591_9c1731f62f_b.jpg" title="Gorilla" data-gallery=""><img src="https://farm2.static.flickr.com/1601/24560797591_9c1731f62f_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1567/24346491100_de9362e72e_b.jpg" title="................" data-gallery=""><img src="https://farm2.static.flickr.com/1567/24346491100_de9362e72e_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1654/24564243701_863ff54f6a_b.jpg" title="Sunset snack" data-gallery=""><img src="https://farm2.static.flickr.com/1654/24564243701_863ff54f6a_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1713/24013846274_682c41bbe3_b.jpg" title="Accurate watches" data-gallery=""><img src="https://farm2.static.flickr.com/1713/24013846274_682c41bbe3_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1690/24561602581_012847899b_b.jpg" title="the brave bavarian" data-gallery=""><img src="https://farm2.static.flickr.com/1690/24561602581_012847899b_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1710/24543012892_53da53d89d_b.jpg" title="měsí�?ní svit  -  Helios 44-2" data-gallery=""><img src="https://farm2.static.flickr.com/1710/24543012892_53da53d89d_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1661/24281544419_5539e1ff85_b.jpg" title="Le coq .." data-gallery=""><img src="https://farm2.static.flickr.com/1661/24281544419_5539e1ff85_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1481/24025192283_223a468948_b.jpg" title="Castle at sunrise" data-gallery=""><img src="https://farm2.static.flickr.com/1481/24025192283_223a468948_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1487/24620708386_6135a24678_b.jpg" title="Two at Tongaporutu (Explored)" data-gallery=""><img src="https://farm2.static.flickr.com/1487/24620708386_6135a24678_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1495/24282204829_46ccfaf992_b.jpg" title="Eye :) - Explored!" data-gallery=""><img src="https://farm2.static.flickr.com/1495/24282204829_46ccfaf992_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1461/24283712939_0bb98064a7_b.jpg" title="Dry Nature" data-gallery=""><img src="https://farm2.static.flickr.com/1461/24283712939_0bb98064a7_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1514/24641151235_453b84c03b_b.jpg" title="zigzag" data-gallery=""><img src="https://farm2.static.flickr.com/1514/24641151235_453b84c03b_s.jpg"></a>
-                      <a href="https://farm2.static.flickr.com/1691/24348414780_51791f35b9_b.jpg" title="Morning illuminations" data-gallery=""><img src="https://farm2.static.flickr.com/1691/24348414780_51791f35b9_s.jpg"></a>
-                    </div>
-                    <h5>Trending Content</h5>
-                  </div>
-
-                  <!--Scripts needed for gallery carousel-->
-                  <script>
-                      blueimp.Gallery(
-                              document.getElementById('links').getElementsByTagName('a'),
-                              {
-                                  container: '#blueimp-gallery-carousel',
-                                  carousel: true
-                              }
-                      );
-                  </script>
-                </div><!--end jumbotron-->
-
+                &lt;!&ndash;THIS IS THE CONTENT CAROUSEL&ndash;&gt;
+  <%#= render 'layouts/carousel' %> <!--commented out
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!--USER LOGIN LANDING PAGE-->
+      &lt;!&ndash;USER LOGIN LANDING PAGE&ndash;&gt;
       <div class="col-lg-12">
         <div class="col-lg-8">
           <section class="profile_box col-lg-12">
@@ -109,7 +47,7 @@
             <section class="col-lg-12">
               <div class="col-lg-4">
                 <p>What day is it!?
-                  <span><%= Time.now.strftime("%m/%d/%Y") %></span></p>
+                  <span><%#= Time.now.strftime("%m/%d/%Y") %></span></p> <!--commented out
               </div>
               <div class="col-lg-4">
                 <p>Scribbles:&nbsp;<span>185</span></p>
@@ -128,196 +66,255 @@
               In those moments <i>just above black</i> as I like to call it, your mind isn't working or thinking logically. As though a shred of my old life<br>
               was still with me, I could feel that there was a weapon somewhere beside me, and I needed it. -creative quotes-</p>
           </section>
-        </div>
-
-
-
-
-
-        <div class="friendsList_box col-lg-3">
-          <div class="user_albums">
-            <h3>Albums</h3>
-            <!--THESE DIVS ARE FOR THE ACCORDIAN-->
-            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
-                  <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Album #1
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                  <div class="panel-body">
-                    <a href="#"><img src="" alt="img1"></a>
-                    <a href="#"><img src="" alt="img2"></a>
-                    <a href="#"><img src="" alt="img3"></a>
-                    <a href="#"><img src="" alt="img4"></a>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingTwo">
-                  <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      Album #2
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                  <div class="panel-body">
-                    <a href="#"><img src="" alt="img1"></a>
-                    <a href="#"><img src="" alt="img2"></a>
-                    <a href="#"><img src="" alt="img3"></a>
-                    <a href="#"><img src="" alt="img4"></a>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingThree">
-                  <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Album #3
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                  <div class="panel-body">
-                    <a href="#"><img src="" alt="img1"></a>
-                    <a href="#"><img src="" alt="img2"></a>
-                    <a href="#"><img src="" alt="img3"></a>
-                    <a href="#"><img src="" alt="img4"></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><!--END ALBUMS-->
-
-          <div class="Friends">
-            <h3>Friends</h3>
-            <ul>
-              <li><a href="#">Friend1</a> <img src="#" alt="friend1 profile picture"></li>
-              <li><a href="#">Friend2</a> <img src="#" alt="friend2 profile picture"></li>
-              <li><a href="#">Friend3</a> <img src="#" alt="friend3 profile picture"></li>
-              <li><a href="#">Friend4</a> <img src="#" alt="friend4 profile picture"></li>
-              <li><a href="#">Friend5</a> <img src="#" alt="friend5 profile picture"></li>
-              <li><a href="#">Friend6</a> <img src="#" alt="friend6 profile picture"></li>
-              <li><a href="#">Friend7</a> <img src="#" alt="friend7 profile picture"></li>
-              <li><a href="#">Friend8</a> <img src="#" alt="friend8 profile picture"></li>
-              <li><a href="#">Friend9</a> <img src="#" alt="friend9 profile picture"></li>
-              <li><a href="#">Friend10</a> <img src="#" alt="friend10 profile picture"></li>
-            </ul>
-          </div>
-        </div>
-        <!--THIS IS THE CODE FOR OUR PLUGIN TOOLBAR-->
-        <div class="col-lg-1">
-          <h5>TOOLS/ will be placed in different view.</h5>
-          <div class="btn-group-vertical">
-            <button type="button" class="btn btn-default">A1</button>
-            <button type="button" class="btn btn-default">A2</button>
-            <button type="button" class="btn btn-default">A3</button>
-            <br /><br />
-            <button type="button" class="btn btn-default">B1</button>
-            <button type="button" class="btn btn-default">B2</button>
-            <button type="button" class="btn btn-default">B3</button>
-            <br /><br />
-            <button type="button" class="btn btn-default">C1</button>
-            <button type="button" class="btn btn-default">C2</button>
-            <button type="button" class="btn btn-default">C3</button>
-          </div>
+        </div>-->
+  <!--trenton-->
+  <div class="profile_page">
+    <!--JUMBOTRON TRENDING CONTENT ACCORDIAN-->
+    <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFour">
 
         </div>
-      </div><!--END LOGIN LANDING PAGE-->
-
-      <div class="user_upload_section col-lg-12">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="col-lg-3">
-          <div class="quick_nav">
-            <ul id="menu-v">
-              <li><a href="#">Item 1</a></li>
-              <li><a href="#">Item 2</a></li>
-              <li><a href="#">Item 3</a></li>
-              <li><a href="#">Item 4</a></li>
-              <li><a href="#">Item 5</a></li>
-              <li><a href="#">Item 6</a></li>
-              <li><a href="#">Item 7</a></li>
-              <li><a href="#">Item 8</a></li>
-              <li><a href="#">Item 9</a></li>
-              <li><a href="#">Item 10</a></li>
-              <li><a href="#">Item 11</a></li>
-              <li><a href="#">Item 12</a></li>
-            </ul>
-          </div>
-        </div><!--end column one-->
-
-        <div class="col-lg-6">
-          <form class="user_upload_form">
-            <label for="profile_avatar">Profile Image:</label>
-            <input type="file" name="profile_avatar">
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
             <div class="col-lg-12">
-              <label for="profile_about_me">A little about yourself:</label>
+              <%= render partial: 'layouts/carousel' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--USER LOGIN LANDING PAGE-->
+    <div class="col-lg-12">
+      <!--THIS IS THE CODE FOR OUR PLUGIN TOOLBAR-->
+      <div class="col-lg-1">
+        <h5>TOOLS - mini nav away</h5>
+        <%= render partial: 'layouts/user_toolbar' %>
+      </div>
+      <!--This is end of toolbar-->
+      <div class="col-lg-8">
+        <section class="profile_box col-lg-12">
+          <div class="col-lg-12">
+            <div class="profile_main_col">
+              <div class="row">
+                <div class="col-lg-12"> <!--THIS IS THE NAV MENU GRAPHICAL DISPLAY FROM TRENT-->
+                  <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <div class="box">
+                      <div class="icon">
+                        <div class="image"><span class="glyphicon glyphicon-list-alt btn-lg white"></span></div>
+                        <div class="info">
+                          <h3 class="title">CANVAS</h3>
+                          <p>LET'S MAKE A NEW CREATION!!</p>
+                          <div class="more">
+                            <a href="#" title="Title Link"><i class="fa fa-plus"></i>Details</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="space"></div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <div class="box">
+                      <div class="icon">
+                        <div class="image"><span class="glyphicon glyphicon-envelope btn-lg white"></span></div>
+                        <div class="info">
+                          <h3 class="title">Messages</h3>
+                          <p>7 new messages over the past 24 hours.</p>
+                          <div class="more">
+                            <a href="#" title="Title Link"><i class="fa fa-plus"></i>Details</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="space"></div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <div class="box">
+                      <div class="icon">
+                        <div class="image"><span class="glyphicon glyphicon-volume-up btn-lg white"></span></div>
+                        <div class="info">
+                          <h3 class="title">Mentions</h3>
+                          <p>47 new mentions for the past week.</p>
+                          <div class="more">
+                            <a href="#" title="Title Link"><i class="fa fa-plus"></i>Details</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="space"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- THIS IS WHERE TABS WILL BEGIN-->
+              <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#tabs-1">TOP TRENDING SQRIBLES </a></li>
+                <li><a data-toggle="tab" href="#tabs-2">CHECK FRIENDS SQRIBBLES!!!</a></li>
+              </ul>
+              <div class="tab-content">
+                <div id="tabs-1" class="tab-pane fade in active">
+                  <div id="main_feed">
+                    <h2>Top Sqribbles</h2>
+                    <%= render partial: 'layouts/carousel' %>
+                  </div>
+                </div>
+                <div id="tabs-2" class="tab-pane fade">
+                  <div id="friend_feed">
+                    <h2>Friend Feed</h2>
+                    <%= render partial: 'layouts/carousel' %>
+                  </div>
+                </div>
+              </div>
+              <!--THIS IS THE END OF THE TABS MAIN PAGE AREA--->
+              <!--THIS IS THE SEARCH RESULTS FEED-->
+              <div id="result_feed">
 
-              <div class="col-lg-12">
-                <textarea name="profile_about_me"></textarea>
+                <div class="container">
+                  <div class="row">
+                    <div class="text-center">
+                      <h1>Results Feed</h1>
+                    </div>
+                    <!--Displaying search results-->
+                    <% unless params[:search].blank? %>
+                      <div>
+                        <h3>User's Sqribble</h3>
+                        <ul class="list-group">
+                          <% @search.each do |user| %>
+                            <li class="list-group-item">User: <%= user.username %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    <% end %>
+                    <!--Displaying search results-->
+
+                    <br>
+
+                    <!--A Bootstrap Carousel to fill the space for now--> <!-- DELETE IF NOT WANTED-->
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                      <!-- Indicators -->
+                      <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                        <li data-target="#myCarousel" data-slide-to="3"></li>
+                      </ol>
+
+                      <!-- Wrapper for slides -->
+                      <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                          <img src="http://placehold.it/500x250">
+                        </div>
+
+                        <div class="item">
+                          <img src="http://placehold.it/500x250">
+                        </div>
+
+                        <div class="item">
+                          <img src="http://placehold.it/500x250">
+                        </div>
+
+                        <div class="item">
+                          <img src="http://placehold.it/500x250">
+                        </div>
+                      </div>
+
+                      <!-- Left and right controls -->
+                      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
               </div>
             </div>
-          </form>
-        </div>
+          </div>
+        </section>
+      </div>
+      <div class="friendsList_box col-lg-3">
+        <div class="user_albums">
+          <h3>Albums</h3>
+          <!--THESE DIVS ARE FOR THE ACCORDIAN-->
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Album #1
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                  <a href="#"><img src="" alt="img1"></a>
+                  <a href="#"><img src="" alt="img2"></a>
+                  <a href="#"><img src="" alt="img3"></a>
+                  <a href="#"><img src="" alt="img4"></a>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Album #2
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                  <a href="#"><img src="" alt="img1"></a>
+                  <a href="#"><img src="" alt="img2"></a>
+                  <a href="#"><img src="" alt="img3"></a>
+                  <a href="#"><img src="" alt="img4"></a>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Album #3
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                  <a href="#"><img src="" alt="img1"></a>
+                  <a href="#"><img src="" alt="img2"></a>
+                  <a href="#"><img src="" alt="img3"></a>
+                  <a href="#"><img src="" alt="img4"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!--END ALBUMS-->
 
-        <div class="col-lg-3">
-          <nav>
-            <ul>
-              <li><a href="#">USER PROFILE</a></li>
-              <li><a href="#">USER SETTINGS</a></li>
-              <li><a href="#">FIND A FRIEND</a></li>
-              <li><a href="#">FIND AN IMAGE</a></li>
-              <li><a href="#">CONTACT A FRIEND</a></li>
-              <li><a href="#">CONTACT SCRIBBLER</a></li>
-            </ul>
-          </nav>
+        <div class="Friends">
+          <h3>Friends</h3>
+          <ul>
+            <li><a href="#">Friend1</a> <img src="#" alt="friend1 profile picture"></li>
+            <li><a href="#">Friend2</a> <img src="#" alt="friend2 profile picture"></li>
+            <li><a href="#">Friend3</a> <img src="#" alt="friend3 profile picture"></li>
+            <li><a href="#">Friend4</a> <img src="#" alt="friend4 profile picture"></li>
+            <li><a href="#">Friend5</a> <img src="#" alt="friend5 profile picture"></li>
+            <li><a href="#">Friend6</a> <img src="#" alt="friend6 profile picture"></li>
+            <li><a href="#">Friend7</a> <img src="#" alt="friend7 profile picture"></li>
+            <li><a href="#">Friend8</a> <img src="#" alt="friend8 profile picture"></li>
+            <li><a href="#">Friend9</a> <img src="#" alt="friend9 profile picture"></li>
+            <li><a href="#">Friend10</a> <img src="#" alt="friend10 profile picture"></li>
+          </ul>
         </div>
       </div>
 
+    </div><!--END LOGIN LANDING PAGE-->
+    <!--side swipe nav-->
+    <%= render partial: 'layouts/swipe_menu' %>
 
-      <!--who knows what this is-->
-      <div class="profile">
-        <div class="profile_settings_menu">
-          <div class="menu-icon">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-          </div>
-        </div>
 
-        <a class="menu-close" onClick="return true">
-          <div class="menu-icon">
-            <div class="bar"></div>
-            <div class="bar"></div>
-          </div>
-        </a>
-        <!--end mystery block of code-->
-      </div><!--end profile-->
-    </div><!--end profile page
+  </div><!--end profile page
 <% end %>
