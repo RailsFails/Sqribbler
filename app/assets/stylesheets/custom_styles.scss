@@ -36,6 +36,21 @@
     background-size: contain;
     background-repeat: no-repeat;
   }
+  .login {
+    position: relative;
+  }
+
+  .login li a {
+    padding-top: .1em;
+    padding-bottom: .1em;
+    padding-left: .3em;
+    padding-right: .3em;
+    background-color: #333;
+  }
+
+  .login li a:hover {
+    background-color: #f50;
+  }
 }
 @media(min-width: 640px) {
   /*--FONTS--*/
@@ -58,9 +73,11 @@
   .profile_page div+div {
 
   }
+
   h1 {
     font-family: 'Righteous', cursive;
   }
+
   .branding_image {
     border-top: 1px solid #f50;
     background-image: url('news_logo.png');
@@ -69,11 +86,37 @@
     background-size: contain;
     background-repeat: no-repeat;
   }
+
   .profile_image {
     background: #000;
     width: 200px;
     height: 200px;
     background-size: contain;
   }
+
+  .login {
+    position: relative;
+  }
+
+  .login li a {
+    padding-top: .1em;
+    padding-bottom: .1em;
+    padding-left: .3em;
+    padding-right: .3em;
+    background-color: #333;
+  }
+
+  .login li a:hover {
+    background-color: #f50;
+  }
+
+  /*THIS BLOCK IS FOR STYLE-TESTING, IF YOU HAVE CSS TO TEST, PLACE IN INSIDE. IF IT WORKS, MOVE IT OUT
+  TO WHERE IT BELONGS, PLEASE LEAVE THE TESTER CLASS IN PLACE.*/
+  .tester {
+    background-color: red;
+  }
+
+  /*END TESTING BLOCK END TESTING BLOCK END TESTING BLOCK END TESTING BLOCK END TESTING BLOCK*/
+
 }
 

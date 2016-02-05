@@ -4,11 +4,17 @@
 fake_user_count = 50
 fake_user_count.times do
   user = User.new
-  name = Faker::Name.name
-  user.username = name.gsub(/\s/, '_')
+  user.first_name = Faker::Name.first_name
+  user.last_name = Faker::Name.last_name
+  user.username = Faker::Internet.user_name #name.gsub(/\s/, '_')
   user.email = Faker::Internet.email(user.username)
+  user.phone_number = Faker::PhoneNumber.phone_number
+  user.location = Faker::Address.city + ' ' + Faker::Address.state
+  user.about_me = Faker::Lorem.sentence(10)
+ # user.profile_avatar = Faker::Avatar.image("my-own-slug")
   user.password = 'testtest'
   user.password_confirmation = 'testtest'
+
   puts user.save
 end
 
