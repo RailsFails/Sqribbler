@@ -47,6 +47,7 @@
             </div>
             <div class="col-lg-8">
               <h1><%= @user.username %></h1>
+              <h3><%= @user.first_name %> <%= @user.last_name %></h3>
               <span>Joined <%= @user.created_at.strftime('%m/%d/%Y') %></span>
               <h3>Spokane WA.</h3>
               <h5><a href="#">YourCompany.com</a></h5>
@@ -103,34 +104,36 @@
         <% if current_user.id == @user.id %>
             <div class="profile_edit_form">
               <%= form_tag user_edit_path(current_user.username), class: 'profile_edit_form', method: :post do %>
+                  <%= hidden_field_tag 'id', @user.id %>
+
                   <div class="input-group">
                     <%= label_tag 'first_name', 'FIRST NAME' %>
-                    <%= text_field 'first_name', :class => 'first_name' %>
+                    <%= text_field_tag 'first_name', @user.first_name %>
                   </div>
                   <div class="input-group">
                     <%= label_tag 'last_name', 'LAST NAME' %>
-                    <%= text_field 'last_name', @first_name %>
+                    <%= text_field_tag 'last_name', @user.first_name %>
                   </div>
                   <div class="input-group">
                     <%= label_tag 'username', 'USER NAME' %>
-                    <%= text_field 'username', @username %>
+                    <%= text_field_tag 'username', @user.username %>
                   </div>
                   <div class="input-group">
                     <%= label_tag 'email', 'EMAIL' %>
-                    <%= text_field 'email', @email %>
+                    <%= text_field_tag 'email', @user.email %>
                   </div>
-                  <div class="input-group">
-                    <%= label_tag 'affiliation', 'AFFILIATION NAME' %>
-                    <%= text_field 'affiliation', @affiliation %>
-                  </div>
+                  <!--<div class="input-group">
+                    <%#= label_tag 'affiliation', 'AFFILIATION NAME' %>
+                    <%#= text_field 'affiliation', @user.affiliation %>
+                  </div>-->
                   <div class="input-group">
                     <%= label_tag 'location', 'LOCATION' %>
-                    <%= text_field 'location', @location %>
+                    <%= text_field 'location', @user.location %>
                     <!-- <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Location" required>-->
                   </div>
                   <div class="input-group">
                     <%= label_tag 'about_me', 'ABOUT ME' %><br/>
-                    <%= text_area 'about_me', @about_me %><br/><br/> <!-- :class => "tinymce"-->
+                    <%= text_area 'about_me', @user.about_me %><br/><br/> <!-- :class => "tinymce"-->
                   </div>
                   <!--  <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>-->
                   <%= submit_tag 'UPDATE', :class => 'btn btn-info pull-right' %>
@@ -141,103 +144,13 @@
 
 
       </div>
-    </div>
 
-    </div>
+      <button>CLICK TO EDIT PROFILE</button>
+      <!---------END EDIT USER FORM-------------------->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <button>CLICK TO EDIT PROFILE</button>
-
-
-    <!---------END EDIT USER FORM-------------------->
-
-    </div><!--END LOGIN LANDING PAGE-->
-
-    <div class="user_upload_section col-lg-12">
-
-
-      <div class="col-lg-3">
-        <div class="quick_nav">
-          <ul id="menu-v">
-            <li><a href="#">Item 1</a></li>
-            <li><a href="#">Item 2</a></li>
-            <li><a href="#">Item 3</a></li>
-            <li><a href="#">Item 4</a></li>
-            <li><a href="#">Item 5</a></li>
-            <li><a href="#">Item 6</a></li>
-            <li><a href="#">Item 7</a></li>
-            <li><a href="#">Item 8</a></li>
-            <li><a href="#">Item 9</a></li>
-            <li><a href="#">Item 10</a></li>
-            <li><a href="#">Item 11</a></li>
-            <li><a href="#">Item 12</a></li>
-          </ul>
-        </div>
-      </div>
-      <!--end column one-->
-
-      <div class="col-lg-6">
-        <form class="user_upload_form">
-          <label for="profile_avatar">Profile Image:</label>
-          <input type="file" name="profile_avatar">
-
-          <div class="col-lg-12">
-            <label for="profile_about_me">A little about yourself:</label>
-
-            <div class="col-lg-12">
-              <textarea name="profile_about_me"></textarea>
-            </div>
-          </div>
-        </form>
-      </div>
-
-      <div class="col-lg-3">
-        <nav>
-          <ul>
-            <li><a href="#">USER PROFILE</a></li>
-            <li><a href="#">USER SETTINGS</a></li>
-            <li><a href="#">FIND A FRIEND</a></li>
-            <li><a href="#">FIND AN IMAGE</a></li>
-            <li><a href="#">CONTACT A FRIEND</a></li>
-            <li><a href="#">CONTACT SCRIBBLER</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-
-
-    <!--side swipe nav-->
+      <!--side swipe nav-->
     <%= render partial: 'layouts/swipe_menu' %>
     <!--end profile--><!--end mystery block of code-->
     </div><!--end profile page
+    <%= render partial: 'layouts/footer' %>
 <% end %>
