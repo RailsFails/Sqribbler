@@ -4,11 +4,11 @@
 fake_user_count = 50
 fake_user_count.times do
   user = User.new
-  user.first_name = Faker::Person.firstName($gender = null|'male'|'female')
-  user.last_name = Faker::Person.lastName
-  user.username = name.gsub(/\s/, '_')
+  user.first_name = Faker::Name.first_name
+  user.last_name = Faker::Name.last_name
+  user.username = Faker::Internet.user_name #name.gsub(/\s/, '_')
   user.email = Faker::Internet.email(user.username)
-  user.phone_number = Faker::PhoneNumber.phoneNumber
+  user.phone_number = Faker::PhoneNumber.phone_number
   user.location = Faker::Address.city + ' ' + Faker::Address.state
   user.about_me = Faker::Lorem.sentence(10)
  # user.profile_avatar = Faker::Avatar.image("my-own-slug")
