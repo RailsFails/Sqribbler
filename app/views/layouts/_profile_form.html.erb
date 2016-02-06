@@ -23,10 +23,10 @@
               <%= label_tag 'email', 'EMAIL' %>
               <%= text_field_tag 'email', @user.email %>
             </div>
-            <div class="input-group">
-             <!-- <%= label_tag 'profile_avatar', 'Profile Image' %>
-              <%= text_field_tag 'profile_avatar', @user.profile_avatar %>-->
-            </div>
+           <!-- <div class="input-group">
+              <#%= label_tag 'profile_avatar', 'Profile Image' %>
+              <#%= text_field_tag 'profile_avatar', @user.profile_avatar %>
+            </div>-->
             <!--<div class="input-group">
                     <%#= label_tag 'affiliation', 'AFFILIATION NAME' %>
                     <%#= text_field 'affiliation', @user.affiliation %>
@@ -38,10 +38,10 @@
             </div>
             <div class="input-group">
               <%= label_tag 'about_me', 'ABOUT ME' %><br/>
-              <%= text_area 'about_me', @user.about_me %><br/><br/> <!-- :class => "tinymce"-->
+              <%= text_area 'about_me', @user.about_me, :class => "tinymce" %><br/><br/> <!-- :class => "tinymce"-->
             </div>
             <!--  <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>-->
-            <%= submit_tag 'UPDATE', :class => 'btn btn-info pull-right' %>
+            <%= submit_tag 'update', method: :user_profile_edit %>
             <!-- <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">-->
         <% end %>
       </div>

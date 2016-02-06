@@ -11,7 +11,7 @@ class UserController < ApplicationController
        #
    end
 
-
+    # @user.update(user_params)
     # @user_id = params[:user_id]
     # @first_name = params[:first_name]
     # @last_name = params[:last_name]
