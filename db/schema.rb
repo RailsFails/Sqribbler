@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20160206002407) do
     t.string   "phone_number"
     t.string   "location"
     t.text     "about_me"
-    t.text     "provile_avatar"
+    t.text     "profile_avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
