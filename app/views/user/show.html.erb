@@ -93,7 +93,25 @@
             quotes-</p>
         </section>
       </div>
+
+      <% if current_user && current_user.id != @user.id %>
+          <% content_for :friends_box do %>
+              <div class="Friends">
+                <h3>Mutual friends</h3>
+                <ul class="list-group">
+                  <% current_user.mutual_friends(@user).each do |user| %>
+                      <li class="list-group-item"><%= render partial: 'user/entry', locals: {user: user} %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+      <% end %>
+
+
       <%= render partial: 'layouts/friends_box' %>
+
+
+
       <button>CLICK TO EDIT PROFILE</button>
       <!----AREA FOR THE USER EDIT FORM ---->
 
