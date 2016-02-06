@@ -101,56 +101,17 @@
 
         <!----AREA FOR THE USER EDIT FORM ---->
 
-        <% if current_user.id == @user.id %>
-            <div class="profile_edit_form">
-              <%= form_tag user_edit_path(current_user.username), class: 'profile_edit_form', method: :post do %>
-                  <%= hidden_field_tag 'id', @user.id %>
 
-                  <div class="input-group">
-                    <%= label_tag 'first_name', 'FIRST NAME' %>
-                    <%= text_field_tag 'first_name', @user.first_name %>
-                  </div>
-                  <div class="input-group">
-                    <%= label_tag 'last_name', 'LAST NAME' %>
-                    <%= text_field_tag 'last_name', @user.first_name %>
-                  </div>
-                  <div class="input-group">
-                    <%= label_tag 'username', 'USER NAME' %>
-                    <%= text_field_tag 'username', @user.username %>
-                  </div>
-                  <div class="input-group">
-                    <%= label_tag 'email', 'EMAIL' %>
-                    <%= text_field_tag 'email', @user.email %>
-                  </div>
-                  <!--<div class="input-group">
-                    <%#= label_tag 'affiliation', 'AFFILIATION NAME' %>
-                    <%#= text_field 'affiliation', @user.affiliation %>
-                  </div>-->
-                  <div class="input-group">
-                    <%= label_tag 'location', 'LOCATION' %>
-                    <%= text_field 'location', @user.location %>
-                    <!-- <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Location" required>-->
-                  </div>
-                  <div class="input-group">
-                    <%= label_tag 'about_me', 'ABOUT ME' %><br/>
-                    <%= text_area 'about_me', @user.about_me %><br/><br/> <!-- :class => "tinymce"-->
-                  </div>
-                  <!--  <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>-->
-                  <%= submit_tag 'UPDATE', :class => 'btn btn-info pull-right' %>
-                  <!-- <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">-->
-              <% end %>
-            </div>
-        <% end %>
 
 
       </div>
 
-      <button>CLICK TO EDIT PROFILE</button>
+      <%= render partial: 'layouts/profile_form' %>
       <!---------END EDIT USER FORM-------------------->
 
       <!--side swipe nav-->
-    <%= render partial: 'layouts/swipe_menu' %>
-    <!--end profile--><!--end mystery block of code-->
-    </div><!--end profile page
+      <%= render partial: 'layouts/swipe_menu' %>
+      <!--end profile--><!--end mystery block of code-->
+    </div><br/><!--end profile page
     <%= render partial: 'layouts/footer' %>
 <% end %>

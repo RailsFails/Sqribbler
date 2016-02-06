@@ -32,4 +32,8 @@ class User < ActiveRecord::Base
     login = conditions.delete(:login)
     where(conditions).where(["username = :value OR email = :value", { :value => login }]).first
   end
+
+  def is_following?(friend)
+    self.friendships.exists?(friend_id: friend.id)
+  end
 end
