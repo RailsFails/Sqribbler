@@ -5,13 +5,18 @@
   <% if current_user.nil? %>
 
       <div class="col-md-8">
-
-        <%= render 'layouts/carousel' %>
-
+        <%= render partial: 'layouts/carousel' %>
       </div>
-  <% end %>
+      <% else %>
+      <div class="pull-right">
+        <!-- Sqribbler Search Window -->
+        <%= render partial: 'layouts/search' %>
+      </div>
+
+   <% end %>
   <div id="notice_messages">
     <span class="notice"><%= notice %></span> <br/>
     <span class="alert"><%= alert %></span>
+
   </div>
 </header>

@@ -1,3 +1,6 @@
+ul li {
+  list-style-type: none;
+}
 @media(max-width: 639px) {
   /*--FONTS--*/
   * {
@@ -63,16 +66,6 @@
     width: 320px;
     height: 80px;
   }
-  .profile_page h3 {
-    text-align: center;
-    padding: 4px;
-    background-color: #fff;
-    color: #333;
-    opacity: .8;
-  }
-  .profile_page div+div {
-
-  }
 
   h1 {
     font-family: 'Righteous', cursive;
@@ -109,7 +102,9 @@
   .login li a:hover {
     background-color: #f50;
   }
-
+.newsBanner {
+  clear: both;
+}
   /*THIS BLOCK IS FOR STYLE-TESTING, IF YOU HAVE CSS TO TEST, PLACE IN INSIDE. IF IT WORKS, MOVE IT OUT
   TO WHERE IT BELONGS, PLEASE LEAVE THE TESTER CLASS IN PLACE.*/
   .tester {
