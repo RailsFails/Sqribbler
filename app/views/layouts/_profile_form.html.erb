@@ -41,7 +41,7 @@
               <%= text_area 'about_me', @user.about_me, :class => "tinymce" %><br/><br/> <!-- :class => "tinymce"-->
             </div>
             <!--  <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>-->
-            <%= submit_tag 'update',user_profile_path method: :user_profile_edit %>
+            <%= submit_tag user_profile_edit_path(@user.username), method: :post %>
             <!-- <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">-->
         <% end %>
       </div>

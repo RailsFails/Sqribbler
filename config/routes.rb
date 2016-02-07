@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'user/:username/following' => 'user#following', as: :user_following
   get 'user/:username/followers' => 'user#followers', as: :user_followers
   post 'user/:username/edit' => 'user#user_profile_edit', as: :user_edit
+  post 'user/:username/user_profile_edit' => 'user#user_profile_edit', as: :user_profile_edit
+
 
   resources :friendships
 
