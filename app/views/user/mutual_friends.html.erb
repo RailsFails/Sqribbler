@@ -1,0 +1,6 @@
+<h3>Mutual friends</h3>
+<ul class="list-group">
+  <% @user.mutual_friends(@friend).each do |user| %>
+      <li class="list-group-item"><%= render partial: 'user/entry', locals: {user: user} %></li>
+  <% end %>
+</ul>

@@ -13,8 +13,6 @@
 -- GROUP BY users.id;
 
 -- select id, username from users order by random() limit 2;
--- 12|Kraig_Mosciski
--- 14|Selena_Will
 
 -- USERS:
 -- id, username
@@ -23,8 +21,21 @@
 -- id, user_id, friend_id
 
 --select users.username from users join friendships on friend_id=users.id where user_id=14 order by username;
-select users.username from users join friendships on friend_id=users.id where user_id=14
+SELECT users.username
+FROM users
+  JOIN friendships ON friend_id = users.id
+WHERE user_id = 14
 INTERSECT
-select users.username from users join friendships on friend_id=users.id where user_id=12;
+SELECT users.username
+FROM users
+  JOIN friendships ON friend_id = users.id
+WHERE user_id = 12;
 
 -- (User.find(12).friends & User.find(14).friends).count
+
+SELECT
+  f1.username as 'source',
+  f2.username as 'target'
+FROM friendships
+  JOIN users f1 ON user_id = f1.id
+  JOIN users f2 ON friend_id = f2.id;
