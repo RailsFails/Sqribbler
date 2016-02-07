@@ -83,16 +83,10 @@
           <section class="col-lg-12">
             <h3>About Me</h3>
 
-            <p>I can't recall where I grew up, but I do know when. Much of my first memories I don't expect to come back
-              to me.
-              What can I remember? Cold. I was ice. A barely conscious thought slipped from the nothing-black of my mind
-              and by some<br>
-              miracle, stayed lit. I couldn't open my eyes, they were frozen shut. I became worried if I moved, I would
-              break my skin.<br>
-              In those moments <i>just above black</i> as I like to call it, your mind isn't working or thinking
-              logically. As though a shred of my old life<br>
-              was still with me, I could feel that there was a weapon somewhere beside me, and I needed it. -creative
-              quotes-</p>
+            <div>
+            <%= @user.about_me.html_safe %>
+            </div>
+
           </section>
         </div>
         <%= render partial: 'layouts/friends_box' %>

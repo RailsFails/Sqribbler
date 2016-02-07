@@ -1,15 +1,15 @@
 class UserController < ApplicationController
   before_action :set_user, only: [:show, :following, :followers]
 
-   def user_profile_edit
-     @user = User.new(user_params)
+   def user_profile_update
+     current_user.update(user_params)
 
      #respond_to do |format|
      #if  @user.save
      #format.html { redirect_to user_profile_path(@user), notice: 'User was successfully updated.' }
      #format.json { render :user/:username/edit, status: :created, location: @user }
-     @user.save
-     redirect_to user_profile_path(@user)
+     current_user.save
+     redirect_to user_profile_path(current_user.username)
      # if( current_user.save())
      # return
      # else
@@ -61,7 +61,7 @@ class UserController < ApplicationController
   end
 
   def user_params
-    params.permit(:id, :first_name, :last_name, :username, :email, :phone_number, :location, :about_me, :profile_avatar)
+    params.require(:user).permit(:id, :first_name, :last_name, :username, :email, :phone_number, :location, :about_me, :profile_avatar)
   end
 
 end

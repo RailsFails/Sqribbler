@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'user/show'
 
   devise_for :users
+  put 'user/:username' => 'user#user_profile_update', as: :user_profile_update
   get 'landing_page/index'
   get 'landing_page/hello'
   get 'page/user_profile_page'
