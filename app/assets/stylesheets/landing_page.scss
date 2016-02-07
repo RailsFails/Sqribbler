@@ -23,4 +23,36 @@ form input {
 .user_upload_section div+div {
 
 }
+.toolBar {
+  color: #f50;
+  margin-top: 25px;
+}
 
+.user_albums {
+  padding: 4px;
+  color: deepskyblue;
+}
+.friends {
+  margin-top: 20px;
+  padding: 4px;
+  border-radius: 8px;
+  background-color: deepskyblue;
+  box-shadow: 0 0 3px #000;
+  color: #fff;
+}
+.friends:hover {
+  background-color: #555;
+  color: #f50;
+}
+.tab_gallery li {
+  color: #f50;
+}
+.tab_gallery a {
+  color: #0c0;
+}
+#main_feed h2 {
+  color: #f50;
+}
+#friend_feed h2 {
+  color: deepskyblue;
+}
