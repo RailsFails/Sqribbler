@@ -1,11 +1,11 @@
 <div class="pull-right col-sm-5">
-  <%= form_tag user_show_path, method: 'get', class: 'navbar-search', role: 'search' do %>
-      <div class="input-group">
-        <%= search_field_tag :search, params[:search], size: 150, placeholder: "Find me some Sqribbles...", class: "form-control" %>
-        <span class="input-group-btn">
+  <%= form_tag landing_page_index_path, method: 'get', class: 'navbar-search', role: 'search' do %>
+    <div class="input-group">
+      <%= search_field_tag :search, params[:search], size: 150, placeholder: "Find me some Sqribbles...", class: "form-control" %>
+      <span class="input-group-btn">
                   <%= submit_tag 'Search', class: "btn btn-default" do %>
-              </span>
+          </span>
                   <% end %>
-          </div>
+        </div>
   <% end %>
 </div>

@@ -7,6 +7,12 @@
       <div class="col-md-8">
         <%= render partial: 'layouts/carousel' %>
       </div>
+      <% else %>
+      <div class="pull-right">
+        <!-- Sqribbler Search Window -->
+        <%= render partial: 'layouts/search' %>
+      </div>
+
    <% end %>
   <div id="notice_messages">
     <span class="notice"><%= notice %></span> <br/>

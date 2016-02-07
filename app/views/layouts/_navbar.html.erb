@@ -1,28 +1,21 @@
 <div class="header clearfix">
-<div class="col-lg-12">
-  <nav class="pull-right">
-    <ul class="login nav nav-pills">
-      <% if current_user.nil? %>
-          <li role="presentation" class="active"><%= link_to 'Register', new_user_registration_path %></li>
-          <li role="presentation"><%= link_to 'Login', new_user_session_path %></li>
-      <% else %>
-          <li><%= link_to current_user.username, user_profile_path(current_user.username) %></li>
-          <li role="presentation"><%= link_to 'Sign out', destroy_user_session_path, method: :delete  %></li>
-      <% end %>
-    </ul>
+  <div class="col-lg-12">
+    <nav class="pull-right">
+      <ul class="login nav nav-pills">
+        <% if current_user.nil? %>
+            <li role="presentation" class="active"><%= link_to 'Register', new_user_registration_path %></li>
+            <li role="presentation"><%= link_to 'Login', new_user_session_path %></li>
+        <% else %>
+            <li><%= link_to current_user.username, user_profile_path(current_user.username) %></li>
+            <li role="presentation"><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+        <% end %>
+      </ul>
+    </nav>
 
-  </nav>
-  <!-- Sqribbler Search Window Begins -->
-  <%= render partial: 'layouts/search'%>
-  <!-- Sqribbler Search Window Ends -->
-    <h1 id="scribbler_logo" class="pull-left"><%= link_to root_path do %><div class="hero demo"></div><% end %></h1>
-
-
-</div>
-
-
-
-
+    <h1 id="scribbler_logo" class="pull-left"><%= link_to root_path do %>
+          <div class="hero demo"></div>
+      <% end %></h1>
+  </div>
 
 
 </div>
