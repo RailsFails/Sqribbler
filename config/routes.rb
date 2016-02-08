@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'user/show'
 
   devise_for :users
+  put 'user/:username' => 'user#user_profile_update', as: :user_profile_update
   get 'landing_page/index'
   get 'landing_page/hello'
   get 'page/user_profile_page'
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
   get 'user/:username/following' => 'user#following', as: :user_following
   get 'user/:username/followers' => 'user#followers', as: :user_followers
   post 'user/:username/edit' => 'user#user_profile_edit', as: :user_edit
+  post 'user/:username/user_profile_edit' => 'user#user_profile_edit', as: :user_profile_edit
+
 
   resources :friendships
 
