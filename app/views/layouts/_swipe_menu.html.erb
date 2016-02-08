@@ -8,18 +8,27 @@
     <nav>
       <ul>
         <li><%= link_to 'USER PROFILE', user_profile_path(current_user.username) %><a href="#"></a></li>
-        <li><%= link_to 'FIND A FRIEND', user_profile_path(current_user.username) %><a href="_search.html.erb"></a></li>
         <li><%= link_to 'FIND AN IMAGE', user_profile_path(current_user.username) %><a href="#"></a></li>
         <li><%= link_to 'CONTACT A FRIEND', user_profile_path(current_user.username) %><a href="#"></a></li>
         <li><%= link_to 'CONTACT SQRIBBLER', user_profile_path(current_user.username) %><a href="#"></a></li>
+        <span><%= render partial: 'layouts/swipe_search' %></span>
+        <li><% unless params[:search].blank? %>
+            <% @search.each do |user| %></li>
+              <li><%= link_to user.username, user_profile_path(user.username) %></li>
+            <% end %>
+          <% end %>
+
       </ul>
-    </nav>
+
+
+      </nav>
   </div>
-  <a class="menu-close" onClick="return true">
-    <div class="menu-icon">
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-  </a>
+      <a class="menu-close" onClick="return true">
+        <div class="menu-icon">
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </a>
+
 
 </div>

@@ -1,0 +1,67 @@
+
+  <% if current_user.id == @user.id %>
+
+      <a href="#credits" class="toggle btn btn-primary">UPDATE PROFILE</a>
+
+      <div id="credits" class="display_none">
+        <h1>LET'S UPDATE YOUR PROFILE</h1>
+
+      <div class="profile_edit_form">
+        <%= form_for @user, method: :put, url: user_profile_update_path(@user.username) do |u| %>
+            <%= hidden_field_tag 'id', @user.id %>
+
+            <div class="input-group">
+              <%= label_tag 'first_name', 'FIRST NAME' %>
+              <%= u.text_field :first_name %>
+            </div>
+            <div class="input-group">
+              <%= label_tag 'last_name', 'LAST NAME' %>
+              <%= u.text_field :last_name %>
+            </div>
+           <!-- <div class="input-group">
+              <%= label_tag 'username', 'USER NAME' %>
+              <%= u.text_field :username %>
+            </div>-->
+            <div class="input-group">
+              <%= label_tag 'email', 'EMAIL' %>
+              <%= u.text_field :email %>
+            </div>
+           <!-- <div class="input-group">
+              <#%= label_tag 'profile_avatar', 'Profile Image' %>
+              <#%= text_field_tag 'profile_avatar', @user.profile_avatar %>
+            </div>-->
+            <!--<div class="input-group">
+                    <%#= label_tag 'affiliation', 'AFFILIATION NAME' %>
+                    <%#= text_field 'affiliation', @user.affiliation %>
+                  </div>-->
+            <div class="input-group">
+              <%= label_tag 'location', 'LOCATION' %>
+              <%= u.text_field :location %>
+              <!-- <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Location" required>-->
+            </div>
+            <div class="input-group">
+              <%= label_tag 'about_me', 'ABOUT ME' %><br/>
+              <%= u.text_area :about_me, :class => "tinymce" %><br/><br/> <!-- :class => "tinymce"-->
+            </div>
+            <!--  <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>-->
+            <%= submit_tag 'Update' %>
+            <!-- <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">-->
+        <% end %>
+      </div>
+  <% end %>
+</div><br/>
+
+<script>
+
+
+        $('.toggle').click(function (event) {
+            event.preventDefault();
+          console.log("button clicked");
+          var target = $(this).attr('href');
+          //console.log(target);
+            //$(target).toggleClass('.display_none');
+          $("#credits").toggle();
+        });
+
+
+</script>

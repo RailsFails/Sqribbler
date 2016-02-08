@@ -2,165 +2,95 @@
 <%= tinymce %>
 
 <% if current_user.nil? %>
-    <div class="main-landing-content">
-      <h1><span class="newsBanner">Image-editing playground inside.</span></h1>
-      <h4><span>If you have a moment, sign up.</span></h4>
-      <h4><a href="#">
-        <div class="branding_image"></div>
-      </a></h4>
-    </div>
+  <div class="main-landing-content">
+    <h1><span class="newsBanner">Image-editing playground inside.</span></h1>
+    <h4><span>If you have a moment, sign up.</span></h4>
+    <h4><a href="#">
+      <div class="branding_image"></div>
+    </a></h4>
+  </div>
 
 <% else %>
-    <!--WHOLE PROFILE PAGE -TO CHANGE THE LAYOUT, COLLAPSE AND DELETE THIS DIV AND RECODE-->
-    <div class="profile_page">
-      <!--JUMBOTRON TRENDING CONTENT ACCORDIAN-->
-      <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingFour">
-            <h4 class="panel-title">
-              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
-                Trending Scribbles
-              </a>
-            </h4>
-          </div>
-          <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
-              <div class="col-lg-12">
-                <%= render 'layouts/carousel' %>
-              </div>
+  <!--WHOLE PROFILE PAGE -TO CHANGE THE LAYOUT, COLLAPSE AND DELETE THIS DIV AND RECODE-->
+  <div class="profile_page">
+    <!--JUMBOTRON TRENDING CONTENT ACCORDIAN-->
+    <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFour">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+              Trending Scribbles
+            </a>
+          </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            <div class="col-lg-12">
+              <%= render 'layouts/carousel' %>
             </div>
           </div>
         </div>
       </div>
-      <!--USER LOGIN LANDING PAGE-->
-      <div class="col-lg-12">
-        <div class="col-lg-8">
-          <section class="profile_box col-lg-12">
-            <div class="col-lg-4">
-              <a href="#">
-                <div class="profile_image"></div>
-              </a>
-            </div>
-            <div class="col-lg-8">
-              <h1><%= @user.username %></h1>
-              <span>Joined <%= @user.created_at.strftime('%m/%d/%Y') %></span>
-
-              <h3>Spokane WA.</h3>
-              <h5><a href="#">YourCompany.com</a></h5>
-              <h5><a href="#"><%= @email %></a></h5>
-            </div>
-            <section class="col-lg-12">
-              <div class="col-lg-4">
-                <p>What day is it!?
-                  <span><%= Time.now.strftime("%m/%d/%Y") %></span></p>
-              </div>
-              <div class="col-lg-3">
-                <p>Scribbles:&nbsp;<span>185</span></p>
-              </div>
-              <div class="col-lg-5">
-                <% unless current_user.nil? %>
-                    <% if current_user.is_following?(@user) %>
-                        <p><%= link_to 'Unfollow', friendship_path(@user), method: :delete, class: 'btn btn-primary' %></p>
-                    <% else %>
-                        <p><%= link_to 'Follow', friendships_path(:friend_id => @user), method: :post, class: 'btn btn-primary' %></p>
-                    <% end %>
-                <% end %>
-                <section class="col-lg-12">
-                  <div class="col-lg-5">
-                    <%= link_to 'followers: '+@user.inverse_friends.count.to_s, user_followers_path(@user.username) %>
-                  </div>
-                  <div class="col-lg-5">
-                    <%= link_to 'following: '+@user.friends.count.to_s, user_following_path(@user.username) %>
-                  </div>
-                </section>
-              </div>
-            </section>
-          </section>
-
-
+    </div>
+    <!--USER LOGIN LANDING PAGE-->
+    <div class="col-lg-12">
+      <div class="col-lg-8">
+        <section class="profile_box col-lg-12">
+          <div class="col-lg-4">
+            <a href="#">
+              <div class="profile_image"></div>
+            </a>
+          </div>
+          <div class="col-lg-8">
+            <h1><%= @user.username %></h1>
+            <h3><%= @user.first_name %> <%= @user.last_name %></h3>
+            <span>Joined <%= @user.created_at.strftime('%m/%d/%Y') %></span>
+            <h3><%= @user.location %></h3>
+            <h5><a href="#">YourCompany.com</a></h5>
+            <h5><a href="#"><%= @email %></a></h5>
+          </div>
           <section class="col-lg-12">
-            <h3>About Me</h3>
-
-            <p>I can't recall where I grew up, but I do know when. Much of my first memories I don't expect to come back
-              to me.
-              What can I remember? Cold. I was ice. A barely conscious thought slipped from the nothing-black of my mind
-              and by some<br>
-              miracle, stayed lit. I couldn't open my eyes, they were frozen shut. I became worried if I moved, I would
-              break my skin.<br>
-              In those moments <i>just above black</i> as I like to call it, your mind isn't working or thinking
-              logically. As though a shred of my old life<br>
-              was still with me, I could feel that there was a weapon somewhere beside me, and I needed it. -creative
-              quotes-</p>
-          </section>
-        </div>
-        <%= render partial: 'layouts/friends_box' %>
-        <button>CLICK TO EDIT PROFILE</button>
-        <!----AREA FOR THE USER EDIT FORM ---->
-
-        <% if current_user.id == @user.id %>
-            <div class="profile_edit_form">
-              <%= form_tag user_edit_path(current_user.username), class: 'profile_edit_form', method: :post do %>
-                  <div class="input-group">
-                    <%= label_tag 'first_name', 'FIRST NAME' %>
-                    <%= text_field 'first_name', :class => 'first_name' %>
-                  </div>
-                  <div class="input-group">
-                    <%= label_tag 'last_name', 'LAST NAME' %>
-                    <%= text_field 'last_name', @first_name %>
-                  </div>
-                  <div class="input-group">
-                    <%= label_tag 'username', 'USER NAME' %>
-                    <%= text_field 'username', @username %>
-                  </div>
-                  <div class="input-group">
-                    <%= label_tag 'email', 'EMAIL' %>
-                    <%= text_field 'email', @email %>
-                  </div>
-                  <div class="input-group">
-                    <%= label_tag 'affiliation', 'AFFILIATION NAME' %>
-                    <%= text_field 'affiliation', @affiliation %>
-                  </div>
-                  <div class="input-group">
-                    <%= label_tag 'location', 'LOCATION' %>
-                    <%= text_field 'location', @location %>
-                    <!-- <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Location" required>-->
-                  </div>
-                  <div class="input-group">
-                    <%= label_tag 'about_me', 'ABOUT ME' %><br/>
-                    <%= text_area 'about_me', @about_me, :class => "tinymce" %><br/><br/>
-                  </div>
-                  <div class="input-group">
-                    <%= label_tag 'profile_image', 'Profile Image' %><br/>
-                    <%= file_field 'profile_image', 'Profile Image' %><br/>
-
-                  </div>
-                  <%= submit_tag 'UPDATE', :class => 'btn btn-info pull-right' %>
-
-                  </div>
+            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-3">
+              <p>Scribbles:&nbsp;<span>185</span></p>
+            </div>
+            <div class="col-lg-5">
+              <% unless current_user.nil? %>
+                <% if current_user.is_following?(@user) %>
+                  <p><%= link_to 'Unfollow', friendship_path(@user), method: :delete, class: 'btn btn-primary' %></p>
+                <% else %>
+                  <p><%= link_to 'Follow', friendships_path(:friend_id => @user), method: :post, class: 'btn btn-primary' %></p>
+                <% end %>
               <% end %>
-              </div>
-              </div>
-
-              <!---------END EDIT USER FORM-------------------->
-
-
-              <div class="user_upload_section col-lg-12">
-                <!--end column one-->
-                <div class="col-lg-3">
-                  <nav>
-                    <ul>
-                      <li><a href="#">USER PROFILE</a></li>
-                      <li><a href="#">USER SETTINGS</a></li>
-                      <li><a href="#">FIND A FRIEND</a></li>
-                      <li><a href="#">FIND AN IMAGE</a></li>
-                      <li><a href="#">CONTACT A FRIEND</a></li>
-                      <li><a href="#">CONTACT SCRIBBLER</a></li>
-                    </ul>
-                  </nav>
+              <section class="col-lg-12">
+                <div class="col-lg-5">
+                  <%= link_to 'followers: '+@user.inverse_friends.count.to_s, user_followers_path(@user.username) %>
                 </div>
-              </div>
-              <!--side swipe nav-->
-              <%= render partial: 'layouts/swipe_menu' %>
-              <!--end profile--><!--end mystery block of code-->
-        <% end %>
+                <div class="col-lg-5">
+                  <%= link_to 'following: '+@user.friends.count.to_s, user_following_path(@user.username) %>
+                </div>
+              </section>
+            </div>
+          </section>
+        </section>
+        <section class="col-lg-12">
+          <h3>About Me</h3>
+          <div>
+            <%#= @user.about_me.html_safe %>
+          </div>
+          <div>
+
+          </div>
+        </section>
+      </div>
+      <%= render partial: 'layouts/friends_box' %>
+    </div>
+    <!----AREA FOR THE USER EDIT FORM ---->
+    <%= render partial: 'layouts/profile_form' %>
+    <!---------END EDIT USER FORM-------------------->
+    <!--side swipe nav-->
+    <%= render partial: 'layouts/swipe_menu' %>
+  </div><br/><!--end profile page
 <% end %>
+

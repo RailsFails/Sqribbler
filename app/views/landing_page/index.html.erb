@@ -7,29 +7,74 @@
       </a></h4>
     </div>
 <% else %>
-
     <!--WHOLE PROFILE PAGE TO CHANGE THE LAYOUT COLLAPSE AND DELETE THIS DIV AND RECODE-->
-    <div class="profile_page">
-      <!--USER LOGIN LANDING PAGE-->
-      <!--THIS IS THE PARENT CONTAINER THAT THE COLUMN LAYOUT IS IN-->
-      <div class="container">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <!--COLUMN 1-->
-          <!--THIS IS THE CODE FOR OUR PLUGIN TOOLBAR-->
-          <div class="toolBar col-xs-1 col-sm-1 col-md-1 col-lg-1">
-            <%= render partial: 'layouts/user_toolbar' %>
-          </div>
+
+    <!--USER LOGIN LANDING PAGE-->
+    <!--THIS IS THE PARENT CONTAINER THAT THE COLUMN LAYOUT IS IN-->
+    <div class="container">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <!--COLUMN 1-->
+        <!--THIS IS THE CODE FOR OUR PLUGIN TOOLBAR-->
+        <div class="toolBar col-xs-1 col-sm-1 col-md-1 col-lg-1">
+          <%= render partial: 'layouts/user_toolbar' %>
+        </div>
 
 
-          <!--COLUMN 2/MIDDLE COLUMN-->
-          <div class="col-xs-9 col-xs-offset-1 col-sm-9 col-md-8 col-lg-8 col-lg-offset-0">
+        <!--COLUMN 2/MIDDLE COLUMN-->
+        <div class="col-xs-9 col-xs-offset-1 col-sm-9 col-md-8 col-lg-8 col-lg-offset-0">
+          <div class="middleColumn">
+
+
+
+            <!--SCRIBBLER SEARCH BAR-->
+            <div class="searchBar col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <%= render partial: 'layouts/search' %>
+            </div>
+
+
+            <!--THESE ARE THE TWO CAROUSEL TABS-->
+            <ul class="tab_gallery nav nav-tabs">
+              <li class="active col-xs-12 col-lg-6"><a data-toggle="tab" href="#tabs-1">TOP TRENDING SCRIBBLES </a></li>
+              <li class="col-xs-12 col-lg-6"><a data-toggle="tab" href="#tabs-2">CHECK FRIENDS SCRIBBLES!!!</a></li>
+            </ul>
+
+
+            <!--THIS IS THE GLOBAL IMAGE CAROUSEL-->
+            <div class="tab-content">
+              <div id="tabs-1" class="tab-pane fade in active">
+                <div id="main_feed">
+                  <h2>Top Scribbles</h2>
+                  <!--A Bootstrap Carousel to fill the space for now--> <!-- DELETE IF NOT WANTED-->
+                  <%= render partial: 'layouts/bootstrap_carousel' %>
+                  <!--A Bootstrap Carousel to fill the space for now-->
+                  <br>
+                </div>
+              </div>
+
+
+              <!--THIS IS THE FRIENDS IMAGE CAROUSEL-->
+              <div id="tabs-2" class="tab-pane fade">
+                <div id="friend_feed">
+                  <h2>Friend's Scribbles</h2>
+                  <!--A Bootstrap Carousel to fill the space for now--> <!-- DELETE IF NOT WANTED-->
+                  <%= render partial: 'layouts/bootstrap_carousel' %>
+                  <!--A Bootstrap Carousel to fill the space for now-->
+                  <br>
+                </div>
+              </div>
+            </div>
+            <!--THIS IS THE END OF THE TABS MAIN PAGE AREA--->
+
+
+
+
             <!--THIS IS THE CANVAS BOX INSIDE COLUMN 2-->
             <div class="col-xs-12 col-sm-12 col-lg-4">
               <div class="box">
                 <div class="icon">
                   <div class="image"><span class="glyphicon glyphicon-list-alt btn-lg white"></span></div>
                   <div class="info">
-                    <h3 class="title">CANVAS</h3>
+                    <h3 class="title">Canvas</h3>
                     <p>LET'S MAKE A NEW CREATION!!</p>
                     <div class="more">
                       <a href="#" title="Title Link"><i class="fa fa-plus"></i>Details</a>
@@ -47,7 +92,7 @@
                   <div class="image"><span class="glyphicon glyphicon-envelope btn-lg white"></span></div>
                   <div class="info">
                     <h3 class="title">Messages</h3>
-                    <p>7 new messages over the past 24 hours.</p>
+                    <p><span>7</span> new messages over the past 24 hours.</p>
                     <div class="more">
                       <a href="#" title="Title Link"><i class="fa fa-plus"></i>Details</a>
                     </div>
@@ -73,126 +118,102 @@
                 <div class="space"></div>
               </div>
             </div>
+          </div><!--END MIDDLE COLUMN--><!--END MIDDLE COLUMN-->
+        </div>
 
 
-            <!--THESE ARE THE TWO CAROUSEL TABS-->
-            <ul class="tab_gallery nav nav-tabs">
-              <li class="active col-xs-12 col-lg-6"><a data-toggle="tab" href="#tabs-1">TOP TRENDING SCRIBBLES </a></li>
-              <li class="col-xs-12 col-lg-6"><a data-toggle="tab" href="#tabs-2">CHECK FRIENDS SCRIBBLES!!!</a></li>
-            </ul>
+        <!--THIS IS COLUMN THREE/RIGHT SIDE COLUMN-->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
+          <div class="user_albums">
+            <h3>Albums</h3>
+            <!--THESE DIVS ARE FOR THE ACCORDIAN-->
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-            <!--THIS IS THE GLOBAL CONTENT CAROUSEL-->
-            <div class="tab-content">
-              <div id="tabs-1" class="tab-pane fade in active">
-                <div id="main_feed">
-                  <h2>Top Scribbles</h2>
-                  <!--A Bootstrap Carousel to fill the space for now--> <!-- DELETE IF NOT WANTED-->
-                  <%= render partial: 'layouts/bootstrap_carousel' %>
-                  <!--A Bootstrap Carousel to fill the space for now-->
-                  <br>
+
+              <!--BEGIN DROPPABLE TESTING/REMOVE WHEN FINISHED-->
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                  <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Friends Pics
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                  <div class="panel-body droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+
+                    <!--album for dropped images-->
+
+
+                  </div>
                 </div>
               </div>
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Family Pics
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="panel-body" ondrop="drop(event)" ondragover="allowDrop(event)">
 
 
-              <!--THIS IS THE FRIENDS CAROUSEL-->
-              <div id="tabs-2" class="tab-pane fade">
-                <div id="friend_feed">
-                  <h2>Friend's Scribbles</h2>
-                  <!--A Bootstrap Carousel to fill the space for now--> <!-- DELETE IF NOT WANTED-->
-                  <%= render partial: 'layouts/bootstrap_carousel' %>
-                  <!--A Bootstrap Carousel to fill the space for now-->
-                  <br>
+
+                    <!--album for dropped images-->
+
+
+
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThree">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      Creative Pics
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                  <div class="panel-body" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+
+
+                    <!--album for dropped images-->
+
+
+
+                  </div>
                 </div>
               </div>
             </div>
-            <!--THIS IS THE END OF THE TABS MAIN PAGE AREA--->
-          </div>
-          <!--END MIDDLE COLUMN-->
+          </div><!--END ALBUMS-->
 
+          <!--THIS IS WHERE THE FRIENDS LIST PLUGIN WILL GO-->
+          <div class="friends">
 
-          <!--THIS IS COLUMN THREE/RIGHT SIDE COLUMN-->
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
-            <div class="user_albums">
-              <h3>Albums</h3>
-              <!--THESE DIVS ARE FOR THE ACCORDIAN-->
-              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                <!--begin dropppable-->
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingOne">
-                    <h4 class="panel-title">
-                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Friends Pics
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                    <div class="panel-body" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h3>Friends</h3>
+            <ul>
+              <li><a href="#">Friend1</a> <img src="#" alt="friend1 profile picture"></li>
+              <li><a href="#">Friend2</a> <img src="#" alt="friend2 profile picture"></li>
+              <li><a href="#">Friend3</a> <img src="#" alt="friend3 profile picture"></li>
+              <li><a href="#">Friend4</a> <img src="#" alt="friend4 profile picture"></li>
+              <li><a href="#">Friend5</a> <img src="#" alt="friend5 profile picture"></li>
+              <li><a href="#">Friend6</a> <img src="#" alt="friend6 profile picture"></li>
+              <li><a href="#">Friend7</a> <img src="#" alt="friend7 profile picture"></li>
+              <li><a href="#">Friend8</a> <img src="#" alt="friend8 profile picture"></li>
+              <li><a href="#">Friend9</a> <img src="#" alt="friend9 profile picture"></li>
+              <li><a href="#">Friend10</a> <img src="#" alt="friend10 profile picture"></li>
+            </ul>
 
-                      <a href="#"><img src="" alt="img1"></a>
-                      <a href="#"><img src="" alt="img2"></a>
-                      <a href="#"><img src="" alt="img3"></a>
-                      <a href="#"><img src="" alt="img4"></a>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingTwo">
-                    <h4 class="panel-title">
-                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Family Pics
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="panel-body" ondrop="drop(event)" ondragover="allowDrop(event)">
-                      <a href="#"><img src="" alt="img1"></a>
-                      <a href="#"><img src="" alt="img2"></a>
-                      <a href="#"><img src="" alt="img3"></a>
-                      <a href="#"><img src="" alt="img4"></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingThree">
-                    <h4 class="panel-title">
-                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Creative Pics
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                    <div class="panel-body" ondrop="drop(event)" ondragover="allowDrop(event)">
-                      <a href="#"><img src="" alt="img1"></a>
-                      <a href="#"><img src="" alt="img2"></a>
-                      <a href="#"><img src="" alt="img3"></a>
-                      <a href="#"><img src="" alt="img4"></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!--END ALBUMS-->
-
-            <!--THIS IS WHERE THE FRIENDS LIST PLUGIN WILL GO-->
-            <div class="friends">
-              <h3>Friends</h3>
-              <ul>
-                <li><a href="#">Friend1</a> <img src="#" alt="friend1 profile picture"></li>
-                <li><a href="#">Friend2</a> <img src="#" alt="friend2 profile picture"></li>
-                <li><a href="#">Friend3</a> <img src="#" alt="friend3 profile picture"></li>
-                <li><a href="#">Friend4</a> <img src="#" alt="friend4 profile picture"></li>
-                <li><a href="#">Friend5</a> <img src="#" alt="friend5 profile picture"></li>
-                <li><a href="#">Friend6</a> <img src="#" alt="friend6 profile picture"></li>
-                <li><a href="#">Friend7</a> <img src="#" alt="friend7 profile picture"></li>
-                <li><a href="#">Friend8</a> <img src="#" alt="friend8 profile picture"></li>
-                <li><a href="#">Friend9</a> <img src="#" alt="friend9 profile picture"></li>
-                <li><a href="#">Friend10</a> <img src="#" alt="friend10 profile picture"></li>
-              </ul>
-            </div><!--END FRIENDSLIST-->
-          </div>
-        </div>
-      </div><!--END COLUMN LAYOUT CONTAINER-->
+          </div><!--END FRIENDSLIST-->
+        </div><!--COLUMN THREE CONTAINER-->
+      </div><!--END LAYOUT CONTAINER-->
+    </div><!--END PAGE CONTAINTER
       <!--side swipe nav-->
-      <%= render partial: 'layouts/swipe_menu' %>
-    </div><!--END ROW-->
+    <%= render partial: 'layouts/swipe_menu' %>
+
 <% end %>

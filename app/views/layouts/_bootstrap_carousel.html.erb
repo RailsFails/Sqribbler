@@ -1,17 +1,23 @@
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <% @results.length.times do |i| %>
+  <% if @results.length == 0 %>
+      <div class="placeHolder">
+        <h1>I'm sorry, your search was too unique.</h1>
+        <h3>Try something a little less...out there.</h3>
+      </div>
+  <% else %>
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <% @results.length.times do |i| %>
 
-        <% if i==0 %>
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <% else %>
-            <li data-target="#myCarousel" data-slide-to="<%= i %>"></li>
+            <% if i==0 %>
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <% else %>
+                <li data-target="#myCarousel" data-slide-to="<%= i %>"></li>
+            <% end %>
+
         <% end %>
-
-    <% end %>
-  </ol>
-
+      </ol>
+  <% end %>
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <% @results.each_with_index do |result, i| %>
