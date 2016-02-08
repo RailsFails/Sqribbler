@@ -46,7 +46,6 @@
             <h3><%= @user.first_name %> <%= @user.last_name %></h3>
             <span>Joined <%= @user.created_at.strftime('%m/%d/%Y') %></span>
             <h3><%= @user.location %></h3>
-            <h3>Spokane WA.</h3>
             <h5><a href="#">YourCompany.com</a></h5>
             <h5><a href="#"><%= @email %></a></h5>
           </div>
@@ -93,6 +92,5 @@
     <!--side swipe nav-->
     <%= render partial: 'layouts/swipe_menu' %>
   </div><br/><!--end profile page
-    <%= render partial: 'layouts/footer' %>
 <% end %>
 

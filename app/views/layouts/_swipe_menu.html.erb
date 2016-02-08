@@ -11,12 +11,13 @@
         <li><%= link_to 'FIND AN IMAGE', user_profile_path(current_user.username) %><a href="#"></a></li>
         <li><%= link_to 'CONTACT A FRIEND', user_profile_path(current_user.username) %><a href="#"></a></li>
         <li><%= link_to 'CONTACT SQRIBBLER', user_profile_path(current_user.username) %><a href="#"></a></li>
+        <span><%= render partial: 'layouts/swipe_search' %></span>
         <li><% unless params[:search].blank? %>
             <% @search.each do |user| %></li>
               <li><%= link_to user.username, user_profile_path(user.username) %></li>
             <% end %>
           <% end %>
-        <span><%= render partial: 'layouts/swipe_search' %></span>
+
       </ul>
 
 

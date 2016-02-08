@@ -1,8 +1,11 @@
-<a href="#credits" class="toggle btn btn-primary">UPDATE PROFILE</a>
 
-<div id="credits" class="display_none">
-  <h1>LET'S UPDATE YOUR PROFILE</h1>
   <% if current_user.id == @user.id %>
+
+      <a href="#credits" class="toggle btn btn-primary">UPDATE PROFILE</a>
+
+      <div id="credits" class="display_none">
+        <h1>LET'S UPDATE YOUR PROFILE</h1>
+
       <div class="profile_edit_form">
         <%= form_for @user, method: :put, url: user_profile_update_path(@user.username) do |u| %>
             <%= hidden_field_tag 'id', @user.id %>
