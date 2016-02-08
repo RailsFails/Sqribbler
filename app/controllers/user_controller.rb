@@ -30,10 +30,6 @@ class UserController < ApplicationController
   end
 
   def followers
-    records_array = query_all_followers
-    respond_to do |format|
-      format.html
-    end
   end
 
   def mutual_friends
