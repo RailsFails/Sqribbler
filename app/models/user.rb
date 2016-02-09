@@ -24,10 +24,6 @@ class User < ActiveRecord::Base
     @login || self.username || self.email
   end
 
-  def is_following?(friend)
-    self.friendships.exists?(friend_id: friend.id)
-  end
-
   def self.find_for_authentication(conditions)
     login = conditions.delete(:login)
     where(conditions).where(["username = :value OR email = :value", { :value => login }]).first
@@ -35,5 +31,9 @@ class User < ActiveRecord::Base
 
   def is_following?(friend)
     self.friendships.exists?(friend_id: friend.id)
+  end
+
+  def mutual_friends(other_user)
+    self.friends & other_user.friends
   end
 end
