@@ -1,0 +1,11 @@
+<div class="user_listing media">
+  <div class="media-left">
+    <%= link_to do %>
+      <%= image_tag "https://robohash.org/#{user.username}.jpg?size=64x64", class: 'media-object', alt: user.username + ' profile image' %>
+    <% end %>
+  </div>
+  <div class="media-body">
+    <h3 class="media-heading"><%= link_to user.username, user_profile_path(user.username) %></h3>
+    <span><%= user.first_name %> <%= user.last_name %></span>
+  </div>
+</div>
