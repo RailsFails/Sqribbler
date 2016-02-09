@@ -1,26 +1,21 @@
 class UserController < ApplicationController
   before_action :set_user, only: [:show, :following, :followers, :mutual_friends]
 
-  def user_profile_edit
-    @user = User.new(user_params)
-    @user.save
-    redirect_to user_profile_path(@user.username)
-    # if( current_user.save())
-    # return
-    # else
-    #
-  end
+   def user_profile_update
+     current_user.update(user_params)
 
-
-  # @user_id = params[:user_id]
-  # @first_name = params[:first_name]
-  # @last_name = params[:last_name]
-  # @username = params[:username]
-  # @email = params[:email]
-  # @phone_number = params[:phone_number]
-  # @location = params[:location]
-  # @about_me = params[:about_me]
-  # @profile_avatar = params[:profile_avatar]
+     #respond_to do |format|
+     #if  @user.save
+     #format.html { redirect_to user_profile_path(@user), notice: 'User was successfully updated.' }
+     #format.json { render :user/:username/edit, status: :created, location: @user }
+     current_user.save
+     redirect_to user_profile_path(current_user.username)
+     # if( current_user.save())
+     # return
+     # else
+     #
+     # end
+   end
 
   def show
     #@user = User.find(params[:id])

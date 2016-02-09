@@ -1,0 +1,42 @@
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <% if @results.length == 0 %>
+      <div class="placeHolder">
+        <h1>I'm sorry, your search was too unique.</h1>
+        <h3>Try something a little less...out there.</h3>
+      </div>
+  <% else %>
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <% @results.length.times do |i| %>
+
+            <% if i==0 %>
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <% else %>
+                <li data-target="#myCarousel" data-slide-to="<%= i %>"></li>
+            <% end %>
+
+        <% end %>
+      </ol>
+  <% end %>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <% @results.each_with_index do |result, i| %>
+        <div id='img<%= i %>' class="item <%= 'active' if i==0 %>">
+          <%= image_tag result['url'], alt: result['title'] %>
+          <div class="carousel-caption">
+            <h3><%= result['title'] %></h3>
+          </div>
+        </div>
+    <% end %>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
