@@ -9,19 +9,20 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar,
                     styles: {
-                        icon:  "64x64>",
+                        icon: "64x64>",
                         thumb: "150x150>"
                     },
                     :convert_options => {
-                        :icon  => "-quality 75 -strip",
+                        :icon => "-quality 75 -strip",
                         :thumb => "-strip"
                     },
                     :path => "public/system/:class/:id/:style.:extension",
                     :url => "/system/:class/:id/:style.:extension",
+                    :default_url => "default_avatar.png",
                     :use_timestamp => false
   validates_attachment :avatar,
-                       content_type: { content_type: ["image/jpeg", "image/png", "image/gif"] },
-                       size: { less_than: 5.megabytes }
+                       content_type: {content_type: ["image/jpeg", "image/png", "image/gif"]},
+                       size: {less_than: 5.megabytes}
 
 
   # Include default devise modules. Others available are:
@@ -44,7 +45,7 @@ class User < ActiveRecord::Base
 
   def self.find_for_authentication(conditions)
     login = conditions.delete(:login)
-    where(conditions).where(["username = :value OR email = :value", { :value => login }]).first
+    where(conditions).where(["username = :value OR email = :value", {:value => login}]).first
   end
 
   def is_following?(friend)

@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<%= image_tag @image.attachment.url(:original) %>
+<h1><%= @image.title %></h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @image.title %>
-</p>
+<div id="main_image_background">
+  <%= image_tag @image.attachment.url(:original), id: 'main_image' %>
+</div>
+
+<%= render partial: 'user/entry', locals: {user: @image.user} %>
 
 <p>
   <strong>Description:</strong>

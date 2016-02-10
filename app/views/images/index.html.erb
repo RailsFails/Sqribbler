@@ -2,29 +2,13 @@
 
 <h1>Listing Images</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>thumbnail</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="image_grid">
+  <% @images.each do |image| %>
+    <%= render partial: 'images/grid_cell', locals: {image: image} %>
+  <% end %>
+</div>
 
-  <tbody>
-    <% @images.each do |image| %>
-      <tr>
-        <td><%= image_tag image.attachment.url(:icon), alt: image.title %></td>
-        <td><%= image.title %></td>
-        <td><%= image.description %></td>
-        <td><%= link_to 'Show', image %></td>
-        <td><%= link_to 'Edit', edit_image_path(image) %></td>
-        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= paginate @images %>
 
 <br>
 

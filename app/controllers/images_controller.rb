@@ -5,6 +5,10 @@ class ImagesController < ApplicationController
   # GET /images.json
   def index
     @images = Image.all
+    unless params[:username].blank?
+      @images = User.where(username: params[:username]).first.images
+    end
+    @images = @images.order('created_at desc').page(params[:page]).per(25)
   end
 
   # GET /images/1

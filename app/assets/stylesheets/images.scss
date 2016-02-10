@@ -1,3 +1,26 @@
 // Place all the styles related to the images controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.image_grid {
+  display: table;
+}
+
+.image_item {
+  display: inline-block;
+  min-width: 150px;
+  min-height: 150px;
+  margin: 0.5em;
+}
+
+#main_image_background {
+  display: block;
+  width: 100%;
+  background-color: lightgray;
+}
+
+#main_image {
+  display: block;
+  margin: 0 auto;
+  padding: 2em 0;
+}
