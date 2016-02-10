@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
                         :thumb => "-strip"
                     },
                     :path => "public/system/:class/:id/:style.:extension",
-                    :url => "/system/:class/:id/:style.:extension"
+                    :url => "/system/:class/:id/:style.:extension",
+                    :use_timestamp => false
   validates_attachment :avatar,
                        content_type: { content_type: ["image/jpeg", "image/png", "image/gif"] },
                        size: { less_than: 5.megabytes }

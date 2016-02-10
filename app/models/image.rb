@@ -10,7 +10,8 @@ class Image < ActiveRecord::Base
         :thumb => "-quality 75 -strip" 
     },
     :path => "public/system/:class/:id/:style.:extension",
-    :url => "/system/:class/:id/:style.:extension"
+    :url => "/system/:class/:id/:style.:extension",
+    :use_timestamp => false
 
   validates_attachment :attachment, presence: true,
     content_type: { content_type: ["image/jpeg", "image/png", "image/gif"] },
