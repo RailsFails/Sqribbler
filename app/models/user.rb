@@ -7,6 +7,22 @@ class User < ActiveRecord::Base
 
   has_many :images, :dependent => :destroy
 
+  has_attached_file :avatar,
+                    styles: {
+                        icon:  "64x64>",
+                        thumb: "150x150>"
+                    },
+                    :convert_options => {
+                        :icon  => "-quality 75 -strip",
+                        :thumb => "-strip"
+                    },
+                    :path => "public/system/:class/:id/:style.:extension",
+                    :url => "/system/:class/:id/:style.:extension"
+  validates_attachment :avatar,
+                       content_type: { content_type: ["image/jpeg", "image/png", "image/gif"] },
+                       size: { less_than: 5.megabytes }
+
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
