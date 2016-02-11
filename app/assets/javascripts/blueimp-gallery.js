@@ -112,7 +112,7 @@
             // Toggle the controls on pressing the Return key:
             toggleControlsOnReturn: true,
             // Toggle the automatic slideshow interval on pressing the Space key:
-            toggleSlideshowOnSpace: true,
+            toggleSlideshowOnSpace: false,
             // Navigate the gallery by pressing left and right on the keyboard:
             enableKeyboardNavigation: true,
             // Close the gallery on pressing the Esc key:

@@ -185,7 +185,7 @@ nav li {
 }
 nav li a {
   font-size: 2em;
-  color: rgba(255,255,255,.8);
+  //color: rgba(255,255,255,.8);
   text-decoration: none;
   margin: 0 auto;
   display:block;
@@ -202,11 +202,14 @@ nav li a:hover {
 .profile_settings_menu nav li a:hover {
   color: #f50;
 }
+.profile_settings_menu nav ul {font-size:.75em;}
+.profile_settings_menu nav ul a {padding: 10px;}
 
-@media screen and (max-width: 600px), screen and (max-height: 600px) {
-  nav ul {font-size:.75em;}
+@media screen and (max-width: 639px), screen and (max-height: 600px) {
+ nav ul {font-size:.75em;}
   nav ul a {padding: 10px;}
 }
+
 .menu-close {
   z-index: 9999;
   position: fixed;
