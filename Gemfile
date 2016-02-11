@@ -29,7 +29,6 @@ gem 'faker'
 gem 'tinymce-rails'
 gem 'paperclip', '~> 4.3'
 gem 'kaminari'
-gem 'pg'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -37,9 +36,9 @@ gem 'pg'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :production do
-  # Use Unicorn as the app server
+platforms :ruby do
   gem 'unicorn'
+  gem 'pg'
 end
 
 group :development, :test do
