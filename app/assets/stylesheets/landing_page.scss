@@ -1,14 +1,16 @@
 // Place all the styles related to the landing_page controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$scribbler_blue: deepskyblue;
+$scribbler_orange: #f50;
+$scribbler_green: #0c0;
+
 form input {
   width: 100%;
 
 }
-.profile_box {
-  background-color: #eee;
+.middleColumn {
   padding: 5px;
-  border-radius: 6px;
 }
 .profile_box span {
   text-shadow: 0 0 1px #000;
@@ -17,10 +19,155 @@ form input {
   background-color: #eef;
 }
 .user_upload_section {
- border-top: 1px solid #000;
+  border-top: 1px solid #000;
   margin-top: 3%;
 }
-.user_upload_section div+div {
 
+.toolBar {
+  color: $scribbler_orange;
+  margin-top: 25px;
 }
 
+.user_albums {
+  padding: 4px;
+  color: $scribbler_blue;
+}
+.user_albums a:hover {
+  text-decoration: none !important;
+  color: deepskyblue;
+}
+.friends {
+  margin-top: 55px;
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid $scribbler_blue;
+  color: $scribbler_blue;
+}
+
+.friends:hover {
+
+}
+.tab_gallery li {
+  color: $scribbler_orange;
+}
+.tab_gallery a {
+  color: $scribbler_green;
+}
+#main_feed h2 {
+  color: $scribbler_orange;
+}
+#friend_feed h2 {
+  color: $scribbler_blue;
+}
+.searchBar {
+  margin-bottom: 20px;
+}
+.searchBar input {
+  color: $scribbler_blue;
+  background-color: #fff;
+}
+.placeHolder {
+  text-align: center;
+  background-color: #000;
+  opacity: .7;
+  height: 300px;
+}
+.placeHolder h1 {
+  color: $scribbler_blue;
+  line-height: 100%;
+  padding-top: 1em;
+
+}
+.placeHolder h3 {
+  color: $scribbler_green;
+}
+
+#draggablePanelList .panel-heading {
+  cursor: move;
+}// Place all the styles related to the landing_page controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$scribbler_blue: deepskyblue;
+$scribbler_orange: #f50;
+$scribbler_green: #0c0;
+
+form input {
+  width: 100%;
+
+}
+.middleColumn {
+  padding: 5px;
+}
+.profile_box span {
+  text-shadow: 0 0 1px #000;
+}
+.friendsList_box {
+  background-color: #eef;
+}
+.user_upload_section {
+  border-top: 1px solid #000;
+  margin-top: 3%;
+}
+
+.toolBar {
+  color: $scribbler_orange;
+  margin-top: 25px;
+}
+
+.user_albums {
+  padding: 4px;
+  color: $scribbler_blue;
+}
+.user_albums a:hover {
+  text-decoration: none !important;
+  color: deepskyblue;
+}
+.friends {
+  margin-top: 55px;
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid $scribbler_blue;
+  color: $scribbler_blue;
+}
+
+.friends:hover {
+
+}
+.tab_gallery li {
+  color: $scribbler_orange;
+}
+.tab_gallery a {
+  color: $scribbler_green;
+}
+#main_feed h2 {
+  color: $scribbler_orange;
+}
+#friend_feed h2 {
+  color: $scribbler_blue;
+}
+.searchBar {
+  margin-bottom: 20px;
+}
+.searchBar input {
+  color: $scribbler_blue;
+  background-color: #fff;
+}
+.placeHolder {
+  text-align: center;
+  background-color: #000;
+  opacity: .7;
+  height: 300px;
+}
+.placeHolder h1 {
+  color: $scribbler_blue;
+  line-height: 100%;
+  padding-top: 1em;
+
+}
+.placeHolder h3 {
+  color: $scribbler_green;
+}
+
+#draggablePanelList .panel-heading {
+  cursor: move;
+}

@@ -1,8 +1,6 @@
 <h2>Following</h2>
-<ul>
+<ul class="list-group">
   <% @user.friendships.each do |friendship| %>
-      <li>
-        <%= link_to friendship.friend.username, user_profile_path(friendship.friend.username) %>
-      </li>
+      <li class="list-group-item"><%= render partial: 'user/entry', locals: {user: friendship.friend} %></li>
   <% end %>
 </ul>

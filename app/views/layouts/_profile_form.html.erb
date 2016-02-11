@@ -1,8 +1,11 @@
-<a href="#credits" class="toggle btn btn-primary">UPDATE PROFILE</a>
 
-<div id="credits" class="well hidden">
-  <h1>LET'S UPDATE YOUR PROFILE</h1>
   <% if current_user.id == @user.id %>
+
+      <a href="#credits" class="toggle btn btn-primary">UPDATE PROFILE</a>
+
+      <div id="credits" class="display_none">
+        <h1>LET'S UPDATE YOUR PROFILE</h1>
+
       <div class="profile_edit_form">
         <%= form_for @user, method: :put, url: user_profile_update_path(@user.username) do |u| %>
             <%= hidden_field_tag 'id', @user.id %>
@@ -32,6 +35,11 @@
                     <%#= text_field 'affiliation', @user.affiliation %>
                   </div>-->
             <div class="input-group">
+              <%= u.label :avatar %>
+              <%= u.file_field :avatar %>
+            </div>
+
+            <div class="input-group">
               <%= label_tag 'location', 'LOCATION' %>
               <%= u.text_field :location %>
               <!-- <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Location" required>-->
@@ -49,13 +57,16 @@
 </div><br/>
 
 <script>
-    $(function () {
+
 
         $('.toggle').click(function (event) {
             event.preventDefault();
-            var target = $(this).attr('href');
-            $(target).toggleClass('hidden show');
+          console.log("button clicked");
+          var target = $(this).attr('href');
+          //console.log(target);
+            //$(target).toggleClass('.display_none');
+          $("#credits").toggle();
         });
 
-    });
+
 </script>
