@@ -35,6 +35,11 @@
                     <%#= text_field 'affiliation', @user.affiliation %>
                   </div>-->
             <div class="input-group">
+              <%= u.label :avatar %>
+              <%= u.file_field :avatar %>
+            </div>
+
+            <div class="input-group">
               <%= label_tag 'location', 'LOCATION' %>
               <%= u.text_field :location %>
               <!-- <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Location" required>-->

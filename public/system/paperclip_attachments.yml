@@ -1,0 +1,9 @@
+---
+:User:
+  :avatar:
+  - :icon
+  - :thumb
+:Image:
+  :attachment:
+  - :icon
+  - :thumb

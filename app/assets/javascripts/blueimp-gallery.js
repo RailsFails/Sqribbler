@@ -185,7 +185,7 @@
         carouselOptions: {
             hidePageScrollbars: false,
             toggleControlsOnReturn: false,
-            toggleSlideshowOnSpace: true,
+            toggleSlideshowOnSpace: false,
             enableKeyboardNavigation: true,
             closeOnEscape: false,
             closeOnSlideClick: false,

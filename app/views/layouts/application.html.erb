@@ -6,6 +6,7 @@
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!--FONTS-->
+
   <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag 'application', media: 'all', '../javascripts/jquery-ui-1.11.4.custom/jquery-ui.min.css' => true %><!--New ADDED LINK FOR TABS ON MAIN PAGE----!>
   <%= stylesheet_link_tag 'application', 'http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css' => true %><!--New ADDED FOR FOOTER REGISTER PAGE----!>
@@ -30,11 +31,6 @@
           });
       });
   </script>
-
-
-
-
-
 </head>
 
 <body>
@@ -54,30 +50,12 @@
       </div>
   <% end %>
 
+
+
 </div><!-- END CONTAINER -->
 <hr>
 
 <%= render partial: 'layouts/footer' %>
 
-
-
-
-
-
-<script>
-    function allowDrop(ev) {
-        ev.preventDefault();
-    }
-
-    function drag(ev) {
-        ev.dataTransfer.setData("text", ev.target.id);
-    }
-
-    function drop(ev) {
-        ev.preventDefault();
-        var data = ev.dataTransfer.getData("text");
-        ev.target.appendChild(document.getElementById(data));
-    }
-</script>
 </body>
 </html>

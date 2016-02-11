@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160204030041) do
+ActiveRecord::Schema.define(version: 20160211165350) do
+
+  create_table "album_entries", force: :cascade do |t|
+    t.integer  "image_id"
+    t.integer  "album_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "album_entries", ["album_id"], name: "index_album_entries_on_album_id"
+  add_index "album_entries", ["image_id"], name: "index_album_entries_on_image_id"
+
+  create_table "albums", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.integer  "access"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "albums", ["title"], name: "index_albums_on_title"
+  add_index "albums", ["user_id"], name: "index_albums_on_user_id"
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
@@ -19,6 +40,20 @@ ActiveRecord::Schema.define(version: 20160204030041) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "images", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+  end
+
+  add_index "images", ["user_id"], name: "index_images_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -39,6 +74,12 @@ ActiveRecord::Schema.define(version: 20160204030041) do
     t.string   "phone_number"
     t.string   "location"
     t.text     "about_me"
+    t.text     "provile_avatar"
+    t.text     "profile_avatar"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
