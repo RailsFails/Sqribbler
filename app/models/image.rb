@@ -13,7 +13,17 @@ class Image < ActiveRecord::Base
                     :url => "/system/:class/:id/:style.:extension",
   :use_timestamp => false
 
+  has_many :album_entries
+  has_many :albums, through: :album_entries
+
   validates_attachment :attachment, presence: true,
                        size: {less_than: 5.megabytes}
   validates_attachment_content_type :attachment, :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif']
+
+
+  def add_album_titles(album_titles_str)
+    self.albums = album_titles_str.map do |name|
+      self.user.albums.where(title: name.strip).first_or_create!
+    end
+  end
 end
