@@ -134,7 +134,7 @@
               <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingOne">
                   <h4 class="panel-title">
-                    <%= link_to 'Friends Pics' , album_path(current_user.id) %>
+                    <%= link_to 'Friends Pics' , album_index_page_path(current_user.id, :title) %>
                   </h4>
                 </div>
               </div>
@@ -142,7 +142,7 @@
               <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingTwo">
                   <h4 class="panel-title">
-                    <%= link_to 'Family Pics' , albums_path %>
+                    <%= link_to "Albums: #{current_user.albums.count}",album_index_page_path(username: current_user.username) %>
                   </h4>
                 </div>
               </div>
@@ -150,8 +150,8 @@
               <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingThree">
                   <h4 class="panel-title">
-                    <%= link_to 'Creative Pics' , album_path(current_user.id) %>
-                    <!--< link_to 'Creative Pics' , album_index_page_path(@user.album.id) %>-->
+                    <!-- <= link_to 'Creative Pics' , album_path(current_user.id) %>-->
+                    <%= link_to 'Creative Pics' , new_album_path(@album) %>
                   </h4>
                 </div>
               </div>

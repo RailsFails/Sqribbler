@@ -81,10 +81,10 @@
   <tbody>
     <% @albums.each do |album| %>
       <tr>
-        <td><%= album.user %></td>
+        <td><%= album.user.username %> &nbsp;</td>
         <td><%= album.title %></td>
         <td><%= album.access %></td>
-        <td><%= link_to 'Show', album %></td>
+        <td><%= link_to 'Show', album_show_page_path(username: current_user.username, title: album.title) %></td>
         <td><%= link_to 'Edit', edit_album_path(album) %></td>
         <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -94,4 +94,6 @@
 
 <br>
 
-<%= link_to 'New Album', new_album_path %>
+<br/>
+
+<%= link_to 'New Album', album_new_page_path(@album, username: current_user.username) %>

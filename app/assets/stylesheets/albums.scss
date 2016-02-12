@@ -1,12 +1,16 @@
 // Place all the styles related to the Albums controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*------------------------------------------------------------ALBUM SHOW STYLES--------------------------------------------------------------------*/
 .hide-bullets {
   list-style:none;
   margin-left: -40px;
   margin-top:20px;
 }
+/*--------------------------------------------------------------------------------------------------------------------------------------------------*/
 
+/*----------------------------------------------------------------------PAGINATION STYLES-----------------------------------------------------------*/
 .pagination {
   height: 36px;
   margin: 18px 0;
@@ -69,3 +73,39 @@
 .pagination-right {
   text-align: right;
 }
+/*-----------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*-----------------------------------------------------------------RATINGS STYLES----------------------------------------------------------------------*/
+
+.fa {
+  margin-right: 5px;
+}
+
+.rating .fa {
+  font-size: 22px;
+}
+
+.rating-num {
+  margin-top: 0px;
+  font-size: 60px;
+}
+
+.progress {
+  margin-bottom: 5px;
+}
+
+.progress-bar {
+  text-align: left;
+}
+
+.rating-desc .col-md-3 {
+  padding-right: 0px;
+}
+
+.sr-only {
+  margin-left: 5px;
+  overflow: visible;
+  clip: auto;
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------------------*/

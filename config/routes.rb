@@ -2,9 +2,8 @@ Rails.application.routes.draw do
   resources :albums
   resources :images
   get 'user/show'
-  get 'album/index'
-  get 'album/show'
-  get 'shared_pages/albums_page'
+  # get 'album/index'
+  # get 'album/show'
 
   devise_for :users
   put 'user/:username' => 'user#user_profile_update', as: :user_profile_update
@@ -17,8 +16,9 @@ Rails.application.routes.draw do
   get 'user/:username/followers' => 'user#followers', as: :user_followers
   post 'user/:username/edit' => 'user#user_profile_edit', as: :user_edit
   get 'user/:username/mutual_friends/:friend_username' => 'user#mutual_friends', as: :user_mutual_friends
-  #get '/user/:username/albums' => 'album#index', as: :album_index_page
-  #get '/user/:username/albums/:title' => 'album#show', as: :album_show_page
+  get '/user/:username/albums' => 'albums#index', as: :album_index_page
+  get '/user/:username/new_album' => 'albums#new', as: :album_new_page
+  get '/user/:username/albums/:title' => 'albums#show', as: :album_show_page
 
 
   resources :friendships

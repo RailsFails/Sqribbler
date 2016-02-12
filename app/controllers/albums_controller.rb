@@ -1,18 +1,27 @@
 class AlbumsController < ApplicationController
-  before_action :set_album, only: [:show, :edit, :update, :destroy]
- # before_action :set_user, only: [:show, :index, :edit]
+  before_action :set_album, only: [:edit, :update, :destroy]
+  before_action :set_user, only: [:show, :index, :edit, :new]
 
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
-   # @albums = @user.albums
+    # @albums = Album.all
+    @albums = @user.albums
+    unless params[:query].blank?
+      @albums = @albums.where("title like ?", "%#{params[:query]}%")
+    end
+=begin
+    unless params[:username].blank?
+      @albums = @user.albums.where(title: params[:title]).first
+    end
+    @albums = @albums.order('created_at desc').page(params[:page]).per(10)
+=end
   end
 
   # GET /albums/1
   # GET /albums/1.json
   def show
-   # @album = @user.albums.where(title: params[:title]).first
+    @album = @user.albums.where(title: params[:title]).first
   end
 
   # GET /albums/new
@@ -31,7 +40,7 @@ class AlbumsController < ApplicationController
 
     respond_to do |format|
       if @album.save
-        format.html { redirect_to @album, notice: 'Album was successfully created.' }
+        format.html { redirect_to album_show_page_path(username: @album.user.username, title: @album.title), notice: 'Album was successfully created.' }
         format.json { render :show, status: :created, location: @album }
       else
         format.html { render :new }
@@ -66,9 +75,9 @@ class AlbumsController < ApplicationController
 
   private
 
- # def set_user
- #   @user = User.where(username: params[:username]).first
- # end
+  def set_user
+    @user = User.where(username: params[:username]).first
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_album
       @album = Album.find(params[:id])

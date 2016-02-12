@@ -163,14 +163,22 @@
 </div>
 
 <div class="pager">
-  <ul>
+  <!--<ul>
     <li><a href="#">«</a></li>
     <li><a href="#">..</a></li>
     <li class="active"><a href="#">1</a></li>
     <li><a href="#">2</a></li>
     <li><a href="#">»</a></li>
-  </ul>
+  </ul>-->
 </div>
+<script type='text/javascript'>
+    var options = {
+        currentPage: 3,
+        totalPages: 10
+    }
+
+    $('.pager').bootstrapPaginator(options);
+</script>
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
-<%= link_to 'Back', albums_path %>
+<%= link_to 'Back', album_index_page_path(@album) %>
