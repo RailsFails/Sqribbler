@@ -1,15 +1,18 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :edit, :update, :destroy]
+ # before_action :set_user, only: [:show, :index, :edit]
 
   # GET /albums
   # GET /albums.json
   def index
     @albums = Album.all
+   # @albums = @user.albums
   end
 
   # GET /albums/1
   # GET /albums/1.json
   def show
+   # @album = @user.albums.where(title: params[:title]).first
   end
 
   # GET /albums/new
@@ -62,6 +65,10 @@ class AlbumsController < ApplicationController
   end
 
   private
+
+ # def set_user
+ #   @user = User.where(username: params[:username]).first
+ # end
     # Use callbacks to share common setup or constraints between actions.
     def set_album
       @album = Album.find(params[:id])

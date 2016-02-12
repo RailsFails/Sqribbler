@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get 'user/:username/followers' => 'user#followers', as: :user_followers
   post 'user/:username/edit' => 'user#user_profile_edit', as: :user_edit
   get 'user/:username/mutual_friends/:friend_username' => 'user#mutual_friends', as: :user_mutual_friends
+  #get '/user/:username/albums' => 'album#index', as: :album_index_page
+  #get '/user/:username/albums/:title' => 'album#show', as: :album_show_page
+
 
   resources :friendships
 

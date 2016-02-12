@@ -2,7 +2,7 @@
  * Created by shilohiaulualo on 1/28/16.
  */
 $.noConflict();
-$(document).ready(function(){
+/*$(document).ready(function(){
     $( "#tabs" ).tabs({
         collapsible: true
     }).tooltip().show({
@@ -12,7 +12,7 @@ $(document).ready(function(){
         queue:false
     });
 
-});
+});*/
 
 !function (a, b) {
     "object" == typeof module && "object" == typeof module.exports ? module.exports = a.document ? b(a, !0) : function (a) {
