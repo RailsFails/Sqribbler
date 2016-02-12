@@ -5,6 +5,25 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => 'Friendship', :foreign_key => 'friend_id'
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
+  has_many :images, :dependent => :destroy
+
+  has_attached_file :avatar,
+                    styles: {
+                        icon: "64x64>",
+                        thumb: "150x150>"
+                    },
+                    :convert_options => {
+                        :icon => "-quality 75 -strip",
+                        :thumb => "-strip"
+                    },
+                    :path => "public/system/:class/:id/:style.:extension",
+                    :url => "/system/:class/:id/:style.:extension",
+                    :default_url => "default_avatar.png",
+                    :use_timestamp => false
+  validates_attachment :avatar,
+                       content_type: {content_type: ["image/jpeg", "image/png", "image/gif"]},
+                       size: {less_than: 5.megabytes}
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -24,16 +43,16 @@ class User < ActiveRecord::Base
     @login || self.username || self.email
   end
 
-  def is_following?(friend)
-    self.friendships.exists?(friend_id: friend.id)
-  end
-
   def self.find_for_authentication(conditions)
     login = conditions.delete(:login)
-    where(conditions).where(["username = :value OR email = :value", { :value => login }]).first
+    where(conditions).where(["username = :value OR email = :value", {:value => login}]).first
   end
 
   def is_following?(friend)
     self.friendships.exists?(friend_id: friend.id)
+  end
+
+  def mutual_friends(other_user)
+    self.friends & other_user.friends
   end
 end
