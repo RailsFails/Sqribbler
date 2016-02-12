@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :albums
   resources :images
   get 'user/show'
+  get 'album/index'
+  get 'album/show'
+  get 'shared_pages/albums_page'
 
   devise_for :users
   put 'user/:username' => 'user#user_profile_update', as: :user_profile_update
