@@ -29,7 +29,7 @@ class ImagesController < ApplicationController
   # POST /images.json
   def create
     @image = Image.new(image_params)
-
+    @image.add_album_titles(params[:album_titles])
 
     respond_to do |format|
       if @image.save

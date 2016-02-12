@@ -13,6 +13,7 @@ class Image < ActiveRecord::Base
                     :url => "/system/:class/:id/:style.:extension",
   :use_timestamp => false
 
+  has_many :album_entries
   has_many :albums, through: :album_entries
 
   validates_attachment :attachment, presence: true,
@@ -20,18 +21,9 @@ class Image < ActiveRecord::Base
   validates_attachment_content_type :attachment, :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif']
 
 
-  def album_titles=(album_titles_str)
-    #self.albums = []
-    # album_titles_str.each do |album_title|
-    #   #a = Album.where(user_id: self.user.id, title: album_title.strip).first_or_create!
-    #   #AlbumEntry.first_or_create!(image_id: self.id, album_id: a.id)
-    #   self.user.albums.where(title: album_title.strip).first_or_create!
-    # end
+  def add_album_titles(album_titles_str)
     self.albums = album_titles_str.map do |name|
-      Album.where(user_id: self.user.id, title: name.strip).first_or_create!
+      self.user.albums.where(title: name.strip).first_or_create!
     end
-  end
-  def album_titles(album_titles_str)
-    album_titles=(album_titles_str)
   end
 end
