@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_attached_file :avatar,
                     styles: {
                         icon: "64x64>",
-                        thumb: "150x150>"
+                        thumb: "200x200"
                     },
                     :convert_options => {
                         :icon => "-quality 75 -strip",

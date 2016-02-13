@@ -20,3 +20,7 @@
 !/public/system/paperclip_attachments.yml
 
 /.idea/
+/public/assets/
+/vendor/bundle/
+
+

@@ -18,12 +18,16 @@ class Image < ActiveRecord::Base
 
   validates_attachment :attachment, presence: true,
                        size: {less_than: 5.megabytes}
-  validates_attachment_content_type :attachment, :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif']
+  validates_attachment_content_type :attachment, :content_type => %w(image/jpeg image/jpg image/png image/gif)
 
 
   def add_album_titles(album_titles_str)
     self.albums = album_titles_str.map do |name|
       self.user.albums.where(title: name.strip).first_or_create!
     end
+  end
+
+  def get_album_titles
+    self.albums.pluck(:title)
   end
 end
