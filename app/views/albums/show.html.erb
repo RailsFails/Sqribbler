@@ -1,4 +1,5 @@
 <div class="album_container">
+  <h1><%= @album.title %></h1>
   <div id="main_area">
     <!-- Slider -->
     <div class="row">
@@ -9,35 +10,16 @@
             <div class="carousel slide" id="myCarousel">
               <!-- Carousel items -->
               <div class="carousel-inner">
-                <div class="active item" data-slide-number="0">
-                  <img src="http://placehold.it/770x300&text=one"></div>
+                <!-- <div class="active item" data-slide-number="0">
+                  <img src="http://placehold.it/770x300&text=one"></div> -->
 
-                <div class="item" data-slide-number="1">
-                  <img src="http://placehold.it/770x300&text=two"></div>
+                <% @album.images.each_with_index do |image, i| %>
+                    <div class="<%= 'active' if i==0 %> item" data-slide-number="<%= i %>">
+                      <%= image_tag image.attachment.url, alt: image.title %>
+                    </div>
 
-                <div class="item" data-slide-number="2">
-                  <img src="http://placehold.it/770x300&text=three"></div>
+                <% end %>
 
-                <div class="item" data-slide-number="3">
-                  <img src="http://placehold.it/770x300&text=four"></div>
-
-                <div class="item" data-slide-number="4">
-                  <img src="http://placehold.it/770x300&text=five"></div>
-
-                <div class="item" data-slide-number="5">
-                  <img src="http://placehold.it/770x300&text=six"></div>
-
-                <div class="item" data-slide-number="6">
-                  <img src="http://placehold.it/770x300&text=seven"></div>
-
-                <div class="item" data-slide-number="7">
-                  <img src="http://placehold.it/770x300&text=eight"></div>
-
-                <div class="item" data-slide-number="8">
-                  <img src="http://placehold.it/770x300&text=nine"></div>
-
-                <div class="item" data-slide-number="9">
-                  <img src="http://placehold.it/770x300&text=ten"></div>
               </div><!-- Carousel nav -->
               <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left"></span>
@@ -51,65 +33,20 @@
           <div class="col-sm-4" id="carousel-text"></div>
 
           <div id="slide-content" style="display: none;">
-            <div id="slide-content-0">
+            <!-- <div id="slide-content-0">
               <h2>IMAGE TITLE 1</h2>
               <p>RATINGS</p>
               <p class="sub-text">October 24 2014 - <a href="#">CHECK IT OUT!</a></p>
-            </div>
+            </div> -->
 
-            <div id="slide-content-1">
-              <h2>IMAGE TITLE 2</h2>
-              <p>RATINGS</p>
-              <p class="sub-text">October 24 2014 - <a href="#">CHECK IT OUT!</a></p>
-            </div>
+            <% @album.images.each_with_index do |image, i| %>
+                <div id="slide-content-<%= i %>">
+                  <h2><%= image.title %></h2>
+                  <p>RATINGS</p>
+                  <p class="sub-text">created <%= @user.created_at.strftime('%m/%d/%Y') %></p>
+                </div>
+            <% end %>
 
-            <div id="slide-content-2">
-              <h2>IMAGE TITLE 3</h2>
-              <p>RATINGS</p>
-              <p class="sub-text">October 24 2014 - <a href="#">CHECK IT OUT!</a></p>
-            </div>
-
-            <div id="slide-content-3">
-              <h2>IMAGE TITLE 4</h2>
-              <p>RATINGS</p>
-              <p class="sub-text">October 24 2014 - <a href="#">CHECK IT OUT!</a></p>
-            </div>
-
-            <div id="slide-content-4">
-              <h2>IMAGE TITLE 5</h2>
-              <p>RATINGS</p>
-              <p class="sub-text">October 24 2014 - <a href="#">CHECK IT OUT!</a></p>
-            </div>
-
-            <div id="slide-content-5">
-              <h2>IMAGE TITLE 6</h2>
-              <p>RATINGS</p>
-              <p class="sub-text">October 24 2014 - <a href="#">CHECK IT OUT!</a></p>
-            </div>
-
-            <div id="slide-content-6">
-              <h2>IMAGE TITLE 7</h2>
-              <p>RATINGS</p>
-              <p class="sub-text">October 24 2014 - <a href="#">CHECK IT OUT!</a></p>
-            </div>
-
-            <div id="slide-content-7">
-              <h2>IMAGE TITLE 8</h2>
-              <p>RATINGS</p>
-              <p class="sub-text">October 24 2014 - <a href="#">CHECK IT OUT!</a></p>
-            </div>
-
-            <div id="slide-content-8">
-              <h2>IMAGE TITLE 9</h2>
-              <p>RATINGS</p>
-              <p class="sub-text">October 24 2014 - <a href="#">CHECK IT OUT!</a></p>
-            </div>
-
-            <div id="slide-content-9">
-              <h2>IMAGE TITLE 10</h2>
-              <p>RATINGS</p>
-              <p class="sub-text">October 24 2014 - <a href="#">CHECK IT OUT!</a></p>
-            </div>
           </div>
         </div>
       </div>
@@ -181,4 +118,4 @@
 </script>
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
-<%= link_to 'Back', album_index_page_path(@album) %>
+<%= link_to 'Back', album_index_page_path(username: @album.user.username) %>
