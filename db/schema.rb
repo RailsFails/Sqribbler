@@ -74,8 +74,6 @@ ActiveRecord::Schema.define(version: 20160211165350) do
     t.string   "phone_number"
     t.string   "location"
     t.text     "about_me"
-    t.text     "provile_avatar"
-    t.text     "profile_avatar"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
