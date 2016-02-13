@@ -30,3 +30,16 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+contributors: Trenton
+
+If error occurs while installing gems and informs gem kgio missing it is related to unicorn gem:
+
+while bundler install-- use :
+
+` --without production `
+
+(note: which is group to exlude)
+
+
+
