@@ -14,6 +14,9 @@ gem 'coffee-script-source', '1.8.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Gems for chat
+gem 'private_pub'
+gem 'thin'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
