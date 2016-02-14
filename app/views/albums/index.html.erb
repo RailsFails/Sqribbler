@@ -4,17 +4,7 @@
     <h1 class="page-header">ALBUMS</h1>
   </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Title</th>
-      <th>Access</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
     <% @albums.each do |album| %>
       <div class="col-lg-3 col-md-4 col-xs-6 thumb">
         <h1><%= album.title %></h1>
@@ -26,16 +16,15 @@
         <%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %>
         <p><%= album.access %></p>
       </div>
-      <tr>
-        <td><%= album.user.username %> &nbsp;</td>
-        <td><%= album.title %></td>
-        <td><%= album.access %></td>
-        <td><%= link_to 'Edit', edit_album_path(album) %></td>
-        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+
+        <%= album.user.username %>
+        <%= album.title %>
+        <%= album.access %>
+        <%= link_to 'Edit', edit_album_path(album) %>
+        <%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %>
+
     <% end %>
-  </tbody>
-</table>
+
 
 <br>
 
