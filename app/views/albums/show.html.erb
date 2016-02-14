@@ -180,5 +180,12 @@
     $('.pager').bootstrapPaginator(options);
 </script>
 
+<p class="btn btn-default" type="submit">
+  <%= link_to 'Edit Album', edit_album_path(@album) %>
+</p>
+<p class="btn btn-default" type="submit">
+  <%= link_to 'Back', album_index_page_path(username: current_user.username) %>
+</p>
+
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', album_index_page_path(@album) %>
