@@ -19,17 +19,17 @@
       <div class="col-lg-3 col-md-4 col-xs-6 thumb">
         <h1><%= album.title %></h1>
         <p>"CREATED BY:<%= album.user.username %>"</p>
-        <a class="thumbnail" href="">
+        <a class="thumbnail" href="<%= album_show_page_path(username: current_user.username, title: album.title) %>">
           <img class="img-responsive" src="http://placehold.it/400x300" alt="">
         </a>
-        <% link_to 'SHOW', album_show_page_path(username: current_user.username, title: album.title) %>
+        <%= link_to 'Edit', edit_album_path(album) %>
+        <%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %>
         <p><%= album.access %></p>
       </div>
       <tr>
         <td><%= album.user.username %> &nbsp;</td>
         <td><%= album.title %></td>
         <td><%= album.access %></td>
-        <td><%= link_to 'Show', album_show_page_path(username: current_user.username, title: album.title) %></td>
         <td><%= link_to 'Edit', edit_album_path(album) %></td>
         <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
