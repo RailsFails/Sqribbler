@@ -3,58 +3,25 @@
     <h3>Albums</h3>
     <!--THESE DIVS ARE FOR THE ACCORDIAN-->
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingOne">
-          <h4 class="panel-title">
-            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Album #1
-            </a>
-          </h4>
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
-            <a href="#"><img src="" alt="img1"></a>
-            <a href="#"><img src="" alt="img2"></a>
-            <a href="#"><img src="" alt="img3"></a>
-            <a href="#"><img src="" alt="img4"></a>
+      <% if current_user.albums.count == 0 %>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+              <h4 class="panel-title">
+                <!-- <= link_to 'Creative Pics' , album_path(current_user.id) %>-->
+                <%= link_to 'Create New Album' , new_album_path(@album) %>
+              </h4>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingTwo">
-          <h4 class="panel-title">
-            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Album #2
-            </a>
-          </h4>
-        </div>
-        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-          <div class="panel-body">
-            <a href="#"><img src="" alt="img1"></a>
-            <a href="#"><img src="" alt="img2"></a>
-            <a href="#"><img src="" alt="img3"></a>
-            <a href="#"><img src="" alt="img4"></a>
+      <% else %>
+          <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                  <%= link_to "Albums: #{current_user.albums.count}",album_index_page_path(username: current_user.username) %>
+                </h4>
+              </div>
           </div>
-        </div>
+      <% end %>
       </div>
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingThree">
-          <h4 class="panel-title">
-            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              Album #3
-            </a>
-          </h4>
-        </div>
-        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-          <div class="panel-body">
-            <a href="#"><img src="" alt="img1"></a>
-            <a href="#"><img src="" alt="img2"></a>
-            <a href="#"><img src="" alt="img3"></a>
-            <a href="#"><img src="" alt="img4"></a>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
   <!--END ALBUMS-->
 <!--  <div class="Friends">

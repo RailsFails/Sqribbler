@@ -16,7 +16,6 @@
 //= require select2.min
 
 
-///= require turbolinks
 //= require_tree .
 
 //$(function(){ $(document).foundation(); });

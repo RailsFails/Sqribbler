@@ -54,47 +54,49 @@
 
     <div class="row hidden-xs" id="slider-thumbs">
       <!-- Bottom switcher of slider -->
+      <% @album.images.each_with_index do |image, i| %>
       <ul class="hide-bullets">
         <li class="col-sm-2">
-          <a class="thumbnail" id="carousel-selector-0"><img src="http://placehold.it/170x100&text=one"></a>
+          <a class="thumbnail" id="carousel-selector-<%= i %>"><img src="<%= image_path(image) %>=one"></a>
         </li>
 
         <li class="col-sm-2">
-          <a class="thumbnail" id="carousel-selector-1"><img src="http://placehold.it/170x100&text=two"></a>
+          <a class="thumbnail" id="carousel-selector-<%= i %>"><img src="<%= image %>&text=two"></a>
         </li>
 
         <li class="col-sm-2">
-          <a class="thumbnail" id="carousel-selector-2"><img src="http://placehold.it/170x100&text=three"></a>
+          <a class="thumbnail" id="carousel-selector-<%= i %>"><img src="<%= image %>&text=three"></a>
         </li>
 
         <li class="col-sm-2">
-          <a class="thumbnail" id="carousel-selector-3"><img src="http://placehold.it/170x100&text=four"></a>
+          <a class="thumbnail" id="carousel-selector-<%= i %>"><img src="<%= image %>&text=four"></a>
         </li>
 
         <li class="col-sm-2">
-          <a class="thumbnail" id="carousel-selector-4"><img src="http://placehold.it/170x100&text=five"></a>
+          <a class="thumbnail" id="carousel-selector-<%= i %>"><img src="<%= image %>&text=five"></a>
         </li>
 
         <li class="col-sm-2">
-          <a class="thumbnail" id="carousel-selector-5"><img src="http://placehold.it/170x100&text=six"></a>
+          <a class="thumbnail" id="carousel-selector-<%= i %>"><img src="<%= image %>&text=six"></a>
         </li>
 
         <li class="col-sm-2">
-          <a class="thumbnail" id="carousel-selector-5"><img src="http://placehold.it/170x100&text=six"></a>
+          <a class="thumbnail" id="carousel-selector-<%= i %>"><img src="<%= image %>&text=seven"></a>
         </li>
 
         <li class="col-sm-2">
-          <a class="thumbnail" id="carousel-selector-5"><img src="http://placehold.it/170x100&text=six"></a>
+          <a class="thumbnail" id="carousel-selector-<%= i %>"><img src="<%= image %>&text=eight"></a>
         </li>
 
         <li class="col-sm-2">
-          <a class="thumbnail" id="carousel-selector-5"><img src="http://placehold.it/170x100&text=six"></a>
+          <a class="thumbnail" id="carousel-selector-<%= i %>"><img src="<%= image %>&text=nine"></a>
         </li>
 
         <li class="col-sm-2">
-          <a class="thumbnail" id="carousel-selector-5"><img src="http://placehold.it/170x100&text=six"></a>
+          <a class="thumbnail" id="carousel-selector-<%= i %>"><img src="<%= image %>&text=ten"></a>
         </li>
       </ul>
+      <% end %>
     </div>
   </div>
 </div>
@@ -112,10 +114,10 @@
     var options = {
         currentPage: 3,
         totalPages: 10
-    }
+    };
 
     $('.pager').bootstrapPaginator(options);
 </script>
 
-<%= link_to 'Edit', edit_album_path(@album) %> |
+<%= link_to 'Edit', edit_album_path(@album) %>
 <%= link_to 'Back', album_index_page_path(username: @album.user.username) %>
