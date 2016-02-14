@@ -57,7 +57,7 @@
       <% @album.images.each_with_index do |image, i| %>
       <ul class="hide-bullets">
         <li class="col-sm-2">
-          <a class="thumbnail" id="carousel-selector-<%= i %>"><img src="<%= image_path(image) %>=one"></a>
+          <a class="thumbnail" id="carousel-selector-<%= i %>" href="<%= image_path(image) %>" ><img src="<%= image %>=one"></a>
         </li>
 
         <li class="col-sm-2">
