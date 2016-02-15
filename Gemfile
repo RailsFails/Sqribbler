@@ -13,12 +13,14 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-script-source', '1.8.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
+group :assets do
+  gem 'coffee-rails'
+end
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-# gem 'turbolinks'
+# REMOVED TURBOLINKS-
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -29,7 +31,6 @@ gem 'faker'
 gem 'tinymce-rails'
 gem 'paperclip', '~> 4.3'
 gem 'kaminari'
-gem 'coffee-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

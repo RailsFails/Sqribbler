@@ -1,30 +1,8 @@
 <div class="row">
 
   <div class="col-lg-12">
-    <h1 class="page-header"> <%= current_user.username %>'s Albums</h1>
+    <h1 class="page-header">ALBUMS</h1>
   </div>
-
-  <!--<div class="col-lg-3 col-md-4 col-xs-6 thumb">-->
-    <!--<a class="thumbnail" href="#">-->
-      <!--<img class="img-responsive" src="http://placehold.it/400x300" alt="">-->
-    <!--</a>-->
-  <!--</div>-->
-
-  <% @albums.each do |album| %>
-      <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-        <h3><%= album.title %></h3>
-        <%= link_to image_tag('http://placehold.it/400x300', class: "img-responsive"), album_show_page_path(username: current_user.username, title: album.title), class: "thumbnail" %>
-       <%= link_to 'Edit', edit_album_path(album) %>|<%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %>
-
-      </div>
-  <% end %>
-
-</div>
-<p class="btn btn-default" type="submit">
-  <%= link_to 'Create New Album', album_new_page_path(@album, username: current_user.username) %>
-</p>
-
-<h1>Listing Albums</h1>
 
 <table>
   <thead>
@@ -38,13 +16,22 @@
 
   <tbody>
     <% @albums.each do |album| %>
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+        <h1><%= album.title %></h1>
+        <p>"CREATED BY:<%= album.user.username %>"</p>
+        <a class="thumbnail" href="<%= album_show_page_path(username: current_user.username, title: album.title) %>">
+          <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+        </a>
+        <%= link_to 'Edit', edit_album_path(album) %>
+        <%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <p><%= album.access %></p>
+      </div>
       <tr>
         <td><%= album.user.username %> &nbsp;</td>
         <td><%= album.title %></td>
         <td><%= album.access %></td>
-        <td class="btn btn-default" type="submit"><%= link_to 'Show', album_show_page_path(username: current_user.username, title: album.title) %></td>
-        <td class="btn btn-default" type="submit"><%= link_to 'Edit', edit_album_path(album) %></td>
-        <td class="btn btn-default" type="submit"><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_album_path(album) %></td>
+        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -52,4 +39,7 @@
 
 <br>
 
+<br/>
 
+<%= link_to 'New Album', album_new_page_path(@album, username: current_user.username) %>
+</div>

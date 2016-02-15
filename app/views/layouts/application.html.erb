@@ -8,27 +8,23 @@
   <!--FONTS-->
 
   <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
-  <%= stylesheet_link_tag 'application', media: 'all', '../javascripts/jquery-ui-1.11.4.custom/jquery-ui.min.css' => true %><!--New ADDED LINK FOR TABS ON MAIN PAGE----!>
-  <%= stylesheet_link_tag 'application', 'http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css' => true %><!--New ADDED FOR FOOTER REGISTER PAGE----!>
   <link href='https://fonts.googleapis.com/css?family=Quicksand:400,300' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
-  <%= javascript_include_tag 'javascripts/jquery-ui1.11.4.custom/jquery/jquery.js' => true %> <!--New ADDED LINK FOR TABS ON MAIN PAGE----!>
-  <%= javascript_include_tag '../javascripts/jquery-ui-1.11.4.custom/jquery-ui.min.js' => true %> <!--New ADDED LINK FOR TABS ON MAIN PAGE----!>
-  <%#= javascript_include_tag 'http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js' => true %> <!--New ADDED FOR FOOTER REGISTER PAGE----!>
-  <script src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>  <!--New ADDED FOR FOOTER REGISTER PAGE----!>
+
+  <!--REMOVED TURBOLINK AS WELL AS CLEANED UP THE HEAD-->
 
 
   <%= csrf_meta_tags %>
   <!--The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags-->
   <!--Leave the script *beneath* this line intact for the water effect on the Scribbler logo-->
   <script>
-    $.noConflict();
+      $.noConflict();
       $(document).ready(function() {
           $('.demo').ripples({
               resolution: 302,
               dropRadius: 10,
-              perturbance: .01,
+              perturbance: .1,
               interactive: true
           });
       });

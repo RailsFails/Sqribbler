@@ -8,6 +8,15 @@
 
 <%= render partial: 'user/entry', locals: {user: @image.user} %>
 
+<br/>
+
+Albums:
+<ul>
+  <% @image.albums.order('title').each do |album| %>
+      <li><%= link_to album.title, album_show_page_path(username: album.user.username, title: album.title) %></li>
+  <% end %>
+</ul>
+
 <p>
   <strong>Description:</strong>
   <%= @image.description %>

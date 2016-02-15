@@ -29,7 +29,7 @@ class ImagesController < ApplicationController
   # POST /images.json
   def create
     @image = Image.new(image_params)
-
+    @image.add_album_titles(params[:album_titles])
 
     respond_to do |format|
       if @image.save
@@ -45,6 +45,7 @@ class ImagesController < ApplicationController
   # PATCH/PUT /images/1
   # PATCH/PUT /images/1.json
   def update
+    @image.add_album_titles(params[:album_titles])
     respond_to do |format|
       if @image.update(image_params)
         format.html { redirect_to @image, notice: 'Image was successfully updated.' }

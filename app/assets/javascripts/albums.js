@@ -41,7 +41,10 @@ jQuery(document).ready(function($) {
                 params.page = params.page || 1;
 
                 return {
-                    results: data.items
+                    results: $.map(data.items, function(item){
+                        item.id = item.title;
+                        return item;
+                    })
                     /*pagination: {
                         more: (params.page * 30) < data.total_count
                     }*/
