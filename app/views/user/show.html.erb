@@ -1,5 +1,4 @@
 
-
 <% if current_user.nil? %>
   <div class="main-landing-content">
     <h1><span class="newsBanner">Image-editing playground inside.</span></h1>
@@ -85,7 +84,9 @@
         <section class="col-lg-12">
           <h3>About Me</h3>
           <div>
-            <%= @user.about_me.html_safe %> <!---THIS NEEDED SO DO NOT REMOVE ANYMORE--->
+            <% unless @user.about_me.nil? %>
+              <%= @user.about_me.html_safe %> <!---THIS NEEDED SO DO NOT REMOVE ANYMORE--->
+            <% end %>
           </div>
           <div>
 
