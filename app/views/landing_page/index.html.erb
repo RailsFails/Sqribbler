@@ -129,16 +129,6 @@
             <!--THESE DIVS ARE FOR THE ACCORDIAN-->
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-
-              <!--BEGIN DROPPABLE TESTING/REMOVE WHEN FINISHED-->
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
-                  <h4 class="panel-title">
-                    <%= link_to 'Friends Pics' , album_index_page_path(current_user.id, :title) %>
-                  </h4>
-                </div>
-              </div>
-
               <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingTwo">
                   <h4 class="panel-title">
@@ -147,14 +137,6 @@
                 </div>
               </div>
 
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingThree">
-                  <h4 class="panel-title">
-                    <!-- <= link_to 'Creative Pics' , album_path(current_user.id) %>-->
-                    <%= link_to 'Creative Pics' , new_album_path(@album) %>
-                  </h4>
-                </div>
-              </div>
             </div>
           </div><!--END ALBUMS-->
 
