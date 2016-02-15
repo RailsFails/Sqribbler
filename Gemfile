@@ -41,7 +41,7 @@ gem 'kaminari'
 
 platforms :ruby do
   gem 'unicorn'
-  gem 'pg'
+  #gem 'pg'
 end
 
 group :development, :test do
