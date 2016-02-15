@@ -42,7 +42,7 @@
     border-left: 1px solid #cccccc;
     border-right: 1px solid #cccccc;
     border-bottom: 1px solid #eeeeee;
-    background: #e5e5e5;
+    background: #87c5e5;
     line-height: 1.3em;
     list-style: none;
 }
@@ -124,7 +124,8 @@
 
 .chatboxmessagecontent time {
     font-size: 9px;
-    color: #ccc;
+    color: black;
+    font-weight: bold;
 }
 
 .chatboxinput {
