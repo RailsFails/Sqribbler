@@ -21,5 +21,11 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  database: rails_project_production
+  encoding: unicode
+  host: localhost
+  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+  pool: 5
+  timeout: 5000
+  username: rails

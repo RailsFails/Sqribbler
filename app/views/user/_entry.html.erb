@@ -1,7 +1,8 @@
 <div class="user_listing media">
   <div class="media-left">
-    <%= link_to do %>
-      <%= image_tag "https://robohash.org/#{user.username}.jpg?size=64x64", class: 'media-object', alt: user.username + ' profile image' %>
+
+    <%= link_to user_profile_path(user.username) do %>
+      <%= image_tag user.avatar.url(:icon), alt: user.username + ' profile image', size: '64x64' %>
     <% end %>
   </div>
   <div class="media-body">

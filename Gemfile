@@ -14,6 +14,9 @@ gem 'coffee-script-source', '1.8.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Gems for chat
+gem 'private_pub'
+gem 'thin'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -27,15 +30,19 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'faker'
 gem 'tinymce-rails'
+gem 'paperclip', '~> 4.3'
+gem 'kaminari'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+platforms :ruby do
+  gem 'unicorn'
+  #gem 'pg'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
