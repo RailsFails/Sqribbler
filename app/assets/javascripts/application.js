@@ -18,9 +18,9 @@
 
 
 //= require chat
-//= require user
+
 //= require private_pub
-//= require turbolinks
+
 //= require_tree .
 
 //$(function(){ $(document).foundation(); });

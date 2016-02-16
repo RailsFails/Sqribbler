@@ -11,15 +11,6 @@ class MessagesController < ApplicationController
         end
 
         @path = conversation_path(@conversation)
-        end
-    end
-
-
-    def show
-        @conversation = Conversation.find(params[:id])
-        @reciever = interlocutor(@conversation)
-        @messages = @conversation.messages
-        @message = Message.new
     end
 
     private
