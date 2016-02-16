@@ -1,5 +1,7 @@
 <% content_for :head do %>
-    <%= tag 'meta', name: 'description', content: @image.description[0..155] %><!-- Open Graph data -->
+    <%= tag 'meta', name: 'description', content: @image.description[0..155] %>
+
+    <!-- Open Graph data -->
     <%= tag 'meta', property: 'og:title', content: @image.title %>
     <%= tag 'meta', property: 'og:author', content: @image.user.username %>
     <%= tag 'meta', property: 'og:type', content: 'article' %>
@@ -13,7 +15,7 @@
     <!-- Schema.org markup for Google+ -->
     <%= tag 'meta', itemprop: 'name', content: @image.title %>
     <%= tag 'meta', itemprop: 'description', content: @image.description %>
-    <%= tag 'meta', itemprop: 'image', content: URI.join(request.url, @image.attachment.url) %>
+    <%= tag 'meta', itemprop: 'image', content: URI.join(request.url, @image.attachment.url)  %>
 
     <!-- Twitter Card data -->
     <%= tag 'meta', name: 'twitter:card', content: 'summary_large_image' %>
@@ -43,7 +45,7 @@ Albums:
 <p>
   <strong>Description:</strong>
   <%= @image.description %>
-</p><br/>
+</p>
 
 <%= link_to 'Edit', edit_image_path(@image) %> |
 <%= link_to 'Back', images_path %>

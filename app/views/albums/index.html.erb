@@ -1,5 +1,5 @@
 <p class="btn btn-success" type="submit">
-  <%= link_to 'Create New Album', album_new_page_path(@album, username: current_user.username) %>
+  <%= link_to 'Create New Album', album_new_page_path(username: current_user.username) %>
 </p>
 
 <div class="row">
@@ -17,5 +17,4 @@
         <p><%= album.access %></p>
       </div>
   <% end %>
-r.username) %>
 </div>

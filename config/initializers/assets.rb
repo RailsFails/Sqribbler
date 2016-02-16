@@ -12,3 +12,4 @@ Rails.application.config.assets.precompile += %w( desktop_scribbler_logo.png def
 Rails.application.config.assets.precompile += %w( draggabilly.pkgd.min.js )
 Rails.application.config.assets.precompile += %w( dragdrop.js )
 
+
