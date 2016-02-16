@@ -13,15 +13,14 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-script-source', '1.8.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
-# Gems for chat
-gem 'private_pub'
-gem 'thin'
+group :assets do
+  gem 'coffee-rails'
+end
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# REMOVED TURBOLINKS-
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -39,9 +38,9 @@ gem 'kaminari'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-platforms :ruby do
+group :production do
   gem 'unicorn'
-  #gem 'pg'
+  gem 'pg'
 end
 
 group :development, :test do
