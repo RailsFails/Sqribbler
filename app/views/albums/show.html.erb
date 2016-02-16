@@ -1,13 +1,14 @@
 <div class="album_container">
   <p>
 
-    <%= link_to 'Edit Album', edit_album_path(@album), class:"btn btn-default" %>
+    <%= link_to 'Edit Album', edit_album_path(@album), class: "btn btn-default" %>
 
-    <%= link_to 'Delete Album', @album, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-warning" %>
+    <%= link_to 'Delete Album', @album, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-warning" %>
 
-    <%= link_to 'Back', album_index_page_path(username: current_user.username), class:"btn btn-default" %></p><br/>
+    <%= link_to 'Back', album_index_page_path(username: current_user.username), class: "btn btn-default" %></p><br/>
 
   <h1><%= @album.title %></h1>
+
   <div id="main_area">
     <!-- Slider -->
     <div class="row">
@@ -25,10 +26,10 @@
                     <a class="<%= 'active' if i==0 %> item" href="<%= image_path(image) %>" data-slide-number="<%= i %>">
                       <%= image_tag image.attachment.url, alt: image.title %>
                     </a>
-
                 <% end %>
 
-              </div><!-- Carousel nav -->
+              </div>
+              <!-- Carousel nav -->
               <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left"></span>
               </a>
@@ -50,7 +51,9 @@
             <% @album.images.each_with_index do |image, i| %>
                 <div id="slide-content-<%= i %>">
                   <h2><%= image.title %></h2>
+
                   <p>RATINGS</p>
+
                   <p class="sub-text">created <%= @user.created_at.strftime('%m/%d/%Y') %></p>
                 </div>
             <% end %>
@@ -58,14 +61,15 @@
           </div>
         </div>
       </div>
-    </div><!--/Slider-->
+    </div>
+    <!--/Slider-->
 
     <div class="row hidden-xs" id="slider-thumbs">
       <!-- Bottom switcher of slider -->
       <% @album.images.each_with_index do |image, i| %>
           <ul class="hide-bullets">
             <li class="col-sm-2">
-              <a id="carousel-selector-<%= i %>" ><img src="<%= image.attachment.url(:thumb) %>"></a>
+              <a id="carousel-selector-<%= i %>"><img src="<%= image.attachment.url(:thumb) %>"></a>
             </li>
           </ul>
       <% end %>

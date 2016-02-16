@@ -45,7 +45,8 @@ Albums:
 <p>
   <strong>Description:</strong>
   <%= @image.description %>
-</p>
+</p><br/>
 
 <%= link_to 'Edit', edit_image_path(@image) %> |
-<%= link_to 'Back', images_path %>
+<%= link_to 'View all Images You have', images_path %>
+<%= render partial: 'layouts/swipe_menu' %>
