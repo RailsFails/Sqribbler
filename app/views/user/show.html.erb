@@ -68,6 +68,7 @@
                   <p><%= link_to 'Follow', friendships_path(:friend_id => @user), method: :post, class: 'btn btn-primary' %></p>
                 <% end %>
               <% end %>
+              <%end%>
               <section class="col-lg-12">
                 <div class="col-lg-5">
                   <%= link_to 'Scribblers interested in: '+@user.username+' '+@user.inverse_friends.count.to_s, user_followers_path(@user.username) %>
@@ -90,7 +91,7 @@
         </section>
       </div>
 
-      <% if current_user && current_user.id != current_user.id %>
+      <% if current_user && current_user.id != @user.id %>
           <% content_for :friends_box do %>
               <div class="Friends">
                 <h3><%= link_to 'Scribblers in common', user_mutual_friends_path(current_user.username, @user.username) %></h3>
