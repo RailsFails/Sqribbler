@@ -1,6 +1,7 @@
 <h2>Scribblers that are following <%= @user.username %>:</h2>
+<%= link_to 'Back', :back %>
 <ul class="list-group">
   <% @user.inverse_friends.each do |user| %>
-    <li class="list-group-item"><%= render partial: 'user/entry', locals: {user: user} %></li>
+      <li class="list-group-item"><%= render partial: 'user/entry', locals: {user: user} %></li>
   <% end %>
 </ul>

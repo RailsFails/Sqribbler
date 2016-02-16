@@ -3,9 +3,11 @@ $toolbar_color: #E0E0E0;
 $accent_color_gray: #999;
 $link_color: #3456f1;
 
+
+
 .header nav ul li a {
-  display: inline-block;
   padding: .3em .2em .3em .2em;
+  color: #fff;
 }
 
 nav.nav-bar {
