@@ -8,8 +8,6 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w( desktop_scribbler_logo.png default_avatar.png )
-Rails.application.config.assets.precompile += %w( draggabilly.pkgd.min.js )
-Rails.application.config.assets.precompile += %w( dragdrop.js )
+# Rails.application.config.assets.precompile += %w( search.js )
 
-
+ Rails.application.config.assets.precompile += %w( desktop_scribbler_logo.png  default_avatar.png)

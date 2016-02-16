@@ -1,41 +1,29 @@
-<p class="btn btn-success" type="submit">
-  <%= link_to 'Create New Album', album_new_page_path(username: current_user.username) %>
-</p>
-
+<% if @user.username == current_user.username %>
+    <p class="btn btn-success" type="submit">
+      <%= link_to 'Create New Album', album_new_page_path(@album, username: current_user.username) %>
+    </p>
+<% end %>
 <div class="row">
 
   <div class="col-lg-12">
-    <h1 class="page-header"><%= current_user.username %>'s Albums</h1>
+    <h1 class="page-header"><%= @user.username %>'s Albums</h1>
   </div>
 
   <% @albums.each do |album| %>
       <div class="col-lg-3 col-md-4 col-xs-6 thumb">
         <h2><%= album.title %></h2>
-        <a class="thumbnail" href="<%= album_show_page_path(username: current_user.username, title: album.title) %>">
-          <!--<img class="img-responsive" src="http://placehold.it/400x300" alt="">-->
-          <div>
-          <% if album.images.count > 0 %>
-              <img class="img-responsive" src="<%= album.images.first.attachment.url %>" alt="">
-          <% else %>
-              <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+        <a class="thumbnail" href="<%= album_show_page_path(username: @user.username, title: album.title) %>">
+
+          <% album.images.each_with_index do |image, i| %>
+              <% if i == 0 %>
+                  <img class="img-responsive" src="<%= image.attachment.url %>" alt="">
+              <% end %>
+
+              <!--<img class="img-responsive" src="http://placehold.it/400x300" alt="">-->
+
           <% end %>
-          </div>
-
-          <!--<img src="/system/images/8/original.jpg">-->
-          <!--image.attachment.url(:thumb)-->
         </a>
-
-
       </div>
 
-
   <% end %>
-
 </div>
-
-<%= render partial: 'layouts/swipe_menu' %>
-
-
-
-
-
