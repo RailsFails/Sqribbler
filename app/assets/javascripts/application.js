@@ -11,15 +11,11 @@
 // about supported directives.
 //
 //= require blueimp-gallery.js
-//= require jquery
+//= require jquery-2.2.0.min
 //= require jquery_ujs
+//= require select2.min
 
 
-
-//= require chat
-//= require user
-//= require private_pub
-//= require turbolinks
 //= require_tree .
 
 //$(function(){ $(document).foundation(); });

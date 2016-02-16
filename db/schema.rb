@@ -11,17 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160214000858) do
+ActiveRecord::Schema.define(version: 20160215003843) do
 
-  create_table "conversations", force: :cascade do |t|
-    t.integer  "sender_id"
-    t.integer  "recipient_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+  create_table "album_entries", force: :cascade do |t|
+    t.integer  "image_id"
+    t.integer  "album_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id"
-  add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id"
+  add_index "album_entries", ["album_id"], name: "index_album_entries_on_album_id"
+  add_index "album_entries", ["image_id"], name: "index_album_entries_on_image_id"
+
+  create_table "albums", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.integer  "access"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "albums", ["title"], name: "index_albums_on_title"
+  add_index "albums", ["user_id"], name: "index_albums_on_user_id"
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
@@ -40,20 +51,33 @@ ActiveRecord::Schema.define(version: 20160214000858) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.integer  "image_width"
+    t.integer  "image_height"
   end
+
+  create_table "album_entries", force: :cascade do |t|
+    t.integer  "image_id"
+    t.integer  "album_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "album_entries", ["album_id"], name: "index_album_entries_on_album_id"
+  add_index "album_entries", ["image_id"], name: "index_album_entries_on_image_id"
+
+  create_table "albums", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.integer  "access"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "albums", ["title"], name: "index_albums_on_title"
+  add_index "albums", ["user_id"], name: "index_albums_on_user_id"
+
 
   add_index "images", ["user_id"], name: "index_images_on_user_id"
-
-  create_table "messages", force: :cascade do |t|
-    t.text     "body"
-    t.integer  "conversation_id"
-    t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id"
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
