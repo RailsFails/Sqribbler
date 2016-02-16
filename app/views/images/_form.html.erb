@@ -22,6 +22,16 @@
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
+
+    <div class="field">
+      <%= f.label :albums, 'Add to albums' %> <br/>
+      <select name="album_titles[]" class="album_search_ajax" data-username="<%= current_user.username %>" style="width: 20em;" data-placeholder="Search albums"  multiple="">
+        <% @image.albums.each do |img_album| %>
+            <option selected="selected"><%= img_album.title %></option>
+        <% end %>
+      </select>
+    </div>
+
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>

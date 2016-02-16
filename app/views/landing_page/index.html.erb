@@ -91,10 +91,12 @@
                 <div class="icon">
                   <div class="image"><span class="glyphicon glyphicon-envelope btn-lg white"></span></div>
                   <div class="info">
-                    <h3 class="title">Messages</h3>
+                    <h3 class="title"><%= link_to 'Message', message_friend_path(current_user.username) %></h3>
                     <p><span>7</span> new messages over the past 24 hours.</p>
                     <div class="more">
-                      <a href="#" title="Title Link"><i class="fa fa-plus"></i>Details</a>
+
+
+                      <!--<a href="../layouts/_user_message.html.erb" title="Title Link"><i class="fa fa-plus"></i>Details</a>-->
                     </div>
                   </div>
                 </div>
@@ -129,66 +131,14 @@
             <!--THESE DIVS ARE FOR THE ACCORDIAN-->
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-
-              <!--BEGIN DROPPABLE TESTING/REMOVE WHEN FINISHED-->
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
-                  <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Friends Pics
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                  <div class="panel-body droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
-
-
-                    <!--album for dropped images-->
-
-
-                  </div>
-                </div>
-              </div>
               <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingTwo">
                   <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      Family Pics
-                    </a>
+                    <%= link_to "Albums: #{current_user.albums.count}",album_index_page_path(username: current_user.username) %>
                   </h4>
                 </div>
-                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                  <div class="panel-body" ondrop="drop(event)" ondragover="allowDrop(event)">
-
-
-
-                    <!--album for dropped images-->
-
-
-
-                  </div>
-                </div>
               </div>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingThree">
-                  <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Creative Pics
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                  <div class="panel-body" ondrop="drop(event)" ondragover="allowDrop(event)">
 
-
-
-                    <!--album for dropped images-->
-
-
-
-                  </div>
-                </div>
-              </div>
             </div>
           </div><!--END ALBUMS-->
 

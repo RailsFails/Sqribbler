@@ -49,6 +49,7 @@ ul li {
     padding-left: .3em;
     padding-right: .3em;
     background-color: #333;
+    color: #aaa;
   }
 
   .login li a:hover {
@@ -85,6 +86,9 @@ ul li {
     width: 200px;
     height: 200px;
     background-size: contain;
+    & > img {
+      max-width: 100%;
+    }
   }
 
   .login {
@@ -97,14 +101,27 @@ ul li {
     padding-left: .3em;
     padding-right: .3em;
     background-color: #333;
+    color: #aaa;
+  }
+
+  .login li a {
+    color: #aaa;
+  }
+  .green a {
+    background-color: #070 !important;
+    color: #fff !important;
+  }
+  .green a:hover {
+    background-color: #fff !important;
+    color: #0a0 !important;
   }
 
   .login li a:hover {
     background-color: #f50;
   }
-.newsBanner {
-  clear: both;
-}
+  .newsBanner {
+    clear: both;
+  }
   /*THIS BLOCK IS FOR STYLE-TESTING, IF YOU HAVE CSS TO TEST, PLACE IN INSIDE. IF IT WORKS, MOVE IT OUT
   TO WHERE IT BELONGS, PLEASE LEAVE THE TESTER CLASS IN PLACE.*/
   .tester {
@@ -115,3 +132,7 @@ ul li {
 
 }
 
+//THIS IS THE THUMBNAIL CSS FOR THE ALBUM_PAGE
+.thumb {
+  margin-bottom: 30px;
+}

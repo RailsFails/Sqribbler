@@ -1,4 +1,5 @@
-<h2>Following</h2>
+<h2>Scribblers <%= @user.username %> is following:</h2>
+<%= link_to 'Back', :back %>
 <ul class="list-group">
   <% @user.friendships.each do |friendship| %>
       <li class="list-group-item"><%= render partial: 'user/entry', locals: {user: friendship.friend} %></li>

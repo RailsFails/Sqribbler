@@ -6,11 +6,12 @@ class User < ActiveRecord::Base
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
   has_many :images, :dependent => :destroy
+  has_many :albums, :dependent => :destroy
 
   has_attached_file :avatar,
                     styles: {
                         icon: "64x64>",
-                        thumb: "150x150>"
+                        thumb: "200x200"
                     },
                     :convert_options => {
                         :icon => "-quality 75 -strip",

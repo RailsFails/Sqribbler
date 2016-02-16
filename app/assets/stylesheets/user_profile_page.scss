@@ -1,13 +1,3 @@
-/***************************social link nav*****************************************************/
-
-
-
-
-/****************************************************************************************************/
-
-
-
-/*******************TRENTS GRAPHICAL DISPLAY QUICK PIC MENU***************************************/
 .white {
   color: white;
 }
@@ -88,7 +78,12 @@
   height: 30px;
 }
 /***************************profile settings nav*****************************************************/
-
+.profile_settings_menu li a {
+  padding: .3em;
+}
+.profile_settings_menu li a:hover {
+  background-color: transparent;
+}
 .profile_settings_menu:hover ~ .menu-close {
   margin-right:-100px;
 }
@@ -132,6 +127,13 @@
   -o-transform: rotate(0deg);
   transform: rotate(0deg);
 }
+
+.profile_settings_menu nav ul li a {
+  padding: .5em;
+}
+.profile_settings_menu nav ul li a:hover {
+  background-color: transparent;
+}
 .menu-icon {
   z-index: 999;
   position: absolute;
@@ -150,7 +152,7 @@
   -o-transition: all ease .5s;
   transition: all ease .5s;
 }
-.menu-icon .bar {
+.profile_settings_menu .menu-icon .bar {
   background: rgba(250,250,250,1);
   width: 100%;
   height: 5px;
@@ -164,7 +166,7 @@
 .profile_settings_menu:hover > .menu-icon {
   opacity: 0;
 }
-nav ul {
+.profile_settings_menu nav ul {
   position:absolute;
   width:100%;
   padding: 0;
@@ -178,12 +180,12 @@ nav ul {
 .profile_settings_menu:hover > nav ul {
   left: 0;
 }
-nav li {
+.profile_settings_menu nav li {
   list-style:none;
   text-align: center;
   text-transform: uppercase;
 }
-nav li a {
+.profile_settings_menu nav li a {
   font-size: 2em;
   color: rgba(255,255,255,.8);
   text-decoration: none;
@@ -195,18 +197,21 @@ nav li a {
   -o-transition: all ease .5s;
   transition: all ease .5s;
 }
-nav li a:hover {
+.profile_settings_menu nav li a:hover {
   color: #fff;
   text-decoration: none;
 }
 .profile_settings_menu nav li a:hover {
   color: #f50;
 }
+.profile_settings_menu nav ul {font-size:.75em;}
+.profile_settings_menu nav ul a {padding: 10px;}
 
 @media screen and (max-width: 600px), screen and (max-height: 600px) {
-  nav ul {font-size:.75em;}
+  nav ul {font-size:.75em;position: relative; left: -50px;}
   nav ul a {padding: 10px;}
 }
+
 .menu-close {
   z-index: 9999;
   position: fixed;

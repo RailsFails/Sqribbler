@@ -1,20 +1,46 @@
 Rails.application.routes.draw do
+  resources :albums
   resources :images
   get 'user/show'
+  # get 'album/index'
+  # get 'album/show'
 
   devise_for :users
   put 'user/:username' => 'user#user_profile_update', as: :user_profile_update
   get 'landing_page/index'
   get 'landing_page/hello'
+  #get 'messages/user_message'
   get 'page/user_profile_page'
   root 'landing_page#index'
   get 'user/:username' => 'user#show', as: :user_profile
   get 'user/:username/following' => 'user#following', as: :user_following
   get 'user/:username/followers' => 'user#followers', as: :user_followers
+  get 'user/:username/message_friend' => 'user#message_friend', as: :message_friend
+
   post 'user/:username/edit' => 'user#user_profile_edit', as: :user_edit
   get 'user/:username/mutual_friends/:friend_username' => 'user#mutual_friends', as: :user_mutual_friends
+  get '/user/:username/albums' => 'albums#index', as: :album_index_page
+  get '/user/:username/new_album' => 'albums#new', as: :album_new_page
+  get '/user/:username/albums/:title' => 'albums#show', as: :album_show_page
 
-  resources :friendships
+
+  resources :friendships do
+    resources :conversations
+      resources :messages
+  end
+
+   #authenticated :user do
+    # root 'landing_page#index'
+   #end
+  #
+  # unauthenticated :user do
+  #   devise_scope :user do
+  #     get "/" => "devise/sessions#new"
+  #   end
+  # end
+  resources :conversations do
+    resources :messages
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
