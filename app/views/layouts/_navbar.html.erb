@@ -8,7 +8,7 @@
         <% else %>
             <li><%= link_to 'Upload', new_image_path %></li>
             <li><%= link_to current_user.username, user_profile_path(current_user.username) %></li>
-            <li role="presentation"><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+            <li role="presentation"><%= link_to 'Sign out', destroy_user_session_path, method: :get %></li>
         <% end %>
       </ul>
 

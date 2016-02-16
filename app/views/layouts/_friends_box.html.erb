@@ -8,17 +8,17 @@
             <div class="panel-heading" role="tab" id="headingThree">
               <h4 class="panel-title">
                 <!-- <= link_to 'Creative Pics' , album_path(current_user.id) %>-->
-                <%= link_to 'Create New Album' , new_album_path(@album) %>
+                <%= link_to 'Create New Album' , album_new_page_path(username: current_user.username) %>
               </h4>
             </div>
           </div>
       <% else %>
           <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingTwo">
-                <h4 class="panel-title">
-                  <%= link_to "Albums: #{@user.albums.count}",album_index_page_path(username: @user.username) %>
-                </h4>
-              </div>
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <h4 class="panel-title">
+                <%= link_to "Albums: #{current_user.albums.count}",album_index_page_path(username: current_user.username) %>
+              </h4>
+            </div>
           </div>
       <% end %>
       </div>

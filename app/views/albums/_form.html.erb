@@ -18,7 +18,7 @@
   </div>
   <div class="field">
     <%= f.label :access %><br>
-    <%= f.number_field :access %>
+    <%= f.select :access, options_for_select(get_access_types, @album.access) %>
   </div>
   <div class="actions">
     <%= f.button class:"btn btn-success" %>

@@ -59,6 +59,9 @@ class UserController < ApplicationController
 
   def set_user
     @user = User.where(username: params[:username]).first
+    if @user.nil?
+      render :text => 'User not found', :status => '404'
+    end
   end
 
   def user_params
