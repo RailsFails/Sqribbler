@@ -13,6 +13,7 @@
 //= require blueimp-gallery.js
 //= require jquery
 //= require jquery_ujs
+//= require select2.min
 
 
 

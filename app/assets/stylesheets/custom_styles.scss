@@ -86,6 +86,9 @@ ul li {
     width: 200px;
     height: 200px;
     background-size: contain;
+    & > img {
+      max-width: 100%;
+    }
   }
 
   .login {
@@ -129,3 +132,7 @@ ul li {
 
 }
 
+//THIS IS THE THUMBNAIL CSS FOR THE ALBUM_PAGE
+.thumb {
+  margin-bottom: 30px;
+}

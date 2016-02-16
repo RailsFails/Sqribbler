@@ -1,0 +1,90 @@
+<div class="album_container">
+  <h1><%= @album.title %></h1>
+  <div id="main_area">
+    <!-- Slider -->
+    <div class="row">
+      <div class="col-xs-12" id="slider">
+        <!-- Top part of the slider -->
+        <div class="row">
+          <div class="col-sm-8" id="carousel-bounding-box">
+            <div class="carousel slide" id="myCarousel">
+              <!-- Carousel items -->
+              <div class="carousel-inner">
+                <!-- <div class="active item" data-slide-number="0">
+                  <img src="http://placehold.it/770x300&text=one"></div> -->
+
+                <% @album.images.each_with_index do |image, i| %>
+                    <a class="<%= 'active' if i==0 %> item" href="<%= image_path(image) %>" data-slide-number="<%= i %>">
+                      <%= image_tag image.attachment.url, alt: image.title %>
+                    </a>
+
+                <% end %>
+
+              </div><!-- Carousel nav -->
+              <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-sm-4" id="carousel-text"></div>
+
+          <div id="slide-content" style="display: none;">
+            <!-- <div id="slide-content-0">
+              <h2>IMAGE TITLE 1</h2>
+              <p>RATINGS</p>
+              <p class="sub-text">October 24 2014 - <a href="#">CHECK IT OUT!</a></p>
+            </div> -->
+
+            <% @album.images.each_with_index do |image, i| %>
+                <div id="slide-content-<%= i %>">
+                  <h2><%= image.title %></h2>
+                  <p>RATINGS</p>
+                  <p class="sub-text">created <%= @user.created_at.strftime('%m/%d/%Y') %></p>
+                </div>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div><!--/Slider-->
+
+    <div class="row hidden-xs" id="slider-thumbs">
+      <!-- Bottom switcher of slider -->
+      <% @album.images.each_with_index do |image, i| %>
+          <ul class="hide-bullets">
+            <li class="col-sm-2">
+              <a class="<%= 'active' if i == 0 %>" id="carousel-selector-<%= i %>" ><img src="<%= image.attachment.url(:thumb) %>"></a>
+            </li>
+          </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="pager">
+  <!--<ul>
+    <li><a href="#">«</a></li>
+    <li><a href="#">..</a></li>
+    <li class="active"><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">»</a></li>
+  </ul>-->
+</div>
+<p>
+
+  <%= link_to 'Edit Album', edit_album_path(@album), class:"btn btn-default" %>
+
+  <%= link_to 'Delete Album', @album, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-warning" %>
+
+  <%= link_to 'Back', album_index_page_path(username: current_user.username), class:"btn btn-default" %></p>
+<script type='text/javascript'>
+    var options = {
+        currentPage: 3,
+        totalPages: 10
+    };
+    $('.pager').bootstrapPaginator(options);
+</script>
