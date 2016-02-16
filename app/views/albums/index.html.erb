@@ -14,14 +14,15 @@
         <h2><%= album.title %></h2>
         <a class="thumbnail" href="<%= album_show_page_path(username: @user.username, title: album.title) %>">
 
-          <% album.images.each_with_index do |image, i| %>
-              <% if i == 0 %>
-                  <img class="img-responsive" src="<%= image.attachment.url %>" alt="">
-              <% end %>
-
-              <!--<img class="img-responsive" src="http://placehold.it/400x300" alt="">-->
-
+          <% if album.images.count > 0 %>
+              <img class="img-responsive" src="<%= album.images.first.attachment.url %>" alt="">
+          <% else %>
+              <img class="img-responsive" src="http://placehold.it/400x300" alt="">
           <% end %>
+
+          <!--<img class="img-responsive" src="http://placehold.it/400x300" alt="">-->
+
+
         </a>
       </div>
 
