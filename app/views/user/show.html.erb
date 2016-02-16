@@ -12,6 +12,7 @@
 
 <% else %>
   <!--WHOLE PROFILE PAGE -TO CHANGE THE LAYOUT, COLLAPSE AND DELETE THIS DIV AND RECODE-->
+    <button role="presentation"><%= link_to 'Go Back!', :back %></button>
   <div class="profile_page">
     <!--JUMBOTRON TRENDING CONTENT ACCORDIAN-->
     <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
@@ -55,17 +56,16 @@
             <div class="col-lg-4">
             </div>
             <div class="col-lg-3">
-
+              
               <%= link_to "Scribbles: #{@user.images.count}", images_path(params: {username: @user.username}) %>
             </div>
             <div class="col-lg-5">
               <% if current_user.id != @user.id %>
-                <% unless current_user.nil? %>
-                  <% if current_user.is_following?(@user) %>
-                    <p><%= link_to 'Unfollow', friendship_path(@user), method: :delete, class: 'btn btn-primary' %></p>
-                  <% else %>
-                    <p><%= link_to 'Follow', friendships_path(:friend_id => @user), method: :post, class: 'btn btn-primary' %></p>
-                  <% end %>
+              <% unless current_user.nil? %>
+                <% if current_user.is_following?(@user) %>
+                  <p><%= link_to 'Unfollow', friendship_path(@user), method: :delete, class: 'btn btn-primary' %></p>
+                <% else %>
+                  <p><%= link_to 'Follow', friendships_path(:friend_id => @user), method: :post, class: 'btn btn-primary' %></p>
                 <% end %>
               <% end %>
               <section class="col-lg-12">
@@ -74,6 +74,10 @@
                 </div>
                 <div class="col-lg-5">
                   <%= link_to 'Scribblers '+@user.username+' is interested in: '+@user.friends.count.to_s, user_following_path(@user.username) %>
+                </div>
+
+                <div>
+
                 </div>
               </section>
             </div>
@@ -91,17 +95,17 @@
       </div>
 
       <% if current_user && current_user.id == current_user.id %>
-        <% content_for :friends_box do %>
-          <div class="Friends">
-            <h3><%= link_to 'Scribblers in common', user_mutual_friends_path(current_user.username, @user.username) %></h3>
-            <ul class="list-group">
-              <% current_user.mutual_friends(@user).each do |user| %>
-                <li class="list-group-item"><%= render partial: 'user/entry', locals: {user: user} %></li>
-              <% end %>
-            </ul>
+          <% content_for :friends_box do %>
+              <div class="Friends">
+                <h3><%= link_to 'Scribblers in common', user_mutual_friends_path(current_user.username, @user.username) %></h3>
+                <ul class="list-group">
+                  <% current_user.mutual_friends(@user).each do |user| %>
+                      <li class="list-group-item"><%= render partial: 'user/entry', locals: {user: user} %></li>
+                  <% end %>
+                </ul>
 
-          </div>
-        <% end %>
+              </div>
+          <% end %>
       <% end %>
 
 

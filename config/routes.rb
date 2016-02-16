@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   put 'user/:username' => 'user#user_profile_update', as: :user_profile_update
   get 'landing_page/index'
   get 'landing_page/hello'
-  # get 'messages/user_message'
+  #get 'messages/user_message'
   get 'page/user_profile_page'
   root 'landing_page#index'
   get 'user/:username' => 'user#show', as: :user_profile
