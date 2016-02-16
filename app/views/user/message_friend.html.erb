@@ -4,9 +4,9 @@
       <h1>Friends</h1>
       <ul class="list-group">
         <% current_user.friends().each do |friendship| %>
-          <li class="list-group-item"><%= render partial: 'user/entry', locals: {user: friendship} %><%= link_to 'Send Message', '#', class: 'btn btn-success btn-xs start-conversation',
-                                                                                                                 'data-sid' => current_user.id, 'data-rip' => friendship.id %></li>
-
+            <li class="list-group-item">
+              <%= render partial: 'user/entry', locals: {user: friendship} %>
+              <%= link_to 'Send Message', '#', class: 'btn btn-success btn-xs start-conversation', 'data-sid' => current_user.id, 'data-rip' => friendship.id %></li>
         <% end %>
       </ul>
     </div>

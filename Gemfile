@@ -38,7 +38,7 @@ gem 'kaminari'
 
 group :production do
   gem 'unicorn'
-  gem 'pg'
+
 end
 
 group :development, :test do

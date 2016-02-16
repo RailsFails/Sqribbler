@@ -55,6 +55,28 @@ ActiveRecord::Schema.define(version: 20160215003843) do
     t.integer  "image_height"
   end
 
+  create_table "album_entries", force: :cascade do |t|
+    t.integer  "image_id"
+    t.integer  "album_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "album_entries", ["album_id"], name: "index_album_entries_on_album_id"
+  add_index "album_entries", ["image_id"], name: "index_album_entries_on_image_id"
+
+  create_table "albums", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.integer  "access"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "albums", ["title"], name: "index_albums_on_title"
+  add_index "albums", ["user_id"], name: "index_albums_on_user_id"
+
+
   add_index "images", ["user_id"], name: "index_images_on_user_id"
 
   create_table "users", force: :cascade do |t|
