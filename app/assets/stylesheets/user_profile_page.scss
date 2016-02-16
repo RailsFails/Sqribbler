@@ -1,13 +1,3 @@
-/***************************social link nav*****************************************************/
-
-
-
-
-/****************************************************************************************************/
-
-
-
-/*******************TRENTS GRAPHICAL DISPLAY QUICK PIC MENU***************************************/
 .white {
   color: white;
 }
@@ -88,7 +78,12 @@
   height: 30px;
 }
 /***************************profile settings nav*****************************************************/
-
+.profile_settings_menu li a {
+  padding: .3em;
+}
+.profile_settings_menu li a:hover {
+  background-color: transparent;
+}
 .profile_settings_menu:hover ~ .menu-close {
   margin-right:-100px;
 }
@@ -131,6 +126,13 @@
   -ms-transform: rotate(0deg);
   -o-transform: rotate(0deg);
   transform: rotate(0deg);
+}
+
+.profile_settings_menu nav ul li a {
+  padding: .5em;
+}
+.profile_settings_menu nav ul li a:hover {
+  background-color: transparent;
 }
 .menu-icon {
   z-index: 999;
@@ -205,9 +207,9 @@
 .profile_settings_menu nav ul {font-size:.75em;}
 .profile_settings_menu nav ul a {padding: 10px;}
 
-@media screen and (max-width: 639px), screen and (max-height: 600px) {
- nav ul {font-size: 2em;}
-  nav ul a {padding: .75em;}
+@media screen and (max-width: 600px), screen and (max-height: 600px) {
+  nav ul {font-size:.75em;position: relative; left: -50px;}
+  nav ul a {padding: 10px;}
 }
 
 .menu-close {

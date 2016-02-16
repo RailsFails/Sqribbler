@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-  before_action :set_user, only: [:show, :following, :followers, :mutual_friends]
+  before_action :set_user, only: [:show, :following, :followers, :mutual_friends, :message]
 
    def user_profile_update
      current_user.update(user_params)
@@ -25,6 +25,11 @@ class UserController < ApplicationController
   end
 
   def followers
+  end
+
+  def message_friend
+    @user = User.where.not('id = ?',current_user.id).order('created_at DESC')
+    @conversations = Conversation.involving(current_user).order('created_at DESC')
   end
 
   def mutual_friends
