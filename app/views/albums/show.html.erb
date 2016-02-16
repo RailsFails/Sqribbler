@@ -1,4 +1,12 @@
 <div class="album_container">
+  <p>
+
+    <%= link_to 'Edit Album', edit_album_path(@album), class:"btn btn-default" %>
+
+    <%= link_to 'Delete Album', @album, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-warning" %>
+
+    <%= link_to 'Back', album_index_page_path(username: current_user.username), class:"btn btn-default" %></p><br/>
+
   <h1><%= @album.title %></h1>
   <div id="main_area">
     <!-- Slider -->
@@ -57,7 +65,7 @@
       <% @album.images.each_with_index do |image, i| %>
           <ul class="hide-bullets">
             <li class="col-sm-2">
-              <a class="<%= 'active' if i == 0 %>" id="carousel-selector-<%= i %>" ><img src="<%= image.attachment.url(:thumb) %>"></a>
+              <a id="carousel-selector-<%= i %>" ><img src="<%= image.attachment.url(:thumb) %>"></a>
             </li>
           </ul>
       <% end %>
@@ -74,13 +82,7 @@
     <li><a href="#">»</a></li>
   </ul>-->
 </div>
-<p>
 
-  <%= link_to 'Edit Album', edit_album_path(@album), class:"btn btn-default" %>
-
-  <%= link_to 'Delete Album', @album, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-warning" %>
-
-  <%= link_to 'Back', album_index_page_path(username: current_user.username), class:"btn btn-default" %></p>
 <script type='text/javascript'>
     var options = {
         currentPage: 3,

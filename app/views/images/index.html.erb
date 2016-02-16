@@ -1,16 +1,19 @@
-
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Images</h1>
 
+
 <div class="image_grid">
-  <% @images.each do |image| %>
-    <%= render partial: 'images/grid_cell', locals: {image: image} %>
-  <% end %>
+  <div class="grid__item">
+    <% @images.each do |image| %>
+        <%= render partial: 'images/grid_cell', locals: {image: image} %>
+    <% end %>
+  </div>
 </div>
 
-<%= paginate @images %>
 
 <br>
 
+
+<%= paginate @images %>
 <%= link_to 'New Image', new_image_path %>
