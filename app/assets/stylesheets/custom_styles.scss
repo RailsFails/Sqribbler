@@ -49,6 +49,7 @@ ul li {
     padding-left: .3em;
     padding-right: .3em;
     background-color: #333;
+    color: #aaa;
   }
 
   .login li a:hover {
@@ -100,6 +101,19 @@ ul li {
     padding-left: .3em;
     padding-right: .3em;
     background-color: #333;
+    color: #aaa;
+  }
+
+  .login li a {
+    color: #aaa;
+  }
+  .green a {
+    background-color: #070 !important;
+    color: #fff !important;
+  }
+  .green a:hover {
+    background-color: #fff !important;
+    color: #0a0 !important;
   }
 
   .login li a:hover {
