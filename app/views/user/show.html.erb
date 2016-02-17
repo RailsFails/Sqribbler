@@ -63,9 +63,9 @@
               <% if current_user.id != @user.id %>
               <% unless current_user.nil? %>
                 <% if current_user.is_following?(@user) %>
-                  <p><%= link_to 'Unfollow', friendship_path(@user), method: :delete, class: 'btn btn-primary' %></p>
+                  <p><%= button_to 'Unfollow', friendship_path(@user), method: :delete, class: 'btn btn-primary' %></p>
                 <% else %>
-                  <p><%= link_to 'Follow', friendships_path(:friend_id => @user), method: :post, class: 'btn btn-primary' %></p>
+                  <p><%= button_to 'Follow', friendships_path(:friend_id => @user), method: :post, class: 'btn btn-primary' %></p>
                 <% end %>
               <% end %>
               <%end%>
