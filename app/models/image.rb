@@ -16,6 +16,7 @@ class Image < ActiveRecord::Base
   has_many :album_entries
   has_many :albums, through: :album_entries
   has_many :comments, :dependent => :destroy
+  has_many :votes, as: :item
 
   validates_attachment :attachment, presence: true,
                        size: {less_than: 5.megabytes}
