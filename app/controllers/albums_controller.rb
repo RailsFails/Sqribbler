@@ -6,7 +6,7 @@ class AlbumsController < ApplicationController
   # GET /albums.json
   def index
     # @albums = Album.all
-    @albums = @user.albums
+    @albums = @user.accessible_albums(current_user)
     unless params[:query].blank?
       @albums = @albums.where("title like ?", "%#{params[:query]}%")
     end

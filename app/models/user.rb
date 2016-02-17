@@ -56,4 +56,12 @@ class User < ActiveRecord::Base
   def mutual_friends(other_user)
     self.friends & other_user.friends
   end
+  def accessible_albums(myself)
+    if myself.id != self.id
+      self.albums.where("access=0 or access is NULL" )
+    else
+      self.albums
+    end
+  end
+
 end
