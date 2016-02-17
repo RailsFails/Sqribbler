@@ -71,7 +71,7 @@ class AlbumsController < ApplicationController
   def destroy
     @album.destroy
     respond_to do |format|
-      format.html { redirect_to album_index_page_path(username: @album.user.username ), notice: 'Album was successfully destroyed.' }
+      format.html { redirect_to album_index_page_path(username: current_user.username ), notice: 'Album was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

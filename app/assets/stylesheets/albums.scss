@@ -151,3 +151,9 @@ div .carousel-inner img{
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.album_name_short {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
