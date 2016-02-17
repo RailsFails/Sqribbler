@@ -47,5 +47,30 @@ Albums:
   <%= @image.description %>
 </p>
 
+<% unless current_user.nil? %>
+  <%= render 'comments/form' %>
+<% end %>
+<ul>
+  <% @image.comments.each do |comment| %>
+      <li>
+        <div class="media list-group-item">
+          <div class="media-left">
+            <%= link_to user_profile_path(comment.user.username) do %>
+              <%= image_tag comment.user.avatar.url(:icon), class: 'media-object', size: '64x64' %>
+            <% end %>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"><%= link_to comment.user.username, user_profile_path(comment.user.username) %></h4>
+            <p><%= comment.body %></p>
+            <div class="comment_controls">
+              <%= button_to 'Delete', image_comment_path(id: comment.id, image_id: @image.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link' %>
+              <%= link_to 'Edit', edit_image_comment_path(id: comment.id, image_id: @image.id), class: 'btn btn-link' %>
+            </div>
+          </div>
+        </div>
+      </li>
+  <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_image_path(@image) %> |
 <%= link_to 'Back', images_path %>

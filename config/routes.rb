@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :albums
-  resources :images
+  resources :images do
+    resources :comments
+  end
   get 'user/show'
   # get 'album/index'
   # get 'album/show'
