@@ -44,7 +44,7 @@ gem 'kaminari'
 
 group :production do
   gem 'unicorn'
-  #gem 'pg'
+  #gem 'pg' <!---Re implement-->
 end
 
 group :development, :test do

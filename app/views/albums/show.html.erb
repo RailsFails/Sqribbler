@@ -1,5 +1,5 @@
 <div class="album_container">
-  <h1><%= @album.title %></h1>
+  <h1><%= @user.username %>'s <%= @album.title %></h1>
   <div id="main_area">
     <!-- Slider -->
     <div class="row">
@@ -60,7 +60,7 @@
               <a class="<%= 'active' if i == 0 %>" id="carousel-selector-<%= i %>" ><img src="<%= image.attachment.url(:thumb) %>"></a>
             </li>
           </ul>
-      <% end %>
+    <% end %>
     </div>
   </div>
 </div>
@@ -76,15 +76,21 @@
 </div>
 <p>
 
+  <% if @user.username == current_user.username %>
+
   <%= link_to 'Edit Album', edit_album_path(@album), class:"btn btn-default" %>
 
-  <%= link_to 'Delete Album', @album, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-warning" %>
+  <%= button_to 'Delete Album', @album, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-warning" %>
 
-  <%= link_to 'Back', album_index_page_path(username: current_user.username), class:"btn btn-default" %></p>
+  <% end %>
+
+  <%= link_to 'Back', album_index_page_path(username: @user.username), class:"btn btn-default" %></p>
 <script type='text/javascript'>
-    var options = {
-        currentPage: 3,
-        totalPages: 10
-    };
-    $('.pager').bootstrapPaginator(options);
+  var options = {
+    currentPage: 3,
+    totalPages: 10
+  };
+
+  $('.pager').bootstrapPaginator(options);
 </script>
+

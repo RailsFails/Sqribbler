@@ -1,6 +1,6 @@
 <h1>Editing Album</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @album %> |
-<%= link_to 'Back', album_index_page_path(@album) %>
+<%= render partial: 'layouts/swipe_menu' %>
+<%= link_to 'Show', album_show_page_path(username: @album.user.username, title: @album.title) %> |
+<%= link_to 'Back', album_index_page_path(username: @album.user.username) %>
