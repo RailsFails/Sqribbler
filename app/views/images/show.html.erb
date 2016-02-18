@@ -35,6 +35,10 @@
   <%= render partial: 'user/vote', locals: {item: @image} %>
 <% end %>
 
+<% if !current_user.nil? && current_user.id == @image.user_id %>
+  <%= link_to 'Edit', edit_image_path(@image) %>
+<% end %>
+
 <br/>
 
 <%= render partial: 'user/entry', locals: {user: @image.user} %>
@@ -48,10 +52,12 @@ Albums:
   <% end %>
 </ul>
 
+<% unless @image.description.nil? %>
 <p>
-  <strong>Description:</strong>
-  <%= @image.description %>
+  <strong>Description:</strong> <br/>
+  <%= @image.description.html_safe %>
 </p>
+<% end %>
 
 <% unless current_user.nil? %>
   <%= render 'comments/form' %>
@@ -83,5 +89,4 @@ Albums:
   <% end %>
 </ul>
 
-<%= link_to 'Edit', edit_image_path(@image) %> |
-<%= link_to 'Back', images_path %>
+<%#= link_to 'Back', images_path %>

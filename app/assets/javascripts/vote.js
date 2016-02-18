@@ -1,6 +1,5 @@
 $(document).on("page:change", function(){
     $('body').on('click', '.vote_buttons img', function(e){
-        var click_handler = this;
         var vote_container = $(e.target).parent();
         var item_id = vote_container.data("item-id");
         var item_type = vote_container.data("item-type");

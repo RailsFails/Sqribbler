@@ -3,20 +3,10 @@ require 'test_helper'
 class CommentsControllerTest < ActionController::TestCase
   setup do
     @comment = comments(:one)
+    @my_comment = comments(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:comments)
-  end
-
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  test "should create comment" do
+    test "should create comment" do
     assert_difference('Comment.count') do
       post :create, comment: { body: @comment.body, image_id: @comment.image_id, user_id: @comment.user_id }
     end
@@ -25,12 +15,8 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   test "should show comment" do
-    get :show, id: @comment
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @comment
+    #get :show, id: @comment, image_id: @comment.image_id
+    get :show, {image_id: @comment.id, id: @comment.id}
     assert_response :success
   end
 

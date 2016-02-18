@@ -37,6 +37,10 @@ class Image < ActiveRecord::Base
   def get_album_titles
     self.albums.pluck(:title)
   end
+  
+  def toggle_album(album_name)
+    
+  end
 
   private
   def extract_dimensions
