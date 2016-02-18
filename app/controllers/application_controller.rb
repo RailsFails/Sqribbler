@@ -13,12 +13,13 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password, :first_name, :last_name, :email, :phone_number, :location, :about_me, :avatar) }
   end
   def authenticate_user
-
-
     if current_user.id != :user
-      redirect_to root_url
+      respond_to do |format|
+        format.html { redirect_to root_url }
+        format.json { head :no_content }
+      end
     else
-      return
+      return true
     end
   end
 end

@@ -31,6 +31,10 @@ Rails.application.routes.draw do
       resources :messages
   end
 
+  scope :api do
+    post 'vote' => 'user#vote'
+  end
+
    #authenticated :user do
     # root 'landing_page#index'
    #end
