@@ -91,10 +91,12 @@
                 <div class="icon">
                   <div class="image"><span class="glyphicon glyphicon-envelope btn-lg white"></span></div>
                   <div class="info">
-                    <h3 class="title">Messages</h3>
+                    <h3 class="title"><%= link_to 'Message', message_friend_path(current_user.username) %></h3>
                     <p><span>7</span> new messages over the past 24 hours.</p>
                     <div class="more">
-                      <a href="#" title="Title Link"><i class="fa fa-plus"></i>Details</a>
+
+
+                      <!--<a href="../layouts/_user_message.html.erb" title="Title Link"><i class="fa fa-plus"></i>Details</a>-->
                     </div>
                   </div>
                 </div>

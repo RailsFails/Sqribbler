@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 20160215003843) do
   add_index "albums", ["title"], name: "index_albums_on_title"
   add_index "albums", ["user_id"], name: "index_albums_on_user_id"
 
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id"
+  add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id"
+
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
@@ -57,6 +67,17 @@ ActiveRecord::Schema.define(version: 20160215003843) do
 
   add_index "images", ["user_id"], name: "index_images_on_user_id"
 
+  create_table "messages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "conversation_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id"
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -76,6 +97,8 @@ ActiveRecord::Schema.define(version: 20160215003843) do
     t.string   "phone_number"
     t.string   "location"
     t.text     "about_me"
+    t.text     "provile_avatar"
+    t.text     "profile_avatar"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
