@@ -4,10 +4,10 @@
 class Generate
   def initialize
     @fake_user_count = 50
-    #make_fake_users
-    #make_friendships
-    #make_random_images
-    #make_random_image_comments
+    make_fake_users
+    make_friendships
+    make_random_images
+    make_random_image_comments
     make_votes
   end
   

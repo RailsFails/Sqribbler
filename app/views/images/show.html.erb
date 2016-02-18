@@ -31,7 +31,9 @@
   <%= image_tag @image.attachment.url(:original), id: 'main_image' %>
 </div>
 
-<%= render partial: 'user/vote', locals: {item: @image} %>
+<% if current_user %>
+  <%= render partial: 'user/vote', locals: {item: @image} %>
+<% end %>
 
 <br/>
 
@@ -67,9 +69,13 @@ Albums:
             <h4 class="media-heading"><%= link_to comment.user.username, user_profile_path(comment.user.username) %></h4>
             <p><%= comment.body %></p>
             <div class="comment_controls">
-              <%= button_to 'Delete', image_comment_path(id: comment.id, image_id: @image.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link' %>
-              <%= link_to 'Edit', edit_image_comment_path(id: comment.id, image_id: @image.id), class: 'btn btn-link' %>
-              <%= render partial: 'user/vote', locals: {item: comment} %>
+              <% if !current_user.nil? && current_user.id == comment.user_id %>
+                <%= button_to 'Delete', image_comment_path(id: comment.id, image_id: @image.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link' %>
+                <%= link_to 'Edit', edit_image_comment_path(id: comment.id, image_id: @image.id), class: 'btn btn-link' %>
+              <% end %>
+              <% if current_user %>
+                <%= render partial: 'user/vote', locals: {item: comment} %>
+              <% end %>
             </div>
           </div>
         </div>
