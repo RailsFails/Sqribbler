@@ -80,7 +80,7 @@
 
   <%= link_to 'Edit Album', edit_album_path(@album), class:"btn btn-default" %>
 
-  <%= link_to 'Delete Album', @album, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-warning" %>
+  <%= button_to 'Delete Album', @album, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-warning" %>
 
   <% end %>
 
@@ -94,3 +94,4 @@
   $('.pager').bootstrapPaginator(options);
 </script>
 
+<%= render partial: 'layouts/swipe_menu' %>
