@@ -81,6 +81,18 @@ class UserController < ApplicationController
     end
   end
 
+  def search
+    sql_query = <<-SQL
+      username LIKE :query OR
+      first_name LIKE :query OR
+      last_name LIKE :query
+    SQL
+    @results = User.where(sql_query, {query: "%#{params[:query]}%"}).page(params[:page]).per(25)
+    respond_to do |format|
+      format.json
+    end
+  end
+
 private
 
 def set_user

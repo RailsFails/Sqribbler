@@ -4,11 +4,11 @@
 class Generate
   def initialize
     @fake_user_count = 50
-    make_fake_users
+    #make_fake_users
     make_friendships
-    make_random_images
-    make_random_image_comments
-    make_votes
+    #make_random_images
+    #make_random_image_comments
+    #make_votes
   end
   
   def make_fake_users
@@ -25,7 +25,7 @@ class Generate
      # user.profile_avatar = Faker::Avatar.image("my-own-slug")
       user.password = 'testtest'
       user.password_confirmation = 'testtest'
-      user.avatar = URI.parse("https://robohash.org/#{user.username}.png")
+      #user.avatar = URI.parse("https://robohash.org/#{user.username}.png")
       puts user.save
     end
     puts "done making fake users"

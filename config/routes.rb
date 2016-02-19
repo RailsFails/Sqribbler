@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
   scope :api do
     post 'vote' => 'user#vote'
+    get 'search' => 'user#search'
   end
 
    #authenticated :user do
