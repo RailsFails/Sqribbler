@@ -8,6 +8,12 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-# Rails.application.config.assets.precompile += %w( search.js )
+Rails.application.config.assets.precompile += %w(
+  desktop_scribbler_logo.png
+  default_avatar.png
+  thumbs-up.svg
+  thumbs-down.svg
+  thumbs-up-outline.svg
+  thumbs-down-outline.svg
+)
 
- Rails.application.config.assets.precompile += %w( desktop_scribbler_logo.png  default_avatar.png)

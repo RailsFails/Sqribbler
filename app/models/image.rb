@@ -15,6 +15,8 @@ class Image < ActiveRecord::Base
 
   has_many :album_entries
   has_many :albums, through: :album_entries
+  has_many :comments, :dependent => :destroy
+  has_many :votes, as: :item
 
   validates_attachment :attachment, presence: true,
                        size: {less_than: 5.megabytes}
@@ -34,6 +36,10 @@ class Image < ActiveRecord::Base
 
   def get_album_titles
     self.albums.pluck(:title)
+  end
+  
+  def toggle_album(album_name)
+    
   end
 
   private

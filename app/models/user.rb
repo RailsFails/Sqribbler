@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :images, :dependent => :destroy
   has_many :albums, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
+  has_many :votes, :dependent => :destroy
 
   has_attached_file :avatar,
                     styles: {
@@ -46,7 +48,7 @@ class User < ActiveRecord::Base
 
   def self.find_for_authentication(conditions)
     login = conditions.delete(:login)
-    where(conditions).where(["username = :value OR email = :value", {:value => login}]).first
+    where(conditions).where(['username = :value OR email = :value', {:value => login}]).first
   end
 
   def is_following?(friend)
@@ -55,5 +57,10 @@ class User < ActiveRecord::Base
 
   def mutual_friends(other_user)
     self.friends & other_user.friends
+  end
+
+  def vote_status(item)
+    v = self.votes.where(item_id: item.id, item_type: item.class.to_s).first
+    v.value unless v.nil?
   end
 end
