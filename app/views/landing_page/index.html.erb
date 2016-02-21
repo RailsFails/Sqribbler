@@ -36,20 +36,17 @@
               <%= render partial: 'user/search' %>
             </div>
 
-
-
-
             <!--THESE ARE THE TWO CAROUSEL TABS-->
             <ul class="tab_gallery nav nav-tabs">
               <li class="active col-xs-12 col-lg-6"><a data-toggle="tab" href="#tabs-1">TOP TRENDING SCRIBBLES </a></li>
               <li class="col-xs-12 col-lg-6"><a data-toggle="tab" href="#tabs-2">CHECK FRIENDS SCRIBBLES!!!</a></li>
             </ul>
 
-
             <!--THIS IS THE GLOBAL IMAGE CAROUSEL-->
             <div class="tab-content">
               <div id="tabs-1" class="tab-pane fade in active">
                 <div id="main_feed">
+
                   <h2>Top Scribbles</h2>
                   <!--A Bootstrap Carousel to fill the space for now--> <!-- DELETE IF NOT WANTED-->
                   <%= render partial: 'layouts/bootstrap_carousel' %>

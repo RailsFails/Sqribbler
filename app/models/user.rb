@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
                     },
                     :path => "public/system/:class/:id/:style.:extension",
                     :url => "/system/:class/:id/:style.:extension",
-                    :default_url => "default_avatar.png",
+                    :default_url => "/assets/default_avatar.png",
                     :use_timestamp => false
   validates_attachment :avatar,
                        content_type: {content_type: ["image/jpeg", "image/png", "image/gif"]},
