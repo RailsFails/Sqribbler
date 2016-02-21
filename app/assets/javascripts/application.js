@@ -15,7 +15,8 @@
 //= require jquery_ujs
 //= require select2.min
 
-
+//= require chat
+//= require private_pub
+//= require angular.min
 //= require_tree .
 
-//$(function(){ $(document).foundation(); });

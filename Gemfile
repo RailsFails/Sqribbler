@@ -29,6 +29,8 @@ gem 'faker'
 gem 'tinymce-rails'
 gem 'paperclip', '~> 4.3'
 gem 'kaminari'
+gem 'private_pub'
+gem 'thin'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -52,4 +54,4 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :jruby]
