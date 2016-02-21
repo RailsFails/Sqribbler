@@ -9,15 +9,9 @@
     <h1 class="page-header"><%= @user.username %>'s Albums</h1>
   </div>
 
-
-
   <% @albums.each do |album| %>
       <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-        <h2 class="album_name_short">
-          <%= image_tag 'photo_album_icon.svg' %>
-          <%= album.title %>
-          <span class="badge"><%= album.images.count %></span>
-        </h2>
+        <h2><%= album.title %></h2>
         <a class="thumbnail" href="<%= album_show_page_path(username: @user.username, title: album.title) %>">
 
           <% if album.images.count > 0 %>
@@ -26,8 +20,12 @@
               <img class="img-responsive" src="http://placehold.it/400x300" alt="">
           <% end %>
 
+          <!--<img class="img-responsive" src="http://placehold.it/400x300" alt="">-->
+
+
         </a>
       </div>
 
   <% end %>
 </div>
+<%= render partial: 'layouts/swipe_menu' %>

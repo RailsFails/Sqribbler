@@ -56,7 +56,7 @@
             <div class="col-lg-4">
             </div>
             <div class="col-lg-3">
-
+              
               <%= link_to "Scribbles: #{@user.images.count}", images_path(params: {username: @user.username}) %>
             </div>
             <div class="col-lg-5">
@@ -84,7 +84,7 @@
           <h3>About Me</h3>
           <div>
             <% unless @user.about_me.nil? %>
-                <%= @user.about_me.html_safe %> <!---THIS NEEDED SO DO NOT REMOVE ANYMORE--->
+              <%= @user.about_me.html_safe %> <!---THIS NEEDED SO DO NOT REMOVE ANYMORE--->
             <% end %>
           </div>
           <div>

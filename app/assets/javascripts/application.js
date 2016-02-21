@@ -16,9 +16,7 @@
 //= require select2.min
 
 //= require chat
-//= require user
 //= require private_pub
-//= require turbolinks
+//= require angular.min
 //= require_tree .
 
-//$(function(){ $(document).foundation(); });

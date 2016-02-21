@@ -31,6 +31,16 @@
   <%= image_tag @image.attachment.url(:original), id: 'main_image' %>
 </div>
 
+<% if current_user %>
+  <%= render partial: 'user/vote', locals: {item: @image} %>
+<% end %>
+
+<% if !current_user.nil? && current_user.id == @image.user_id %>
+  <%= link_to 'Edit', edit_image_path(@image) %>
+<% end %>
+
+<br/>
+
 <%= render partial: 'user/entry', locals: {user: @image.user} %>
 
 <br/>
@@ -42,11 +52,42 @@ Albums:
   <% end %>
 </ul>
 
+<% unless @image.description.nil? %>
 <p>
-  <strong>Description:</strong>
-  <%= @image.description %>
-</p><br/>
+  <strong>Description:</strong> <br/>
+  <%= @image.description.html_safe %>
+</p>
+<% end %>
 
-<%= link_to 'Edit', edit_image_path(@image) %> |
-<%= link_to 'View all Images You have', images_path %>
+<% unless current_user.nil? %>
+  <%= render 'comments/form' %>
+<% end %>
+<ul>
+  <% @image.comments.each do |comment| %>
+      <li>
+        <div class="media list-group-item">
+          <div class="media-left">
+            <%= link_to user_profile_path(comment.user.username) do %>
+              <%= image_tag comment.user.avatar.url(:icon), class: 'media-object', size: '64x64' %>
+            <% end %>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"><%= link_to comment.user.username, user_profile_path(comment.user.username) %></h4>
+            <p><%= comment.body %></p>
+            <div class="comment_controls">
+              <% if !current_user.nil? && current_user.id == comment.user_id %>
+                <%= button_to 'Delete', image_comment_path(id: comment.id, image_id: @image.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link' %>
+                <%= link_to 'Edit', edit_image_comment_path(id: comment.id, image_id: @image.id), class: 'btn btn-link' %>
+              <% end %>
+              <% if current_user %>
+                <%= render partial: 'user/vote', locals: {item: comment} %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </li>
+  <% end %>
+</ul>
+
+<%#= link_to 'Back', images_path %>
 <%= render partial: 'layouts/swipe_menu' %>

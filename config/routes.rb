@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :albums
-  resources :images
+  resources :images do
+    resources :comments
+  end
   get 'user/show'
   # get 'album/index'
   # get 'album/show'
@@ -27,6 +29,11 @@ Rails.application.routes.draw do
   resources :friendships do
     resources :conversations
       resources :messages
+  end
+
+  scope :api do
+    post 'vote' => 'user#vote'
+    get 'search' => 'user#search'
   end
 
    #authenticated :user do

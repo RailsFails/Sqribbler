@@ -152,8 +152,21 @@ div .carousel-inner img{
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-.album_name_short {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+/*--------------------------------------------------------------------------------------------------------------------------------------------*/
+/*
+#drop-area{
+  position: fixed;
+  height: 200px;
+  width: 100%;
+  background-color: turquoise;
+  bottom: 0;
+  z-index: 1000;
+  .drop-area_item{
+    height:150px;
+    width:150px;
+    background-color: green;
+    display: inline-block;
+  }
 }
+
+*/

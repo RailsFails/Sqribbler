@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160215003843) do
+ActiveRecord::Schema.define(version: 20160217224949) do
 
   create_table "album_entries", force: :cascade do |t|
     t.integer  "image_id"
@@ -33,6 +33,27 @@ ActiveRecord::Schema.define(version: 20160215003843) do
 
   add_index "albums", ["title"], name: "index_albums_on_title"
   add_index "albums", ["user_id"], name: "index_albums_on_user_id"
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "image_id"
+    t.integer  "user_id"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["image_id"], name: "index_comments_on_image_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id"
+  add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id"
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
@@ -57,6 +78,17 @@ ActiveRecord::Schema.define(version: 20160215003843) do
 
   add_index "images", ["user_id"], name: "index_images_on_user_id"
 
+  create_table "messages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "conversation_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id"
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -76,6 +108,8 @@ ActiveRecord::Schema.define(version: 20160215003843) do
     t.string   "phone_number"
     t.string   "location"
     t.text     "about_me"
+    t.text     "provile_avatar"
+    t.text     "profile_avatar"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -85,5 +119,17 @@ ActiveRecord::Schema.define(version: 20160215003843) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["username"], name: "index_users_on_username", unique: true
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.string   "item_type"
+    t.integer  "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "votes", ["item_id", "item_type"], name: "index_votes_on_item_id_and_item_type"
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id"
 
 end
