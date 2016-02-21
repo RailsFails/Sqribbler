@@ -1,10 +1,11 @@
-<div style="margin: 0 auto; width: 40%;">
-  <%= form_tag '', method: 'get', class: 'navbar-search', role: 'search' do %>
+<div style= "margin: 0 auto; width: 40%;">
+  <%= form_tag landing_page_index_path, method: 'get', class: 'navbar-search', role: 'search' do %>
     <div class="input-group">
       <%= search_field_tag :search, params[:search], size: 150, placeholder: "FIND A FRIEND.", class: "form-control" %>
-      <span class="input-group-btn"><%= submit_tag 'Search', class: "btn btn-default" do %></span>
-
-         <% end %>
+      <span class="input-group-btn">
+                  <%= submit_tag 'Search', class: "btn btn-default" do %>
+          </span>
+                  <% end %>
         </div>
   <% end %>
 </div>

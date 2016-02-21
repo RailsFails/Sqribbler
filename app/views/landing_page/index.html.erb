@@ -33,7 +33,7 @@
 
             <!--SCRIBBLER USER SEARCH BAR-->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <%= render partial: 'user/search' %>
+
             </div>
 
             <!--THESE ARE THE TWO CAROUSEL TABS-->
@@ -149,19 +149,14 @@
           <!--THIS IS WHERE THE FRIENDS LIST PLUGIN WILL GO-->
           <div class="friends">
 
-            <h3>Friends</h3>
-            <ul>
-              <li><a href="#">Friend1</a> <img src="#" alt="friend1 profile picture"></li>
-              <li><a href="#">Friend2</a> <img src="#" alt="friend2 profile picture"></li>
-              <li><a href="#">Friend3</a> <img src="#" alt="friend3 profile picture"></li>
-              <li><a href="#">Friend4</a> <img src="#" alt="friend4 profile picture"></li>
-              <li><a href="#">Friend5</a> <img src="#" alt="friend5 profile picture"></li>
-              <li><a href="#">Friend6</a> <img src="#" alt="friend6 profile picture"></li>
-              <li><a href="#">Friend7</a> <img src="#" alt="friend7 profile picture"></li>
-              <li><a href="#">Friend8</a> <img src="#" alt="friend8 profile picture"></li>
-              <li><a href="#">Friend9</a> <img src="#" alt="friend9 profile picture"></li>
-              <li><a href="#">Friend10</a> <img src="#" alt="friend10 profile picture"></li>
-            </ul>
+            <h3>You are Following:</h3>
+
+                <ul>
+                  <% current_user.friendships.each do |friendship| %>
+                      <li class="list-group-item"><%= render partial: 'user/landing_page_friends', locals: {user: friendship.friend} %></li>
+                  <% end %>
+                </ul>
+
 
           </div><!--END FRIENDSLIST-->
         </div><!--COLUMN THREE CONTAINER-->

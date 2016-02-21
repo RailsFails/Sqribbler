@@ -5,11 +5,10 @@ $scribbler_blue: deepskyblue;
 $scribbler_orange: #f50;
 $scribbler_green: #0c0;
 
-form {
-  padding: 1em;
-  margin: 0 auto;
-}
+form input {
+  width: 100%;
 
+}
 .middleColumn {
   padding: 5px;
 }
@@ -92,7 +91,10 @@ $scribbler_blue: deepskyblue;
 $scribbler_orange: #f50;
 $scribbler_green: #0c0;
 
+form input {
+  width: 100%;
 
+}
 .middleColumn {
   padding: 5px;
 }

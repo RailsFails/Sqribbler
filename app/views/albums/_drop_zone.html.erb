@@ -1,0 +1,48 @@
+<div id="drop-area" class="drop-area">
+  <% current_user.albums.limit(6).each_with_index do |album, i| %>
+      <div class="drop-area_item" data-album-title="<%= album.title %>">ALBUM:<%= i %><%= album.title %></div>
+
+  <% end %>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var draggableElems = document.querySelectorAll('.image_item');
+        // array of Draggabillies
+        var draggies = [];
+        // init Draggabillies
+        for (var i = 0, len = draggableElems.length; i < len; i++) {
+            var draggableElem = draggableElems[i];
+            var draggie = new Draggabilly(draggableElem, {
+                handle: ".drag_handle"
+            });
+            // bind event listener
+            draggie.on('dragStart', function (event, pointer) {
+
+            });
+            draggie.on('dragEnd', function (event, pointer) {
+                var DropZoneTiles = document.querySelectorAll('.drop-area_item');
+                for (var a = 0; a < DropZoneTiles.length; a++) {
+                    var tile = DropZoneTiles[a];
+                    var rect = tile.getBoundingClientRect();
+                    if (( pointer.pageX > rect.left && pointer.pageY > rect.top) &&
+                            (pointer.pageX < rect.left + rect.width && pointer.pageY < rect.top + rect.height)) {
+                        console.log(tile.getAttribute('data-album-title'));
+                        console.log(event.element.getAttribute("data-image-id"));
+                        break;
+                    }
+                }
+                draggie.on('pointerUp', function (event, pointer) {
+
+                });
+                /*// unbind event listener
+                 draggie.off( 'eventName', listener );
+                 // bind event listener to trigger once. note ONE not ON
+                 draggie.one( 'eventName', function() {
+                 console.log('eventName happened just once');
+                 });*/
+                draggies.push(draggie);
+            })
+        }})
+
+</script>
