@@ -11,12 +11,17 @@
   min-width: 150px;
   min-height: 150px;
   margin: 0.5em;
+  z-index: 2;
   img {
     vertical-align: top;
   }
   a:hover {
     text-decoration: none;
     background: none;
+  }
+  .drag_handle{
+    height:20px;
+    background-color: black;
   }
 }
 
@@ -32,3 +37,5 @@
   padding: 2em 0;
   max-width: 100%;
 }
+
+
