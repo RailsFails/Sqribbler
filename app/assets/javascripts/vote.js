@@ -1,4 +1,4 @@
-$(document).on("page:change", function(){
+$(document).ready(function(){
     $('body').on('click', '.vote_buttons img', function(e){
         var vote_container = $(e.target).parent();
         var item_id = vote_container.data("item-id");
@@ -16,7 +16,6 @@ $(document).on("page:change", function(){
             },
             success: function(response){
                 vote_container.replaceWith(response.html);
-                //vote_container.all('.vote_buttons img').click(click_handler);
             }
         });
     });

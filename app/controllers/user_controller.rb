@@ -87,7 +87,13 @@ class UserController < ApplicationController
       first_name LIKE :query OR
       last_name LIKE :query
     SQL
-    @results = User.where(sql_query, {query: "%#{params[:query]}%"}).page(params[:page]).per(25)
+    if params[:query].blank?
+      @results = User.none
+    else
+      @results = User.where(sql_query, {query: "%#{params[:query]}%"})
+    end
+    @results = @results.page(params[:page]).per(params[:limit])
+
     respond_to do |format|
       format.json do
         response_json = {

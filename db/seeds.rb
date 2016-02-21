@@ -3,8 +3,9 @@
 
 class Generate
   def initialize
-    @fake_user_count = 50
-    #make_fake_users
+    @fake_user_count = 500
+    @max_friend_count = 50
+    make_fake_users
     make_friendships
     #make_random_images
     #make_random_image_comments
@@ -17,7 +18,7 @@ class Generate
       user = User.new
       user.first_name = Faker::Name.first_name
       user.last_name = Faker::Name.last_name
-      user.username = Faker::Internet.user_name #name.gsub(/\s/, '_')
+      user.username = get_username
       user.email = Faker::Internet.email(user.username)
       user.phone_number = Faker::PhoneNumber.phone_number
       user.location = Faker::Address.city + ' ' + Faker::Address.state
@@ -37,12 +38,17 @@ class Generate
     if users_count > @fake_user_count
       users_count = @fake_user_count
     end
-    User.all.each do |user|
-      friend_count = rand(0..users_count)
-      random_users = User.limit(friend_count).order('random()').all
+    friend_limit = users_count
+    if users_count > @max_friend_count
+      friend_limit = @max_friend_count
+    end
+    User.all.each_with_index  do |user, i|
+      friend_count = rand(0..friend_limit)
+      random_users = User.order('random()').limit(friend_count).all
       random_users.each do |rand_user|
           user.friendships.create(friend_id: rand_user.id).save
       end
+      #puts sprintf('%3d%%', (i.to_f/friend_count)*100)
     end
     puts "done making friendships"
   end
@@ -104,7 +110,19 @@ class Generate
       vote.save
     end
   end
-    
+
+  def get_username
+    username = nil
+    good_username = false
+    until good_username
+      username = Faker::Internet.user_name
+      if (username =~ /^[a-zA-Z0-9_-]{3,20}$/) == 0
+        good_username = true
+      end
+    end
+    return username
+
+  end
 end
 
 Generate.new
