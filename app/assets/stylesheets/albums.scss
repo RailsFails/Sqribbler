@@ -156,11 +156,12 @@ div .carousel-inner img{
 
 #drop-area{
   position: fixed;
-  height: 200px;
-  width: 100%;
+  top: 0;
+  left: 80%;
+  height: 100%;
+  width: 20%;
   background-color: turquoise;
-  bottom: 0;
-  z-index: 1000;
+//  z-index: 1001;
   .drop-area_item{
     height:150px;
     width:150px;
