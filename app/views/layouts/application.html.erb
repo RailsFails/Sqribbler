@@ -62,20 +62,12 @@
 
 <%= render partial: 'layouts/footer' %>
 
-<script>
-    function allowDrop(ev) {
-        ev.preventDefault();
-    }
+<% unless current_user.nil? %>
+    <%= render partial: 'albums/drop_zone' %>
+<% end %>
 
-    function drag(ev) {
-        ev.dataTransfer.setData("text", ev.target.id);
-    }
 
-    function drop(ev) {
-        ev.preventDefault();
-        var data = ev.dataTransfer.getData("text");
-        ev.target.appendChild(document.getElementById(data));
-    }
-</script>
+
+
 </body>
 </html>

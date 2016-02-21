@@ -1,0 +1,12 @@
+<div id="drop-area" class="drop-area">
+  <div>
+    <div class="dummy"></div>
+    <div class="drop-area_item"><i class="fa fa-fw fa-file-excel-o"></i></div>
+  </div>
+  <% current_user.albums.limit(6).each_with_index do |album, i| %>
+      <div>
+        <div class="dummy">ALBUM:<%= i %></div>
+        <div class="drop-area_item" data-album-title="<%= album.title %>"><%= album.title %></div>
+      </div>
+  <% end %>
+</div>
