@@ -89,7 +89,23 @@ class UserController < ApplicationController
     SQL
     @results = User.where(sql_query, {query: "%#{params[:query]}%"}).page(params[:page]).per(25)
     respond_to do |format|
-      format.json
+      format.json do
+        response_json = {
+            page: @results.current_page,
+            total_count: @results.total_count,
+            total_pages: @results.total_pages,
+            items: []
+        }
+        @results.each do |person|
+          item_obj = person.slice(:id, :username, :first_name, :last_name)
+          item_obj.merge!({
+              profile_path:  Rails.application.routes.url_helpers.user_profile_path(person.username),
+              avatar_thumb: person.avatar.url(:icon)
+          })
+          response_json[:items].push(item_obj)
+        end
+        render json: response_json
+      end
     end
   end
 
