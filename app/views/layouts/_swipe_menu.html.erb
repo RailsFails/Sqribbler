@@ -7,13 +7,12 @@
     </div>
     <nav>
       <ul>
-        <%= render partial: 'user/search' %>
+        <%= render partial: 'user/search' %><br/>
+        <li><%= link_to 'HOME PAGE', root_path %><a href="#"></a></li>
         <li><%= link_to 'USER PROFILE', user_profile_path(current_user.username) %><a href="#"></a></li>
-        <li><%= link_to 'FIND AN IMAGE', user_profile_path(current_user.username) %><a href="#"></a></li>
+        <li><%= link_to 'FIND AN IMAGE', root_path %><a href="#"></a></li>
         <li><%= link_to 'CONTACT A FRIEND', user_profile_path(current_user.username) %><a href="#"></a></li>
         <li><%= link_to 'CONTACT SQRIBBLER', user_profile_path(current_user.username) %><a href="#"></a></li>
-
-
       </ul>
 
 
