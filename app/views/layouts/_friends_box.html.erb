@@ -16,7 +16,7 @@
           <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingTwo">
                 <h4 class="panel-title">
-                  <%= link_to "Albums: #{@user.albums.count}",album_index_page_path(username: @user.username) %>
+                  <%= link_to "Albums: #{@user.accessible_albums(current_user).count}",album_index_page_path(username: @user.username) %>
                 </h4>
               </div>
           </div>

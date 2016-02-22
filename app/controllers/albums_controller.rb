@@ -6,7 +6,7 @@ class AlbumsController < ApplicationController
   # GET /albums.json
   def index
     # @albums = Album.all
-    @albums = @user.albums
+    @albums = @user.accessible_albums(current_user)
     unless params[:query].blank?
       @albums = @albums.where("title like ?", "%#{params[:query]}%")
     end
@@ -71,7 +71,7 @@ class AlbumsController < ApplicationController
   def destroy
     @album.destroy
     respond_to do |format|
-      format.html { redirect_to album_index_page_path(username: @album.user.username ), notice: 'Album was successfully destroyed.' }
+      format.html { redirect_to album_index_page_path(username: current_user.username ), notice: 'Album was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
