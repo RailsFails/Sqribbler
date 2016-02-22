@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   resources :albums
-  resources :images
+  resources :images do
+    resources :comments
+  end
   get 'user/show'
   # get 'album/index'
   # get 'album/show'
-
+  get 'layouts/contact_page'
   devise_for :users
   put 'user/:username' => 'user#user_profile_update', as: :user_profile_update
   get 'landing_page/index'
@@ -24,9 +26,16 @@ Rails.application.routes.draw do
   get '/user/:username/albums/:title' => 'albums#show', as: :album_show_page
 
 
+
   resources :friendships do
     resources :conversations
       resources :messages
+  end
+
+  scope :api do
+    post 'vote' => 'user#vote'
+    get 'search' => 'user#search'
+    post 'add_album_title' => 'images#add_album_title'
   end
 
    #authenticated :user do

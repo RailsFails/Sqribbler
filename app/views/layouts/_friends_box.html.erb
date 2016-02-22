@@ -14,11 +14,11 @@
           </div>
       <% else %>
           <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingTwo">
-              <h4 class="panel-title">
-                <%= link_to "Albums: #{current_user.albums.count}",album_index_page_path(username: current_user.username) %>
-              </h4>
-            </div>
+              <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                  <%= link_to "Albums: #{@user.accessible_albums(current_user).count}",album_index_page_path(username: @user.username) %>
+                </h4>
+              </div>
           </div>
       <% end %>
       </div>

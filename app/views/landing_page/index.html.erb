@@ -31,6 +31,10 @@
               <%= render partial: 'layouts/search' %>
             </div>
 
+            <!--SCRIBBLER USER SEARCH BAR-->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+            </div>
 
             <!--THESE ARE THE TWO CAROUSEL TABS-->
             <ul class="tab_gallery nav nav-tabs">
@@ -38,11 +42,11 @@
               <li class="col-xs-12 col-lg-6"><a data-toggle="tab" href="#tabs-2">CHECK FRIENDS SCRIBBLES!!!</a></li>
             </ul>
 
-
             <!--THIS IS THE GLOBAL IMAGE CAROUSEL-->
             <div class="tab-content">
               <div id="tabs-1" class="tab-pane fade in active">
                 <div id="main_feed">
+
                   <h2>Top Scribbles</h2>
                   <!--A Bootstrap Carousel to fill the space for now--> <!-- DELETE IF NOT WANTED-->
                   <%= render partial: 'layouts/bootstrap_carousel' %>
@@ -145,25 +149,19 @@
           <!--THIS IS WHERE THE FRIENDS LIST PLUGIN WILL GO-->
           <div class="friends">
 
-            <h3>Friends</h3>
-            <ul>
-              <li><a href="#">Friend1</a> <img src="#" alt="friend1 profile picture"></li>
-              <li><a href="#">Friend2</a> <img src="#" alt="friend2 profile picture"></li>
-              <li><a href="#">Friend3</a> <img src="#" alt="friend3 profile picture"></li>
-              <li><a href="#">Friend4</a> <img src="#" alt="friend4 profile picture"></li>
-              <li><a href="#">Friend5</a> <img src="#" alt="friend5 profile picture"></li>
-              <li><a href="#">Friend6</a> <img src="#" alt="friend6 profile picture"></li>
-              <li><a href="#">Friend7</a> <img src="#" alt="friend7 profile picture"></li>
-              <li><a href="#">Friend8</a> <img src="#" alt="friend8 profile picture"></li>
-              <li><a href="#">Friend9</a> <img src="#" alt="friend9 profile picture"></li>
-              <li><a href="#">Friend10</a> <img src="#" alt="friend10 profile picture"></li>
+            <h3><%= link_to 'You are Following:', user_following_path(current_user.username) %></h3>
+
+            <ul class="list-group">
+              <% current_user.friendships.limit(10).each do |friendship| %>
+                  <li class="list-group-item"><%= render partial: 'user/entry', locals: {user: friendship.friend} %></li>
+              <% end %>
             </ul>
+
 
           </div><!--END FRIENDSLIST-->
         </div><!--COLUMN THREE CONTAINER-->
       </div><!--END LAYOUT CONTAINER-->
     </div><!--END PAGE CONTAINTER
       <!--side swipe nav-->
-    <%= render partial: 'layouts/swipe_menu' %>
 
 <% end %>

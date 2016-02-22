@@ -3,7 +3,6 @@ source 'http://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 
-
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -15,9 +14,6 @@ gem 'coffee-script-source', '1.8.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-# Gems for chat
-gem 'private_pub'
-gem 'thin'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -35,6 +31,8 @@ gem 'faker'
 gem 'tinymce-rails'
 gem 'paperclip', '~> 4.3'
 gem 'kaminari'
+gem 'private_pub'
+gem 'thin'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -44,7 +42,7 @@ gem 'kaminari'
 
 group :production do
   gem 'unicorn'
-  #gem 'pg' <!---Re implement-->
+  gem 'pg'
 end
 
 group :development, :test do

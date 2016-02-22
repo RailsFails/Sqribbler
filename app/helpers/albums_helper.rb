@@ -7,4 +7,5 @@ module AlbumsHelper
         ['mature content', 3]
     ]
   end
+
 end

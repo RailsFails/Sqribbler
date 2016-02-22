@@ -2,122 +2,119 @@
 <%= tinymce %>
 
 <% if current_user.nil? %>
-    <div class="main-landing-content">
-      <h1><span class="newsBanner">Image-editing playground inside.</span></h1>
-      <h4><span>If you have a moment, sign up.</span></h4>
-      <h4><a href="#">
-        <div class="branding_image"></div>
-      </a></h4>
-    </div>
+  <div class="main-landing-content">
+    <h1><span class="newsBanner">Image-editing playground inside.</span></h1>
+    <h4><span>If you have a moment, sign up.</span></h4>
+    <h4><a href="#">
+      <div class="branding_image"></div>
+    </a></h4>
+  </div>
 
 <% else %>
-    <!--WHOLE PROFILE PAGE -TO CHANGE THE LAYOUT, COLLAPSE AND DELETE THIS DIV AND RECODE-->
+  <!--WHOLE PROFILE PAGE -TO CHANGE THE LAYOUT, COLLAPSE AND DELETE THIS DIV AND RECODE-->
     <button role="presentation"><%= link_to 'Go Back!', :back %></button>
-    <div class="profile_page">
-      <!--JUMBOTRON TRENDING CONTENT ACCORDIAN-->
-      <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingFour">
-            <h4 class="panel-title">
-              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
-                Trending Scribbles
-              </a>
-            </h4>
-          </div>
-          <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
-              <div class="col-lg-12">
-                <%= render 'layouts/carousel' %>
-              </div>
+  <div class="profile_page">
+    <!--JUMBOTRON TRENDING CONTENT ACCORDIAN-->
+    <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFour">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+              Trending Scribbles
+            </a>
+          </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            <div class="col-lg-12">
+              <%= render 'layouts/carousel' %>
             </div>
           </div>
         </div>
       </div>
-      <!--USER LOGIN LANDING PAGE-->
-      <div class="col-lg-12">
-        <div class="col-lg-8">
-          <section class="profile_box col-lg-12">
-            <div class="col-lg-4">
-              <a href="#">
-                <div class="profile_image">
-                  <%= image_tag @user.avatar.url(:thumb) %>
-                </div>
-              </a>
-            </div>
-            <div class="col-lg-8">
-              <h1><%= @user.username %></h1>
-
-              <h3><%= @user.first_name %> <%= @user.last_name %></h3>
-              <span>Joined <%= @user.created_at.strftime('%m/%d/%Y') %></span>
-
-              <h3><%= @user.location %></h3>
-              <h5><a href="#">YourCompany.com</a></h5>
-              <h5><a href="#"><%= @email %></a></h5>
-            </div>
-            <section class="col-lg-12">
-              <div class="col-lg-4">
+    </div>
+    <!--USER LOGIN LANDING PAGE-->
+    <div class="col-lg-12">
+      <div class="col-lg-8">
+        <section class="profile_box col-lg-12">
+          <div class="col-lg-4">
+            <a href="#">
+              <div class="profile_image">
+                <%= image_tag @user.avatar.url(:thumb) %>
               </div>
-              <div class="col-lg-3">
-
-                <%= link_to "Scribbles: #{@user.images.count}", images_path(params: {username: @user.username}) %>
-              </div>
-              <div class="col-lg-5">
-                <% if current_user.id != @user.id %>
-                    <% unless current_user.nil? %>
-                        <% if current_user.is_following?(@user) %>
-                            <p><%= link_to 'Unfollow', friendship_path(@user), method: :delete, class: 'btn btn-primary' %></p>
-                        <% else %>
-                            <p><%= link_to 'Follow', friendships_path(:friend_id => @user), method: :post, class: 'btn btn-primary' %></p>
-                        <% end %>
-                    <% end %>
-                <% end %>
-                <section class="col-lg-12">
-                  <div class="col-lg-5">
-                    <%= link_to 'Scribblers interested in: '+@user.username+' '+@user.inverse_friends.count.to_s, user_followers_path(@user.username) %>
-                  </div>
-                  <div class="col-lg-5">
-                    <%= link_to 'Scribblers '+@user.username+' is interested in: '+@user.friends.count.to_s, user_following_path(@user.username) %>
-                  </div>
-                </section>
-              </div>
-            </section>
-          </section>
+            </a>
+          </div>
+          <div class="col-lg-8">
+            <h1><%= @user.username %></h1>
+            <h3><%= @user.first_name %> <%= @user.last_name %></h3>
+            <span>Joined <%= @user.created_at.strftime('%m/%d/%Y') %></span>
+            <h3><%= @user.location %></h3>
+            <h5><a href="#">YourCompany.com</a></h5>
+            <h5><a href="#"><%= @email %></a></h5>
+          </div>
           <section class="col-lg-12">
-            <h3>About Me</h3>
-
-            <div>
-              <% unless @user.about_me.nil? %>
-                  <%= @user.about_me.html_safe %> <!---THIS NEEDED SO DO NOT REMOVE ANYMORE--->
-              <% end %>
+            <div class="col-lg-4">
             </div>
-            <div>
-
+            <div class="col-lg-3">
+              
+              <%= link_to "Scribbles: #{@user.images.count}", images_path(params: {username: @user.username}) %>
+            </div>
+            <div class="col-lg-5">
+              <% if current_user.id != @user.id %>
+              <% unless current_user.nil? %>
+                <% if current_user.is_following?(@user) %>
+                  <p><%= button_to 'Unfollow', friendship_path(@user), method: :delete, class: 'btn btn-primary' %></p>
+                <% else %>
+                  <p><%= button_to 'Follow', friendships_path(:friend_id => @user), method: :post, class: 'btn btn-primary' %></p>
+                <% end %>
+              <% end %>
+              <%end%>
+              <section class="col-lg-12">
+                <div class="col-lg-5">
+                  <%= link_to 'Scribblers interested in: '+@user.username+' '+@user.inverse_friends.count.to_s, user_followers_path(@user.username) %>
+                </div>
+                <div class="col-lg-5">
+                  <%= link_to 'Scribblers '+@user.username+' is interested in: '+@user.friends.count.to_s, user_following_path(@user.username) %>
+                </div>
+              </section>
             </div>
           </section>
-        </div>
-
-        <% if current_user && current_user.id != @user.id %>
-            <% content_for :friends_box do %>
-                <div class="Friends">
-                  <h3><%= link_to 'Scribblers in common', user_mutual_friends_path(current_user.username, @user.username) %></h3>
-                  <ul class="list-group">
-                    <% current_user.mutual_friends(@user).each do |user| %>
-                        <li class="list-group-item"><%= render partial: 'user/entry', locals: {user: user} %></li>
-                    <% end %>
-                  </ul>
-                </div>
+        </section>
+        <section class="col-lg-12">
+          <h3>About Me</h3>
+          <div>
+            <% unless @user.about_me.nil? %>
+              <%= @user.about_me.html_safe %> <!---THIS NEEDED SO DO NOT REMOVE ANYMORE--->
             <% end %>
-        <% end %>
+          </div>
+          <div>
 
-
-        <%= render partial: 'layouts/friends_box' %>
-
+          </div>
+        </section>
       </div>
-      <!----AREA FOR THE USER EDIT FORM ---->
-      <%= render partial: 'layouts/profile_form' %>
-      <!---------END EDIT USER FORM-------------------->
-      <!--side swipe nav-->
-      <%= render partial: 'layouts/swipe_menu' %>
-    </div><br/><!--end profile page
+
+      <% if current_user && current_user.id != @user.id %>
+          <% content_for :friends_box do %>
+              <div class="Friends">
+                <h3><%= link_to 'Scribblers in common', user_mutual_friends_path(current_user.username, @user.username) %></h3>
+                <ul class="list-group">
+                  <% current_user.mutual_friends(@user).each do |user| %>
+                      <li class="list-group-item"><%= render partial: 'user/entry', locals: {user: user} %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+      <% end %>
+
+
+      <%= render partial: 'layouts/friends_box' %>
+
+    </div>
+    <!----AREA FOR THE USER EDIT FORM ---->
+    <%= render partial: 'layouts/profile_form' %>
+    <!---------END EDIT USER FORM-------------------->
+    <!--side swipe nav-->
+    <%= render partial: 'layouts/swipe_menu' %>
+  </div><br/><!--end profile page
 <% end %>
 

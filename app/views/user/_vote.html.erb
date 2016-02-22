@@ -1,0 +1,16 @@
+<div class="vote_buttons" data-item-id="<%= item.id %>" data-item-type="<%= item.class.to_s %>">
+  <% v = current_user.vote_status(item) %>
+  <% if v == -1 %>
+      <%= image_tag '/assets/thumb-up-outline.svg', data: {'vote-value'=> 1} %>
+        <span class="badge"><%= item.votes.sum(:value) %></span>
+      <%= image_tag '/assets/thumb-down.svg', data: {'vote-value'=> -1} %>
+  <% elsif v == 1 %>
+      <%= image_tag '/assets/thumb-up.svg', data: {'vote-value'=> 1} %>
+      <span class="badge"><%= item.votes.sum(:value) %></span>
+      <%= image_tag '/assets/thumb-down-outline.svg', data: {'vote-value'=> -1}  %>
+  <% else %>
+    <%= image_tag '/assets/thumb-up-outline.svg', data: {'vote-value'=> 1} %>
+    <span class="badge"><%= item.votes.sum(:value) %></span>
+    <%= image_tag '/assets/thumb-down-outline.svg', data: {'vote-value'=> -1} %>
+  <% end %>
+</div>

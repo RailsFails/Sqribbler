@@ -144,3 +144,49 @@
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------MAIN CARASOUL IMAGE ON ALBUM/SHOW PAGE-------------------------------------------------------------*/
+div .carousel-inner img{
+  padding: 2em;
+  margin: 0 auto;
+}
+
+.album_name_short {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------*/
+
+#drop-area{
+  position: fixed;
+  top: 0;
+  left: -20%;
+  height: 100%;
+  width: 20%;
+  background-color: turquoise;
+   z-index: 2;
+  .drop-area_item{
+    height:150px;
+    width:150px;
+    padding: .75em;
+    margin: 2em auto;
+    background-color: green;
+  }
+}
+/*
+.drop-area_item::before,
+.drop-area_item::after {
+  position: absolute;
+  top: 0;
+  left: 80%;
+  width: 100%;
+  color: rgba(0,0,0,0.15);
+  font-size: 1.5em;
+  margin-top: -0.35em;
+  font-family: FontAwesome;
+  pointer-events: none;
+}
+*/

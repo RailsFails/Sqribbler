@@ -1,0 +1,33 @@
+<div ng-app="UserSearch" class="user_search">
+  <script type="text/ng-template" id="customTemplate.html">
+    <div class="user_search_result media">
+      <div class="media-left">
+        <a href="{{match.model.profile_path}}">
+          <img src="{{match.model.avatar_thumb}}" alt="" width="64" height="64">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 ng-bind-html="match.model.username | uibTypeaheadHighlight:query"></h3>
+        <span ng-bind-html="match.model.first_name + ' ' + match.model.last_name | uibTypeaheadHighlight:query"></span>
+      </div>
+    </div>
+  </script>
+
+  <div ng-controller="UserSearchController">
+    <pre>Model: {{customSelected | json}}</pre>
+    <input
+      type="text"
+      ng-model="customSelected"
+      placeholder="Search users"
+      uib-typeahead="user for user in SearchUsers($viewValue)"
+      typeahead-template-url="customTemplate.html"
+      class="form-control"
+      typeahead-loading="loadingUsers"
+      typeahead-min-length="1">
+    <i ng-show="loadingUsers" class="glyphicon glyphicon-refresh"></i>
+    <div ng-show="noResults">
+      <i class="glyphicon glyphicon-remove"></i> No Results Found
+    </div>
+
+  </div>
+</div>
