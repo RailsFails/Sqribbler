@@ -1,6 +1,6 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
-jQuery(document).on("page:change ready", function() {
+jQuery(document).ready(function() {
 
     $('#myCarousel').carousel({
         interval: 5000
