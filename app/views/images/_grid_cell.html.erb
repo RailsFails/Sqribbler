@@ -1,6 +1,6 @@
 <div class="image_item" data-image-id="<%= image.id %>">
   <div class="drag_handle"></div>
   <%= link_to image_path(image) do %>
-      <%= image_tag image.attachment.url(:thumb), alt: image.title %>
+      <%= image_tag image.attachment.url(:thumb), alt: image.title, :draggable => false %>
   <% end %>
 </div>

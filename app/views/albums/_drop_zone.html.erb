@@ -10,6 +10,7 @@
         var draggableElems = document.querySelectorAll('.image_item');
         // array of Draggabillies
         var draggies = [];
+        var start_point = null;
         // init Draggabillies
         for (var i = 0, len = draggableElems.length; i < len; i++) {
             var draggableElem = draggableElems[i];
@@ -18,7 +19,9 @@
             });
             // bind event listener
             draggie.on('dragStart', function (event, pointer) {
-
+                start_point = pointer;
+             var drop_area = document.getElementById('drop-area');
+                 drop_area.style.left = '0';
             });
             draggie.on('dragEnd', function (event, pointer) {
                 var DropZoneTiles = document.querySelectorAll('.drop-area_item');
@@ -31,10 +34,12 @@
                         console.log(event.element.getAttribute("data-image-id"));
                         break;
                     }
-                }
-                draggie.on('pointerUp', function (event, pointer) {
 
-                });
+                }
+                var drop_area = document.getElementById('drop-area');
+                drop_area.style.left = '-20%';
+                 event.element.style.left = 0;
+                 event.element.style.top = 0;
                 /*// unbind event listener
                  draggie.off( 'eventName', listener );
                  // bind event listener to trigger once. note ONE not ON
