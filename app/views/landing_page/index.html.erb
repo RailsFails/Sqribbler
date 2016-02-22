@@ -151,11 +151,11 @@
 
             <h3>You are Following:</h3>
 
-                <ul>
-                  <% current_user.friendships.each do |friendship| %>
-                      <li class="list-group-item"><%= render partial: 'user/landing_page_friends', locals: {user: friendship.friend} %></li>
-                  <% end %>
-                </ul>
+            <ul class="list-group">
+              <% current_user.friendships.limit(15).each do |friendship| %>
+                  <li class="list-group-item"><%= render partial: 'user/entry', locals: {user: friendship.friend} %></li>
+              <% end %>
+            </ul>
 
 
           </div><!--END FRIENDSLIST-->
