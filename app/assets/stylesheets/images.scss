@@ -22,6 +22,12 @@
   .drag_handle{
     height:20px;
     background-color: black;
+    visibility: hidden;
+  }
+  &:hover{
+    .drag_handle{
+     visibility: visible;
+    }
   }
 }
 

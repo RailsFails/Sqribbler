@@ -32,6 +32,15 @@
                             (pointer.pageX < rect.left + rect.width && pointer.pageY < rect.top + rect.height)) {
                         console.log(tile.getAttribute('data-album-title'));
                         console.log(event.element.getAttribute("data-image-id"));
+                        $.ajax({
+                            url: '/api/add_album_title.json',
+                            type: 'POST',
+                            data: {
+                                id: event.element.getAttribute("data-image-id"),
+                                album_title: tile.getAttribute('data-album-title')
+                            }
+                        });
+
                         break;
                     }
 

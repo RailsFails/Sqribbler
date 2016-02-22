@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   scope :api do
     post 'vote' => 'user#vote'
     get 'search' => 'user#search'
-    post 'add_album_title' => 'image#add_album_title'
+    post 'add_album_title' => 'images#add_album_title'
   end
 
    #authenticated :user do
