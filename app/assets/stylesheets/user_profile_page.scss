@@ -180,10 +180,11 @@
 }
 .profile_settings_menu nav li {
   list-style:none;
+
+}
+.profile_settings_menu nav li > a {
   text-align: center;
   text-transform: uppercase;
-}
-.profile_settings_menu nav li a {
   font-size: 2em;
   color: rgba(255,255,255,.8);
   text-decoration: none;
