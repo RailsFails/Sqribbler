@@ -37,7 +37,12 @@ class Image < ActiveRecord::Base
   def get_album_titles
     self.albums.pluck(:title)
   end
-  
+
+  def add_to_album(album_title)
+   t = self.user.albums.where(title: album_title.strip).first_or_create!
+    self.album_entries.first_or_create(album_id: t.id)
+  end
+
   def toggle_album(album_name)
     
   end

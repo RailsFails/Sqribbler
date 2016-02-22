@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get '/user/:username/albums/:title' => 'albums#show', as: :album_show_page
 
 
+
   resources :friendships do
     resources :conversations
       resources :messages
@@ -34,6 +35,7 @@ Rails.application.routes.draw do
   scope :api do
     post 'vote' => 'user#vote'
     get 'search' => 'user#search'
+    post 'add_album_title' => 'images#add_album_title'
   end
 
    #authenticated :user do

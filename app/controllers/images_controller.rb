@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: [:show, :edit, :update, :destroy]
+  before_action :set_image, only: [:show, :edit, :update, :destroy, :add_album_title]
 
   # GET /images
   # GET /images.json
@@ -24,6 +24,13 @@ class ImagesController < ApplicationController
 
   # GET /images/1/edit
   def edit
+  end
+
+  def add_album_title
+
+    @image.add_to_album(params[:album_title])
+    @image.save
+    head :ok
   end
 
   # POST /images

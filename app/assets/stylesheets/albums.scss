@@ -159,22 +159,32 @@ div .carousel-inner img{
 /*-----------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------*/
-/*
-
 
 #drop-area{
   position: fixed;
-  height: 200px;
-  width: 100%;
+  top: 0;
+  left: -20%;
+  height: 100%;
+  width: 20%;
   background-color: turquoise;
-  bottom: 0;
-  z-index: 1000;
+//  z-index: 1001;
   .drop-area_item{
     height:150px;
     width:150px;
     background-color: green;
-    display: inline-block;
   }
 }
-
+/*
+.drop-area_item::before,
+.drop-area_item::after {
+  position: absolute;
+  top: 0;
+  left: 80%;
+  width: 100%;
+  color: rgba(0,0,0,0.15);
+  font-size: 1.5em;
+  margin-top: -0.35em;
+  font-family: FontAwesome;
+  pointer-events: none;
+}
 */
