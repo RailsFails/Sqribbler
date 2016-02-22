@@ -1,0 +1,7 @@
+toolbar:
+  - bold italic underline | undo redo | bullist numlist | image
+  - image | link
+plugins:
+  - code
+  - spellchecker
+statusbar: true

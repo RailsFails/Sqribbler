@@ -1,12 +1,12 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: [:edit, :update, :destroy]
-  before_action :set_user, only: [:show, :index, :edit, :new]
+  before_action :set_user, only: [:show, :index, :new]
 
   # GET /albums
   # GET /albums.json
   def index
     # @albums = Album.all
-    @albums = @user.albums
+    @albums = @user.accessible_albums(current_user)
     unless params[:query].blank?
       @albums = @albums.where("title like ?", "%#{params[:query]}%")
     end
@@ -22,6 +22,9 @@ class AlbumsController < ApplicationController
   # GET /albums/1.json
   def show
     @album = @user.albums.where(title: params[:title]).first
+    if @album.nil?
+      render :text => 'Album not found', :status => '404'
+    end
   end
 
   # GET /albums/new
@@ -68,7 +71,7 @@ class AlbumsController < ApplicationController
   def destroy
     @album.destroy
     respond_to do |format|
-      format.html { redirect_to albums_url, notice: 'Album was successfully destroyed.' }
+      format.html { redirect_to album_index_page_path(username: current_user.username ), notice: 'Album was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -77,6 +80,9 @@ class AlbumsController < ApplicationController
 
   def set_user
     @user = User.where(username: params[:username]).first
+    if @user.nil?
+      render :text => 'User not found', :status => '404'
+    end
   end
     # Use callbacks to share common setup or constraints between actions.
     def set_album

@@ -63,9 +63,9 @@
               <% if current_user.id != @user.id %>
               <% unless current_user.nil? %>
                 <% if current_user.is_following?(@user) %>
-                  <p><%= link_to 'Unfollow', friendship_path(@user), method: :delete, class: 'btn btn-primary' %></p>
+                  <p><%= button_to 'Unfollow', friendship_path(@user), method: :delete, class: 'btn btn-primary' %></p>
                 <% else %>
-                  <p><%= link_to 'Follow', friendships_path(:friend_id => @user), method: :post, class: 'btn btn-primary' %></p>
+                  <p><%= button_to 'Follow', friendships_path(:friend_id => @user), method: :post, class: 'btn btn-primary' %></p>
                 <% end %>
               <% end %>
               <%end%>
@@ -83,7 +83,9 @@
         <section class="col-lg-12">
           <h3>About Me</h3>
           <div>
-            <%= @user.about_me.html_safe %> <!---THIS NEEDED SO DO NOT REMOVE ANYMORE--->
+            <% unless @user.about_me.nil? %>
+              <%= @user.about_me.html_safe %> <!---THIS NEEDED SO DO NOT REMOVE ANYMORE--->
+            <% end %>
           </div>
           <div>
 
@@ -112,7 +114,6 @@
     <%= render partial: 'layouts/profile_form' %>
     <!---------END EDIT USER FORM-------------------->
     <!--side swipe nav-->
-    <%= render partial: 'layouts/swipe_menu' %>
   </div><br/><!--end profile page
 <% end %>
 
