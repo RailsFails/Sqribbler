@@ -64,10 +64,8 @@
 
 <% unless current_user.nil? %>
     <%= render partial: 'albums/drop_zone' %>
+    <%= render partial: 'layouts/swipe_menu' %>
 <% end %>
-
-
-<%= render partial: 'layouts/swipe_menu' %>
 
 </body>
 </html>
