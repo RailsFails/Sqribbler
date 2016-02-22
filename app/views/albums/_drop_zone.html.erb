@@ -22,6 +22,7 @@
                 start_point = pointer;
              var drop_area = document.getElementById('drop-area');
                  drop_area.style.left = '0';
+                event.element.style.zIndex = 3;
             });
             draggie.on('dragEnd', function (event, pointer) {
                 var DropZoneTiles = document.querySelectorAll('.drop-area_item');
@@ -49,6 +50,7 @@
                 drop_area.style.left = '-20%';
                  event.element.style.left = 0;
                  event.element.style.top = 0;
+                event.element.style.zIndex = 2;
                 /*// unbind event listener
                  draggie.off( 'eventName', listener );
                  // bind event listener to trigger once. note ONE not ON

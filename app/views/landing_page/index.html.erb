@@ -149,10 +149,10 @@
           <!--THIS IS WHERE THE FRIENDS LIST PLUGIN WILL GO-->
           <div class="friends">
 
-            <h3>You are Following:</h3>
+            <h3><%= link_to 'You are Following:', user_following_path(current_user.username) %></h3>
 
             <ul class="list-group">
-              <% current_user.friendships.limit(15).each do |friendship| %>
+              <% current_user.friendships.limit(10).each do |friendship| %>
                   <li class="list-group-item"><%= render partial: 'user/entry', locals: {user: friendship.friend} %></li>
               <% end %>
             </ul>
