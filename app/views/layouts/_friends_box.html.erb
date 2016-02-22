@@ -8,7 +8,7 @@
             <div class="panel-heading" role="tab" id="headingThree">
               <h4 class="panel-title">
                 <!-- <= link_to 'Creative Pics' , album_path(current_user.id) %>-->
-                <%= link_to 'Create New Album' , new_album_path(@album) %>
+                <%= link_to 'Create New Album', album_new_page_path(@album, username: current_user.username) %>
               </h4>
             </div>
           </div>
