@@ -24,7 +24,7 @@ production:
   adapter: postgresql
   database: rails_project_production
   encoding: unicode
-  host: localhost
+  host: db
   password: <%= ENV['APP_DATABASE_PASSWORD'] %>
   pool: 5
   timeout: 5000
