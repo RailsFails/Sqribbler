@@ -10,10 +10,11 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require blueimp-gallery.js
 //= require jquery-2.2.0.min
 //= require jquery_ujs
 //= require select2.min
+//= require jquery.ripples
+//= require blueimp-gallery.js
 
 //= require chat
 //= require private_pub
