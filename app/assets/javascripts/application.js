@@ -16,6 +16,7 @@
 //= require jquery.ripples
 //= require albums.js
 //= require vote
+//= require draggabilly.pkgd.min.js
 //= require blueimp-gallery.js
 
 //= require chat

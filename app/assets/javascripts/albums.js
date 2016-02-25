@@ -23,7 +23,7 @@ $(document).ready(function($) {
     });
 
     var username = $(".album_search_ajax").data('username');
-    jQuery(".album_search_ajax").select2({
+    $(".album_search_ajax").select2({
         ajax: {
             url: "/user/"+username+"/albums.json",
             dataType: 'json',
