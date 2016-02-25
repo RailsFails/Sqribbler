@@ -15,5 +15,6 @@ Rails.application.config.assets.precompile += %w(
   thumbs-down.svg
   thumbs-up-outline.svg
   thumbs-down-outline.svg
+  photo_album_icon.svg
 )
 

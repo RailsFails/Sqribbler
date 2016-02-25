@@ -15,6 +15,7 @@
 //= require select2.min
 //= require jquery.ripples
 //= require albums.js
+//= require vote
 //= require blueimp-gallery.js
 
 //= require chat

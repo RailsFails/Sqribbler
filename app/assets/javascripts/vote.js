@@ -1,4 +1,7 @@
-$(document).ready(function(){
+/**
+ vote.js
+*/
+jQuery(document).ready(function($){
     $('body').on('click', '.vote_buttons img', function(e){
         var vote_container = $(e.target).parent();
         var item_id = vote_container.data("item-id");
