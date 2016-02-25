@@ -1,6 +1,6 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
-jQuery(document).ready(function() {
+$(document).ready(function($) {
 
     $('#myCarousel').carousel({
         interval: 5000
@@ -23,7 +23,7 @@ jQuery(document).ready(function() {
     });
 
     var username = $(".album_search_ajax").data('username');
-    $(".album_search_ajax").select2({
+    jQuery(".album_search_ajax").select2({
         ajax: {
             url: "/user/"+username+"/albums.json",
             dataType: 'json',
