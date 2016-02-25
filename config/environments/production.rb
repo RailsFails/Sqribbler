@@ -31,12 +31,6 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
-  class NoCompression
-    def compress(string)
-      # do nothing
-      string
-    end
-  end
 
   # Compress JavaScripts and CSS.
   config.assets.compress = true
