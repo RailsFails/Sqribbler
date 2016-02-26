@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217224949) do
+ActiveRecord::Schema.define(version: 20160225223554) do
 
   create_table "album_entries", force: :cascade do |t|
     t.integer  "image_id"
@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 20160217224949) do
     t.datetime "attachment_updated_at"
     t.integer  "image_width"
     t.integer  "image_height"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "images", ["user_id"], name: "index_images_on_user_id"
