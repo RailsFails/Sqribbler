@@ -50,9 +50,10 @@
 
 
     <script>
+      console.log("loading map");
       var map;
       var marker;
-      var location;
+      var position;
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -66,11 +67,10 @@
 
         google.maps.event.addListener(marker, 'dragend', function (event) {
           if (marker){
-            location = new google.maps.LatLng( this.getPosition().lat(), this.getPosition().lng() );
-            marker.setPosition( location );
+              position = new google.maps.LatLng( this.getPosition().lat(), this.getPosition().lng() );
+            marker.setPosition( position );
           }
         });
-
       }
 
       $(document).ready(function () {
