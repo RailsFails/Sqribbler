@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Editing canvas</title>
+  <!-- stylesheet -->
+  <%= stylesheet_link_tag '/assets/literallycanvas-0.4.11/css/literallycanvas.css' %>
+
+  <!-- dependency: React.js -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react-with-addons.js"></script>
+
+  <!-- Literally Canvas -->
+  <script src="/assets/literallycanvas-0.4.11/js/literallycanvas.js"></script>
+
+
+  <style>
+    body {
+        padding: 0;
+        margin: 0;
+    }
+  </style>
+</head>
+<body>
+<button id="save_btn">SAVE</button>
+<a href="/"><button>HOME</button></a>
+<button id="export_btn">export</button>
+<!-- where the widget goes. you can do CSS to it. -->
+<div class="literally"></div>
+
+<!-- kick it off -->
+<script>
+    // Look ma, no jQuery!
+    var lc = LC.init(
+            document.getElementsByClassName('literally')[0],
+            {imageURLPrefix: '/assets/literallycanvas-0.4.11/img/'}
+    );
+
+    document.getElementById('export_btn').addEventListener("click", function(e){
+        e.preventDefault();
+        var base64_data = lc.canvas.toDataURL();
+        window.open(base64_data);
+    });
+
+    /* or if you just love jQuery,
+     $('.literally').literallycanvas({imageURLPrefix: '/static/img'})
+     or
+     LC.init($('.literally').get(0), {imageURLPrefix: '/static/img'})
+     */
+</script>
+</body>
+</html>

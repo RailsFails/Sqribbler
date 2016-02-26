@@ -4,4 +4,8 @@ class LayoutsController < ApplicationController
 
   end
 
+  def canvas
+    render :layout => "canvas"
+  end
+
 end
