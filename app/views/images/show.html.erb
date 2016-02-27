@@ -59,6 +59,34 @@ Albums:
 </p>
 <% end %>
 
+<% if !@image.longitude.nil? && !@image.latitude.nil? %>
+    <style>
+      #map {
+        height: 300px;
+      }
+    </style>
+    <div id="map"></div>
+    <script>
+
+      function initMap() {
+        var myLatLng = {lat: <%= @image.latitude %>, lng: <%= @image.longitude %>};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZR1XYrTEbFF5Kpfkpoj41aTeME3TUhwQ&callback=initMap">
+    </script>
+<% end %>
+
 <% unless current_user.nil? %>
   <%= render 'comments/form' %>
 <% end %>
