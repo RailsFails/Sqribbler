@@ -29,14 +29,24 @@
 
   <script>
     $.noConflict();
-    $(document).ready(function($) {
-          $('.demo').ripples({
-              resolution: 302,
-              dropRadius: 10,
-              perturbance: .3,
-              interactive: true
-          });
-      });
+    $(document).ready(function ($) {
+      /* find out which jQuery functions contains ripples */
+      var ripples_function = null;
+      if ($('.demo').ripples) {
+        ripples_function = $;
+      }
+      else if (jQuery('.demo').ripples) {
+        ripples_function = jQuery;
+      }
+      if (ripples_function !== null) {
+        ripples_function('.demo').ripples({
+          resolution: 302,
+          dropRadius: 10,
+          perturbance: .3,
+          interactive: true
+        });
+      }
+    });
   </script>
 </head>
 
@@ -57,7 +67,9 @@
   <% end %>
 
 </div><!-- END CONTAINER -->
-<audio id="chatAudio"><source src="/assets/notification.mp3" type="audio/mpeg"></audio><!--needed?-->
+<audio id="chatAudio">
+  <source src="/assets/notification.mp3" type="audio/mpeg">
+</audio><!--needed?-->
 <hr>
 
 <%= render partial: 'layouts/footer' %>
