@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :albums
   resources :images do
     resources :comments
+    member do
+      post 'clone'
+    end
   end
   get 'user/show'
   # get 'album/index'

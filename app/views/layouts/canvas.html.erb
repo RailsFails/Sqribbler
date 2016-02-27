@@ -20,26 +20,44 @@
   </style>
 </head>
 <body>
-<button id="save_btn">SAVE</button>
 <a href="/"><button>HOME</button></a>
-<button id="export_btn">export</button>
+<button id="export_btn">save</button>
+<button id="save_as_btn">save as</button>
 <!-- where the widget goes. you can do CSS to it. -->
 <div class="literally"></div>
 
 <!-- kick it off -->
 <script>
+
+    var lc_options = {imageURLPrefix: '/assets/literallycanvas-0.4.11/img/'};
+
     // Look ma, no jQuery!
-    var lc = LC.init(
-            document.getElementsByClassName('literally')[0],
-            {imageURLPrefix: '/assets/literallycanvas-0.4.11/img/'}
-    );
+    var lc = LC.init(document.getElementsByClassName('literally')[0], lc_options);
+
+    <% unless @image.nil? %>
+    var newImage = new Image();
+    newImage.src = '<%= @image.attachment.url(:original) %>';
+    newImage.onload = function () {
+        lc.saveShape(LC.createShape('Image', {x: 0, y: 0, image: newImage}));
+
+    };
+
+    <% end %>
+
+    document.getElementById('save_as_btn').addEventListener("click", function(e){
+        e.preventDefault();
+        prompt("title");
+    });
+
 
     document.getElementById('export_btn').addEventListener("click", function(e){
         e.preventDefault();
-        var base64_data = lc.canvas.toDataURL();
-        window.open(base64_data);
-    });
+        if (confirm("overwrite image?")){
+            var base64_data = lc.canvas.toDataURL();
+            window.open(base64_data);
+        }
 
+    });
     /* or if you just love jQuery,
      $('.literally').literallycanvas({imageURLPrefix: '/static/img'})
      or

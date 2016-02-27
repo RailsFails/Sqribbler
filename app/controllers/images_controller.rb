@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: [:show, :edit, :update, :destroy, :add_album_title]
+  before_action :set_image, only: [:show, :edit, :update, :destroy, :add_album_title, :clone]
 
   # GET /images
   # GET /images.json
@@ -7,6 +7,9 @@ class ImagesController < ApplicationController
     @images = Image.all
     unless params[:username].blank?
       @images = User.where(username: params[:username]).first.images
+    end
+    unless params[:parent].blank?
+      @images = @images.where(parent_id: params[:parent])
     end
     @images = @images.order('created_at desc').page(params[:page]).per(25)
   end
@@ -24,6 +27,19 @@ class ImagesController < ApplicationController
 
   # GET /images/1/edit
   def edit
+  end
+
+  def clone
+
+    unless current_user.nil?
+      cloned_image = @image.dup
+      cloned_image.attachment = @image.attachment
+      cloned_image.user_id = current_user.id
+      cloned_image.parent_id = @image.id
+      cloned_image.save
+      redirect_to cloned_image
+    end
+
   end
 
   def add_album_title
@@ -76,13 +92,13 @@ class ImagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_image
-      @image = Image.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_image
+    @image = Image.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def image_params
-      params.require(:image).permit(:user_id, :title, :description, :attachment, :album_titles, :latitude, :longitude)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def image_params
+    params.require(:image).permit(:user_id, :title, :description, :attachment, :album_titles, :latitude, :longitude)
+  end
 end

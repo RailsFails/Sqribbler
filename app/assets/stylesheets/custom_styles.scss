@@ -148,3 +148,16 @@ ul li {
   font-size: 27px;
   padding: 10px;
 }
+
+form.button_to {
+  display: inline-block;
+}
+
+.user_html {
+  ul, ul li {
+    list-style-type: circle;
+  }
+  ol, ol li {
+    list-style-type: decimal;
+  }
+}

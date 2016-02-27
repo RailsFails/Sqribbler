@@ -41,6 +41,22 @@
 
 <br/>
 
+<br/>
+<%= link_to "children #{@image.children.count}", images_path(params: {parent: @image.id})  %>
+<br/>
+<br/>
+
+<div class="btn-group" role="group" aria-label="...">
+  <% unless current_user.nil? %>
+      <%= link_to 'open draw canvas', layouts_canvas_path(params: {image_id: @image.id}), class: 'btn btn-default' %>
+      <%= button_to 'Clone', clone_image_path(@image), method: :post, class: 'btn btn-default' %>
+  <% end %>
+  <% unless @image.parent_id.nil? %>
+      <%= link_to 'parent image', @image.parent, class: 'btn btn-default' %>
+  <% end %>
+</div>
+
+
 <%= render partial: 'user/entry', locals: {user: @image.user} %>
 
 <br/>
@@ -53,10 +69,9 @@ Albums:
 </ul>
 
 <% unless @image.description.nil? %>
-<p>
-  <strong>Description:</strong> <br/>
+<div class="user_html">
   <%= @image.description.html_safe %>
-</p>
+</div>
 <% end %>
 
 <% unless current_user.nil? %>
