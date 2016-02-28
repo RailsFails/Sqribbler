@@ -48,48 +48,100 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZR1XYrTEbFF5Kpfkpoj41aTeME3TUhwQ&callback=initMap"
             async defer></script>
 
-
     <script>
-      var map;
-      var marker;
-      var location;
+      var current_location = null;
+      <% unless @image.longitude.nil? && @image.latitude.nil? %>
+        current_location =  {
+          latitude: <%= @image.latitude %>,
+          longitude: <%= @image.longitude %>
+        };
+      <% end %>
 
+      var position = {
+        latitude: null,
+        longitude: null,
+        googleLatLng: null,
+        marker: null,
+        map: null,
+        update: function(lat, lng){
+          this.latitude = lat;
+          this.longitude = lng;
+          this.googleLatLng = new google.maps.LatLng(lat, lng);
+          if (this.marker === null){
+            this.marker = new google.maps.Marker({position: this.googleLatLng, map: this.map, draggable: true});
+            this.marker.setMap(this.map);
+          } else {
+            this.marker.setPosition(this.googleLatLng);
+          }
+          this.update_text();
+        },
+        update_text: function(){
+          document.getElementById('image_latitude').value = this.latitude;
+          document.getElementById('image_longitude').value = this.longitude;
+        }
+      };
+      var added_drag_event = false;
       function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
+        position.map = new google.maps.Map(document.getElementById('map'), {
           center: new google.maps.LatLng(39, -95),
           zoom: 4
         });
 
-        google.maps.event.addListener(map, "click", function (event) {
+        if (current_location !== null){
+          position.update(current_location.latitude, current_location.longitude);
+        }
 
-        });
-
-        google.maps.event.addListener(marker, 'dragend', function (event) {
-          if (marker){
-            location = new google.maps.LatLng( this.getPosition().lat(), this.getPosition().lng() );
-            marker.setPosition( location );
+        google.maps.event.addListener(position.map, "click", function (event) {
+          position.update(event.latLng.lat(), event.latLng.lng())
+          if (!added_drag_event){
+            google.maps.event.addListener(position.marker, 'dragend', function (event) {
+              position.update(position.marker.position.lat(), position.marker.position.lng())
+            });
+            added_drag_event = true;
           }
         });
-
       }
 
       $(document).ready(function () {
         if (navigator.geolocation) {
           var startPos;
-          var geoSuccess = function (position) {
-            startPos = position;
-            document.getElementById('image_latitude').value = startPos.coords.latitude;
-            document.getElementById('image_longitude').value = startPos.coords.longitude;
-
-            var myLatLng = new google.maps.LatLng(startPos.coords.latitude, startPos.coords.longitude);
-            marker = new google.maps.Marker({position: myLatLng, map: map, draggable: true});
-            marker.setMap(map);
-            map.panTo(myLatLng);
+          var geoSuccess = function (pos) {
+            startPos = pos;
+            position.update(startPos.coords.latitude, startPos.coords.longitude);
           };
           navigator.geolocation.getCurrentPosition(geoSuccess);
         }
       });
 
+      var toDecimal = function (number) {
+        return number[0].numerator + number[1].numerator /
+            (60 * number[1].denominator) + number[2].numerator / (3600 * number[2].denominator);
+      };
+
+      document.getElementById("image_attachment").onchange = function(e) {
+        EXIF.getData(e.target.files[0], function() {
+          var tags = EXIF.getAllTags(this);
+          var GPSLatitude = EXIF.getTag(this, 'GPSLatitude');
+          var GPSLongitude = EXIF.getTag(this, 'GPSLongitude');
+
+          if (GPSLatitude !== undefined && GPSLongitude !== undefined){
+            /* make longitude negative */
+            position.update(toDecimal(GPSLatitude), -toDecimal(GPSLongitude));
+          }
+          jQuery('#exif_key_values').show();
+          var table_content = jQuery('#exif_key_values').find('tbody');
+          table_content.empty();
+          for (var key in tags) {
+            if (tags.hasOwnProperty(key)) {
+              var row = jQuery('<tr>');
+              row.append(jQuery('<td>').text(key));
+              row.append(jQuery('<td>').text(tags[key]));
+              table_content.append(row);
+            }
+          }
+          //alert(EXIF.pretty(this));
+        });
+      }
 
     </script>
 
@@ -104,11 +156,26 @@
       <%= f.number_field :longitude, step: :any %>
     </div>
 
-
-
-
     <div class="actions">
       <%= f.submit %>
     </div>
+
+    <div class="panel panel-default" id="exif_key_values" style="display: none">
+      <!-- Default panel contents -->
+      <div class="panel-heading">Image EXIF data</div>
+      <!-- Table -->
+      <table class="table">
+        <thead>
+        <tr>
+          <th>key</th>
+          <th>value</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+
 
 <% end %>
