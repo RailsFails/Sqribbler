@@ -2,11 +2,15 @@ Rails.application.routes.draw do
   resources :albums
   resources :images do
     resources :comments
+    member do
+      post 'clone'
+    end
   end
   get 'user/show'
   # get 'album/index'
   # get 'album/show'
-
+  get 'layouts/contact_page'
+  get 'layouts/canvas'
   devise_for :users
   put 'user/:username' => 'user#user_profile_update', as: :user_profile_update
   get 'landing_page/index'
