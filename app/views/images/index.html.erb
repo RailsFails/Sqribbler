@@ -2,18 +2,54 @@
 
 <h1>Listing Images</h1>
 
+<ul class="nav nav-tabs" id="myTabs">
+  <li class="active"><a data-target="#image_grid_tab" data-toggle="tab">Grid</a></li>
+  <li><a data-target="#image_map_tab" data-toggle="tab">Map</a></li>
+</ul>
 
-<div class="image_grid">
-  <div class="grid_item">
-    <% @images.each do |image| %>
-        <%= render partial: 'images/grid_cell', locals: {image: image} %>
-    <% end %>
+<div class="tab-content">
+  <div class="tab-pane active" id="image_grid_tab">
+    <div class="image_grid">
+      <div class="grid_item">
+        <% @images.each do |image| %>
+            <%= render partial: 'images/grid_cell', locals: {image: image} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane" id="image_map_tab">
+    <h2 style="color: red">map should go here</h2>
   </div>
 </div>
 
-
 <br>
 
+<style>
+  #map {
+    height: 600px;
+  }
+</style>
+<div id="map"></div>
+<script>
+
+  function initMap() {
+    var myLatLng = {lat: 47.71008640965256, lng: -117.3643308877945};
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: myLatLng
+    });
+    map.data.loadGeoJson('/images.geojson');
+
+    map.data.addListener('click', function(event) {
+      var image_info = event.feature.R;
+      window.location.href = image_info.url;
+    });
+  }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZR1XYrTEbFF5Kpfkpoj41aTeME3TUhwQ&callback=initMap">
+</script>
 
 <%= paginate @images %>
 <%= link_to 'New Image', new_image_path %>
