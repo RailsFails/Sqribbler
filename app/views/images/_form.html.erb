@@ -113,6 +113,35 @@
         }
       });
 
+      var toDecimal = function (number) {
+        return number[0].numerator + number[1].numerator /
+            (60 * number[1].denominator) + number[2].numerator / (3600 * number[2].denominator);
+      };
+
+      document.getElementById("image_attachment").onchange = function(e) {
+        EXIF.getData(e.target.files[0], function() {
+          var tags = EXIF.getAllTags(this);
+          var GPSLatitude = EXIF.getTag(this, 'GPSLatitude');
+          var GPSLongitude = EXIF.getTag(this, 'GPSLongitude');
+
+          if (GPSLatitude !== undefined && GPSLongitude !== undefined){
+            /* make longitude negative */
+            position.update(toDecimal(GPSLatitude), -toDecimal(GPSLongitude));
+          }
+          jQuery('#exif_key_values').show();
+          var table_content = jQuery('#exif_key_values').find('tbody');
+          table_content.empty();
+          for (var key in tags) {
+            if (tags.hasOwnProperty(key)) {
+              var row = jQuery('<tr>');
+              row.append(jQuery('<td>').text(key));
+              row.append(jQuery('<td>').text(tags[key]));
+              table_content.append(row);
+            }
+          }
+          //alert(EXIF.pretty(this));
+        });
+      }
 
     </script>
 
@@ -127,11 +156,26 @@
       <%= f.number_field :longitude, step: :any %>
     </div>
 
-
-
-
     <div class="actions">
       <%= f.submit %>
     </div>
+
+    <div class="panel panel-default" id="exif_key_values" style="display: none">
+      <!-- Default panel contents -->
+      <div class="panel-heading">Image EXIF data</div>
+      <!-- Table -->
+      <table class="table">
+        <thead>
+        <tr>
+          <th>key</th>
+          <th>value</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+
 
 <% end %>
