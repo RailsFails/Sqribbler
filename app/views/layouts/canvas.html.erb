@@ -20,10 +20,6 @@
   </style>
 </head>
 <body>
-<br/>
-<a href="/"><button>HOME</button></a>
-<button id="export_btn">save</button>
-<button id="save_as_btn">save as</button><br/><br/>
 
 <!-- where the widget goes. you can do CSS to it. -->
 <div class="literally"></div>
@@ -38,7 +34,7 @@
 
   function save_image(lc){
     if (confirm("overwrite image?")){
-      var base64_data = lc.canvasForExport().toDataURL();
+      var base64_data = lc.getImage({scaleDownRetina: false}).toDataURL();
       window.open(base64_data);
     }
   }
@@ -77,29 +73,31 @@
     }
   };
 
+  var image_width=null;
+  var image_height=null;
+
+  image_width = <%= @image.image_width %>;
+  image_height = <%= @image.image_height %>;
+
+  var scale = Math.min((viewportHeight*1.0)/image_height, (viewportWidth*1.0)/image_width);
+  var zoom_level = Math.min((image_height*1.0)/viewportHeight, (image_width*1.0)/viewportWidth);
+  console.log(zoom_level);
 
   var lc_options = {
       imageURLPrefix: '/assets/literallycanvas-0.4.11/img/',
-      tools: LC.defaultTools.concat([save_image_tool, new_image_tool])
+      tools: LC.defaultTools.concat([save_image_tool, new_image_tool]),
+      imageSize: {width: image_width, height: image_height}
     };
 
     var lc = LC.init(document.getElementsByClassName('literally')[0], lc_options);
-
-    var image_width=null;
-    var image_height=null;
+  lc.zoom(-zoom_level);
 
     <% unless @image.nil? %>
     var newImage = new Image();
     newImage.src = '<%= @image.attachment.url(:original) %>';
-    image_width = <%= @image.image_width %>;
-    image_height = <%= @image.image_height %>;
-
-    var scale = Math.min((viewportHeight*1.0)/image_height, (viewportWidth*1.0)/image_width)
-    console.log(scale);
-
 
     newImage.onload = function () {
-        lc.saveShape(LC.createShape('Image', {x: 0, y: 0, image: newImage, scale: scale}));
+        lc.saveShape(LC.createShape('Image', {x: 0, y: 0, image: newImage}));
 
     };
 
@@ -107,17 +105,6 @@
 
 
 
-    document.getElementById('save_as_btn').addEventListener("click", function(e){
-        e.preventDefault();
-        save_as_new_image(lc);
-    });
-
-
-    document.getElementById('export_btn').addEventListener("click", function(e){
-      e.preventDefault();
-      save_image(lc);
-
-    });
     /* or if you just love jQuery,
      $('.literally').literallycanvas({imageURLPrefix: '/static/img'})
      or
