@@ -31,33 +31,91 @@
 <!-- kick it off -->
 <script>
 
-    var lc_options = {imageURLPrefix: '/assets/literallycanvas-0.4.11/img/'};
+  var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  viewportWidth -= 60; // width of the toolbar
+  viewportHeight -= 30; // height of the top toolbar
 
-    // Look ma, no jQuery!
+  function save_image(lc){
+    if (confirm("overwrite image?")){
+      var base64_data = lc.canvasForExport().toDataURL();
+      window.open(base64_data);
+    }
+  }
+
+  function save_as_new_image(lc){
+    prompt("title");
+  }
+
+  var save_image_tool = function(lc) {  // take lc as constructor arg
+    var self = this;
+
+    return {
+      name: 'save',
+      iconName: 'save',
+      didBecomeActive: function () {
+        save_image(lc);
+      },
+      begin: function(x, y, lc) {},
+      continue: function(x, y, lc) {},
+      end: function(x, y, lc) {}
+    }
+  };
+
+  var new_image_tool = function(lc) {  // take lc as constructor arg
+    var self = this;
+
+    return {
+      name: 'new image',
+      iconName: 'new',
+      didBecomeActive: function () {
+       save_as_new_image(lc);
+      },
+      begin: function(x, y, lc) {},
+      continue: function(x, y, lc) {},
+      end: function(x, y, lc) {}
+    }
+  };
+
+
+  var lc_options = {
+      imageURLPrefix: '/assets/literallycanvas-0.4.11/img/',
+      tools: LC.defaultTools.concat([save_image_tool, new_image_tool])
+    };
+
     var lc = LC.init(document.getElementsByClassName('literally')[0], lc_options);
+
+    var image_width=null;
+    var image_height=null;
 
     <% unless @image.nil? %>
     var newImage = new Image();
     newImage.src = '<%= @image.attachment.url(:original) %>';
+    image_width = <%= @image.image_width %>;
+    image_height = <%= @image.image_height %>;
+
+    var scale = Math.min((viewportHeight*1.0)/image_height, (viewportWidth*1.0)/image_width)
+    console.log(scale);
+
+
     newImage.onload = function () {
-        lc.saveShape(LC.createShape('Image', {x: 0, y: 0, image: newImage}));
+        lc.saveShape(LC.createShape('Image', {x: 0, y: 0, image: newImage, scale: scale}));
 
     };
 
     <% end %>
 
+
+
     document.getElementById('save_as_btn').addEventListener("click", function(e){
         e.preventDefault();
-        prompt("title");
+        save_as_new_image(lc);
     });
 
 
     document.getElementById('export_btn').addEventListener("click", function(e){
-        e.preventDefault();
-        if (confirm("overwrite image?")){
-            var base64_data = lc.canvas.toDataURL();
-            window.open(base64_data);
-        }
+      e.preventDefault();
+      save_image(lc);
 
     });
     /* or if you just love jQuery,

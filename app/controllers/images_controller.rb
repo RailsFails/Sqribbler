@@ -8,11 +8,11 @@ class ImagesController < ApplicationController
     unless params[:username].blank?
       @images = User.where(username: params[:username]).first.images
     end
-    unless params[:parent].blank?
-      @images = @images.where(parent_id: params[:parent])
-    end
     if params[:format] == 'geojson'
       @images = @images.where('longitude is not NULL and latitude is not NULL')
+    end
+    unless params[:parent].blank?
+      @images = @images.where(parent_id: params[:parent])
     end
     @images = @images.order('created_at desc').page(params[:page]).per(25)
     respond_to do |format|
