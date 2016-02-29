@@ -14,8 +14,8 @@
 
   <style>
     body {
-        padding: 0;
-        margin: 0;
+      padding: 0;
+      margin: 0;
     }
   </style>
 </head>
@@ -31,19 +31,32 @@
   var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
   viewportWidth -= 60; // width of the toolbar
   viewportHeight -= 30; // height of the top toolbar
+  var image_info = <%= @image.to_json.html_safe %>;
 
-  function save_image(lc){
-    if (confirm("overwrite image?")){
+  function save_image(lc) {
+    if (confirm("overwrite image?")) {
       var base64_data = lc.getImage({scaleDownRetina: false}).toDataURL();
-      window.open(base64_data);
+      var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+      xmlhttp.open("PATCH", "/images/" + image_info.id+".json");
+      xmlhttp.setRequestHeader("Content-Type", "application/json");
+      xmlhttp.send(JSON.stringify({
+        utf8: "✓",
+        image: {
+          id: image_info.id,
+          user_id: image_info.user_id,
+          attachment: base64_data
+        },
+        commit: "Update Image"
+      }));
+      //window.open(base64_data);
     }
   }
 
-  function save_as_new_image(lc){
+  function save_as_new_image(lc) {
     prompt("title");
   }
 
-  var save_image_tool = function(lc) {  // take lc as constructor arg
+  var save_image_tool = function (lc) {  // take lc as constructor arg
     var self = this;
 
     return {
@@ -52,64 +65,69 @@
       didBecomeActive: function () {
         save_image(lc);
       },
-      begin: function(x, y, lc) {},
-      continue: function(x, y, lc) {},
-      end: function(x, y, lc) {}
+      begin: function (x, y, lc) {
+      },
+      continue: function (x, y, lc) {
+      },
+      end: function (x, y, lc) {
+      }
     }
   };
 
-  var new_image_tool = function(lc) {  // take lc as constructor arg
+  var new_image_tool = function (lc) {  // take lc as constructor arg
     var self = this;
 
     return {
       name: 'new image',
       iconName: 'new',
       didBecomeActive: function () {
-       save_as_new_image(lc);
+        save_as_new_image(lc);
       },
-      begin: function(x, y, lc) {},
-      continue: function(x, y, lc) {},
-      end: function(x, y, lc) {}
+      begin: function (x, y, lc) {
+      },
+      continue: function (x, y, lc) {
+      },
+      end: function (x, y, lc) {
+      }
     }
   };
 
-  var image_width=null;
-  var image_height=null;
+  var image_width = null;
+  var image_height = null;
 
   image_width = <%= @image.image_width %>;
   image_height = <%= @image.image_height %>;
 
-  var scale = Math.min((viewportHeight*1.0)/image_height, (viewportWidth*1.0)/image_width);
-  var zoom_level = Math.min((image_height*1.0)/viewportHeight, (image_width*1.0)/viewportWidth);
-  console.log(zoom_level);
+  var scale = Math.min((viewportHeight * 1.0) / image_height, (viewportWidth * 1.0) / image_width);
+  var zoom_level = Math.min((image_height * 1.0) / viewportHeight, (image_width * 1.0) / viewportWidth);
 
   var lc_options = {
-      imageURLPrefix: '/assets/literallycanvas-0.4.11/img/',
-      tools: LC.defaultTools.concat([save_image_tool, new_image_tool]),
-      imageSize: {width: image_width, height: image_height}
-    };
+    imageURLPrefix: '/assets/literallycanvas-0.4.11/img/',
+    tools: LC.defaultTools.concat([save_image_tool, new_image_tool]),
+    imageSize: {width: image_width, height: image_height}
+  };
 
-    var lc = LC.init(document.getElementsByClassName('literally')[0], lc_options);
+  var lc = LC.init(document.getElementsByClassName('literally')[0], lc_options);
   lc.zoom(-zoom_level);
 
-    <% unless @image.nil? %>
-    var newImage = new Image();
-    newImage.src = '<%= @image.attachment.url(:original) %>';
+  <% unless @image.nil? %>
+  var newImage = new Image();
+  newImage.src = '<%= @image.attachment.url(:original) %>';
 
-    newImage.onload = function () {
-        lc.saveShape(LC.createShape('Image', {x: 0, y: 0, image: newImage}));
+  newImage.onload = function () {
+    lc.saveShape(LC.createShape('Image', {x: 0, y: 0, image: newImage}));
 
-    };
+  };
 
-    <% end %>
+  <% end %>
 
 
 
-    /* or if you just love jQuery,
-     $('.literally').literallycanvas({imageURLPrefix: '/static/img'})
-     or
-     LC.init($('.literally').get(0), {imageURLPrefix: '/static/img'})
-     */
+  /* or if you just love jQuery,
+   $('.literally').literallycanvas({imageURLPrefix: '/static/img'})
+   or
+   LC.init($('.literally').get(0), {imageURLPrefix: '/static/img'})
+   */
 </script>
 </body>
 </html>
