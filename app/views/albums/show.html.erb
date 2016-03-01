@@ -76,6 +76,10 @@
 </div>
 <p>
 
+  <% if current_user %>
+      <%= render partial: 'user/vote', locals: {item: @album} %>
+  <% end %>
+  <br/>
   <% if @user.username == current_user.username %>
 
   <%= link_to 'Edit Album', edit_album_path(@album), class:"btn btn-default" %>

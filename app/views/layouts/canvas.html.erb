@@ -38,17 +38,9 @@
       var base64_data = lc.getImage({scaleDownRetina: false}).toDataURL();
       var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
       xmlhttp.open("PATCH", "/images/" + image_info.id+".json");
-      xmlhttp.setRequestHeader("Content-Type", "application/json");
-      xmlhttp.send(JSON.stringify({
-        utf8: "✓",
-        image: {
-          id: image_info.id,
-          user_id: image_info.user_id,
-          attachment: base64_data
-        },
-        commit: "Update Image"
-      }));
-      //window.open(base64_data);
+      var formData = new FormData();
+      formData.append('image[attachment]', base64_data);
+      xmlhttp.send(formData);
     }
   }
 
@@ -62,6 +54,7 @@
     return {
       name: 'save',
       iconName: 'save',
+      optionsStyle: null,
       didBecomeActive: function () {
         save_image(lc);
       },
@@ -70,6 +63,8 @@
       continue: function (x, y, lc) {
       },
       end: function (x, y, lc) {
+      },
+      willBecomeInactive : function () {
       }
     }
   };

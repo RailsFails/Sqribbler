@@ -13,7 +13,7 @@ class Image < ActiveRecord::Base
                     :url => "/system/:class/:id/:style.:extension",
   :use_timestamp => false
 
-  has_many :album_entries
+  has_many :album_entries, :dependent => :destroy
   has_many :albums, through: :album_entries
   has_many :comments, :dependent => :destroy
   has_many :votes, as: :item

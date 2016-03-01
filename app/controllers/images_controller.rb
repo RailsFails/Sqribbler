@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy, :add_album_title, :clone]
-
+  before_action :check_user, only: [:update]
   # GET /images
   # GET /images.json
   def index
@@ -107,5 +107,11 @@ class ImagesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def image_params
     params.require(:image).permit(:user_id, :title, :description, :attachment, :album_titles, :latitude, :longitude)
+  end
+
+  def check_user
+    if current_user.nil? || current_user.id != @image.user_id
+      render text: 'incorrect user', status: 403
+    end
   end
 end
