@@ -1,0 +1,39 @@
+<%
+  reason_list = [
+      'copyright',
+      'spam',
+      'abuse',
+      'Inappropriate content',
+      'other'
+  ]
+%>
+
+<div id="report_model-<%= "#{reportable.class.to_s}-#{reportable.id}" %>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Report <%= reportable.class.to_s %></h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for Report.new, url: path+Report.new do |f| %>
+            <%= f.hidden_field :item_type, value: reportable.class.to_s %>
+            <%= f.hidden_field :item_id, value: reportable.id %>
+            <%= f.label :reason %>
+            <%= f.select :reason, options_for_select(reason_list.collect { |c| [c, c] }) %>
+            <br/>
+            <%= f.text_field :comment, placeholder: 'optional comment' %>
+            <br/>
+            <%= f.submit 'Report' %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<span
+
+  data-toggle="modal"
+  data-target="#report_model-<%= "#{reportable.class.to_s}-#{reportable.id}" %>">Report <%= reportable.class.to_s %></span>

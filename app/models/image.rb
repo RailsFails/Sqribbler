@@ -17,6 +17,7 @@ class Image < ActiveRecord::Base
   has_many :albums, through: :album_entries
   has_many :comments, :dependent => :destroy
   has_many :votes, as: :item
+  has_many :reports, as: :item
   belongs_to :parent, :class_name => 'Image', :foreign_key => :parent_id
   has_many :children, :class_name => 'Image', :foreign_key => :parent_id
 

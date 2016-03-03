@@ -60,6 +60,10 @@
 <%= render partial: 'user/entry', locals: {user: @image.user} %>
 
 <br/>
+<%= render 'reports/form', reportable: @image, path: [@image] %>
+<br/>
+
+<br/>
 
 Albums:
 <ul>
@@ -73,6 +77,7 @@ Albums:
   <%= @image.description.html_safe %>
 </div>
 <% end %>
+
 
 <% if !@image.longitude.nil? && !@image.latitude.nil? %>
     <style>
@@ -125,6 +130,7 @@ Albums:
               <% if current_user %>
                 <%= render partial: 'user/vote', locals: {item: comment} %>
               <% end %>
+              <%= render 'reports/form', reportable: comment, path: [@image, comment] %>
             </div>
           </div>
         </div>

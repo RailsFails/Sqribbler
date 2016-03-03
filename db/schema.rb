@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226174026) do
+ActiveRecord::Schema.define(version: 20160302001007) do
 
   create_table "album_entries", force: :cascade do |t|
     t.integer  "image_id"
@@ -91,6 +91,21 @@ ActiveRecord::Schema.define(version: 20160226174026) do
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id"
   add_index "messages", ["user_id"], name: "index_messages_on_user_id"
+
+  create_table "reports", force: :cascade do |t|
+    t.string   "item_type"
+    t.integer  "item_id"
+    t.integer  "user_id"
+    t.string   "ip_address"
+    t.string   "reason"
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "reports", ["item_type", "item_id"], name: "index_reports_on_item_type_and_item_id"
+  add_index "reports", ["item_type"], name: "index_reports_on_item_type"
+  add_index "reports", ["user_id"], name: "index_reports_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

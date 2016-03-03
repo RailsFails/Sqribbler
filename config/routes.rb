@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  resources :albums
+  resources :albums do
+    resources :reports
+  end
   resources :images do
-    resources :comments
+    resources :reports
+    resources :comments do
+      resources :reports
+    end
     member do
       post 'clone'
     end
@@ -29,7 +34,7 @@ Rails.application.routes.draw do
   get '/user/:username/new_album' => 'albums#new', as: :album_new_page
   get '/user/:username/albums/:title' => 'albums#show', as: :album_show_page
 
-
+  resources :reports
 
   resources :friendships do
     resources :conversations

@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <th>model</th>
+    <th>model id</th>
+    <th>user</th>
+    <th>reason</th>
+  </tr>
+
+  <% @reports.each do |report| %>
+    <tr>
+      <td><%= report.item_type %></td>
+      <td><%= report.item_id %></td>
+      <% if report.user_id %>
+        <td><%= link_to report.reporter.username, user_profile_path(report.reporter.username) %></td>
+      <% else %>
+        <td><%= report.ip_address %></td>
+      <% end %>
+      <td><%= report.reason %></td>
+    </tr>
+  <% end %>
+
+</table>
