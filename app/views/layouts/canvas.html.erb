@@ -11,6 +11,7 @@
   <!-- Literally Canvas -->
   <script src="/assets/literallycanvas-0.4.11/js/literallycanvas.js"></script>
 
+  <script src="/assets/jquery-2.2.0.min.js"></script>
 
   <style>
     body {
@@ -26,6 +27,7 @@
 
 <!-- kick it off -->
 <script>
+  $.noConflict();
 
   var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
   var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -37,7 +39,7 @@
     if (confirm("overwrite image?")) {
       var base64_data = lc.getImage({scaleDownRetina: false}).toDataURL();
       var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-      xmlhttp.open("PATCH", "/images/" + image_info.id+".json");
+      xmlhttp.open("PATCH", "/images/" + image_info.id + ".json");
       var formData = new FormData();
       formData.append('image[attachment]', base64_data);
       xmlhttp.send(formData);
@@ -64,7 +66,37 @@
       },
       end: function (x, y, lc) {
       },
-      willBecomeInactive : function () {
+      willBecomeInactive: function () {
+      }
+    }
+  };
+
+  var add_image_tool = function (lc) {
+    var self = this;
+
+    return {
+      name: 'add image',
+      iconName: 'add_image',
+      optionsStyle: null,
+      didBecomeActive: function () {
+        var id = prompt("image id: ");
+        if (id && !isNaN(id)) {
+          jQuery.getJSON('/images/'+id, {format: 'json'}, function (json_data) {
+            var newImage = new Image();
+            newImage.src = json_data.image_url;
+            newImage.onload = function () {
+              lc.saveShape(LC.createShape('Image', {x: 0, y: 0, image: newImage}));
+            };
+          });
+        }
+      },
+      begin: function (x, y, lc) {
+      },
+      continue: function (x, y, lc) {
+      },
+      end: function (x, y, lc) {
+      },
+      willBecomeInactive: function () {
       }
     }
   };
@@ -98,7 +130,7 @@
 
   var lc_options = {
     imageURLPrefix: '/assets/literallycanvas-0.4.11/img/',
-    tools: LC.defaultTools.concat([save_image_tool, new_image_tool]),
+    tools: LC.defaultTools.concat([save_image_tool, new_image_tool, add_image_tool]),
     imageSize: {width: image_width, height: image_height}
   };
 
@@ -108,7 +140,6 @@
   <% unless @image.nil? %>
   var newImage = new Image();
   newImage.src = '<%= @image.attachment.url(:original) %>';
-
   newImage.onload = function () {
     lc.saveShape(LC.createShape('Image', {x: 0, y: 0, image: newImage}));
 
